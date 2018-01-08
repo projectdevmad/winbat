@@ -1,0 +1,32 @@
+
+.table  td , th {
+  padding: 8px !IMPORTANT;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+.appointScollList{
+    max-height: 500px;
+    overflow-y:scroll; 
+}
+.borderLess{
+	border: 0px !IMPORTANT;
+}
+.borderLessTop{
+	border-top: 0px !IMPORTANT;
+}
+.borderLessBottom{
+	border-bottom: 0px !IMPORTANT;
+}
+.bold {
+	font-weight: bold;
+}
+
+.table > tbody + tbody {
+    border-top: none;
+}
+
+.pointer {
+	cursor: pointer;
+}

@@ -1,0 +1,303 @@
+﻿<div class="col-md-12 col-md-offset-0">
+    <h3>Register of Licensed Insurance Intermediaries</h3>
+    <form name="form" ng-submit="search()" role="form" class="form">
+        <div class="containerSearch">
+            <div class="row">
+                <div id="filter-panel" class=" filter-panel">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row" ng-show="false">
+                                <label for="" class="col-sm-2 col-md-2  control-label text-left">{{'search.searchOn' | translate}}</label>
+                                <div class="col-sm-8 col-md-8">
+                                    <div class="input-group">
+                                        <div class="radioBtn btn-group">
+                                            <input type="radio" name="SearchType" value="I" id="SearchType0a" ng-model="searchType" ng-click="changeSearchType('I')" />
+                                            <label for="SearchType0a">{{'search.individual' | translate}}</label>
+                                            <input type="radio" name="SearchType" value="F" id="SearchType0b" ng-model="searchType" ng-click="changeSearchType('F')" />
+                                            <label for="SearchType0b">{{'search.firm' | translate}}</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12" ng-show="searchType=='F'" ng-disabled="searchType!='F'">
+                                                <div class="">
+                                                    <div class="funkyradio-default">
+                                                        <input type="radio" name="SearchType1" value="A" id="SearchType1a" ng-model="searchType1" ng-disabled="searchType=='I'" />
+                                                        <label for="SearchType1a">{{'search.insuranceAgency' | translate}}</label>
+                                                    </div>
+                                                    <div class="funkyradio-primary">
+                                                        <input type="radio" name="SearchType1" value="B" id="SearchType1b" ng-model="searchType1" ng-disabled="searchType=='I'" />
+                                                        <label for="SearchType1b">{{'search.insuranceBrokerCompany' | translate}}</label>
+                                                    </div>
+                                                    <div class="funkyradio-success">
+                                                        <input type="radio" name="SearchType1" value="Any" id="SearchType1c" ng-model="searchType1" ng-disabled="searchType=='I'" />
+                                                        <label for="SearchType1c">{{'search.any' | translate}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12">
+                                                <div class="">
+                                                    <div class="funkyradio-default">
+                                                        <input type="radio" name="SearchType2" value="I" id="SearchType2a" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                                        <label for="SearchType2a">{{'search.individualInsuranceAgency' | translate}}</label>
+                                                    </div>
+                                                    <div class="funkyradio-primary">
+                                                        <input type="radio" name="SearchType2" value="A" id="SearchType2b" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                                        <label for="SearchType2b">{{'search.technicalRepresentativeAgent' | translate}}</label>
+                                                    </div>
+                                                    <div class="funkyradio-primary">
+                                                        <input type="radio" name="SearchType2" value="B" id="SearchType2c" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                                        <label for="SearchType2c">{{'search.technicalRepresentativeBroker' | translate}}</label>
+                                                    </div>
+                                                    <div class="funkyradio-success">
+                                                        <input type="radio" name="SearchType2" value="Any" id="SearchType2d" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                                        <label for="SearchType2d">{{'search.any' | translate}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="searchType=='F'" ng-disabled="searchType!='F'">
+                                <label for="" class="col-sm-2 col-md-2  control-label text-left">{{'search.firm' | translate}}</label>
+                                <div class="col-sm-10 col-md-10">
+                                    <div class="row" style=" margin-bottom: 5px;">
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="radio" name="searchBy" value="EName" id="searchBy1" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchBy1">{{'search.englishName' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" padding-bottom: 5px;">
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="radio" name="searchBy" value="CName" id="searchBy2" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchBy2">{{'中文名稱' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" margin-bottom: 5px;">
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="radio" name="searchBy" value="LicenseNo" id="searchBy3" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchBy3">{{'search.licenseNo' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" margin-bottom: 5px;">
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="radio" name="searchBy" value="HKID" id="searchBy4" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchBy4">{{'BR No.' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="text" value="" class="form form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="searchType=='I'" ng-disabled="searchType!='I'">
+                                <label for="" class="col-sm-2 col-md-2  control-label text-left">{{'search.individual' | translate}}</label>
+                                <div class="col-sm-10 col-md-10">
+                                    <div class="row" style=" margin-bottom: 5px;">
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="radio" name="searchBy" value="EName" id="searchByI1" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchByI1">{{'search.englishName' | translate}}</label>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <input type="text" value="" class="form form-control" placeholder="Surname">
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <input type="text" value="" class="form form-control" placeholder="First Name">
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" padding-bottom: 5px;">
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="radio" name="searchBy" value="CName" id="searchByI2" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchByI2">{{'中文名稱' | translate}}</label>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <input type="text" value="" class="form form-control" placeholder="姓">
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <input type="text" value="" class="form form-control" placeholder="名">
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" margin-bottom: 5px;">
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="radio" name="searchBy" value="LicenseNo" id="searchByI3" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchByI3">{{'search.licenseNo' | translate}}</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="text" value="" class="form form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" margin-bottom: 5px;">
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="radio" name="searchBy" value="HKID" id="searchByI4" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchByI4">{{'search.HKIDNo' | translate}}</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="text" value="" class="form form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="searchType=='I'" ng-disabled="searchType!='I'">
+                                <label for="happy" class="col-sm-2 col-md-2 control-label text-left">{{'Appointing Principal(If Known)' | translate}} </label>
+                                <div class="col-sm-10 col-md-10">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="radio" name="searchBy" value="Insurer" id="searchBy3" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchBy3" data-toggle="modal" data-target="#myModal" class="text-primary" style=" cursor:pointer;">{{'Insurer' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="radio" name="searchBy" value="Insurance Agency" id="searchBy4" ng-model="searchBy" ng-click="changeSearchBy($event)" />
+                                            <label for="searchBy4" data-toggle="modal" data-target="#myModal" class="text-primary" style=" cursor:pointer;">{{'Insurance Agency / Broker Company' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="text" class="form-control" ng-model="searchTxt" ng-disabled="false" bs-options="state for state in AppointingList" bs-typeahead>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="happy" class="col-sm-2 col-md-2 control-label text-left">{{'search.licenseStatus' | translate}}</label>
+                                <div class="col-sm-10 col-md-10">
+                                    <div class="radioBtn btn-group">
+                                        <input type="radio" name="licenseStatus" value="A" id="licenseStatusa" ng-model="licenseStatus" ng-click="changeLicense('A')" />
+                                        <label for="licenseStatusa">{{'search.active' | translate}}</label>
+                                        <input type="radio" name="licenseStatus" value="I" id="licenseStatusb" ng-model="licenseStatus" ng-click="changeLicense('I')" />
+                                        <label for="licenseStatusb">{{'Inactive' | translate}}</label>
+                                        <input type="radio" name="licenseStatus" value="AI" id="licenseStatusc" ng-model="licenseStatus" ng-click="changeLicense('AI')" />
+                                        <label for="licenseStatusc">{{'search.activeAndInactive' | translate}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sd-offset-2 col-md-2"></div>
+                                <div class="col-sm-8 col-md-8">
+                                    <div class="row" ng-show="!captchaIsValid">
+                                        <div class="col-sm-10 col-md-10">
+                                            <img src="./app-content/image/botcaptcha.png" class="img-thumbnail" height="">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6" style=" padding-top: 5px;">
+                                            <input type="text" class="form-control" ng-model="captchaCode" placeholder="Please fill in the code">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-10 col-md-10">
+                                            <a href='./' class="btn btn-default">Reset</a>
+                                            <button type="submit" ng-disabled="dataLoading" class="btn btn-primary" ng-click="search()">Search</button>
+                                            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <HR>
+                                <div id="gridFooter" style="float:left;"></div>
+                                <div id="externalPager" style="float:right; margin-top: 10px;">< Page 1 / 2 / 3 / 4 / 5 / End >
+                                    <paging
+                                     text-first="&laquo;"
+  text-last="&raquo;"
+  text-next="&rsaquo;"
+  text-prev="&lsaquo;"
+  text-title-page="Page {page} hover title text"
+  text-title-first="First Page hover title text"
+  text-title-last="Last Page hover title text"
+  text-title-next="Next Page hover title text"
+  text-title-prev="Previous hover Page title text"  
+  text-1first-class="glyphicon glyphicon-backward"
+  text-1last-class="glyphicon glyphicon-forward" 
+  text-1next-class="glyphicon glyphicon-chevron-right"
+  text-1prev-class="glyphicon glyphicon-chevron-left"
+  page="2" 
+  page-size="10" 
+  total="500"
+  show-prev-next="true"
+  show-first-last="true"
+  max-pages-to-show="3"
+  hide-if-empty="true"
+  max-size="3"  >
+</paging>  
+
+
+
+                                </div>
+                            </HR></div>
+                             <div class="row">
+                                <table class="ng-table responsive table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Licence No.</th>
+                                            <th>English Name</th>
+                                            <th>中文名稱</th>
+                                            <th>Current Licence Status</th>
+                                            <th>Current Licence Type</th>
+                                            <th>Appointing Principal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr ng-repeat="searchResult in searchResults" ng-click="viewRecord()" class="pointer">
+                                            <td>{{searchResult.licenseNo}}</td>
+                                            <td>{{searchResult.engName}}</td>
+                                            <td>{{searchResult.chiName}}</td>
+                                            <td>{{searchResult.licenseStatus}}</td>
+                                            <td>{{searchResult.licenseType}}</td>
+                                            <td>
+                                                <div ng-bind-html="searchResult.appointingPrincipal"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">
+                                
+                                <div id="jsGrid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>Last update: 24 Oct 2017</div>
+            </div>
+        </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Insurance Agency / Broker Company</h4>
+            </div>
+            <div class="modal-body">
+                <div class="list-group appointScollList">
+                    <a class="list-group-item" ng-repeat="licenseCond in AppointingList" ng-click="selectAppointing(licenseCond)">{{licenseCond}}</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('.containerSearch').on('click', '.radioBtn a', function() {
+        var sel = $(this).data('title');
+        var tog = $(this).data('toggle');
+
+        $(this).parent().find('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+        $(this).parent().find('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+    });
+
+});
+</script>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+</style>
