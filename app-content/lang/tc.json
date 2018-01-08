@@ -1,0 +1,23 @@
+{
+    "search":
+    {
+        "searchOn": "Search On2:",
+        "individual": "Individual2",
+        "individualInsuranceAgency": "Individual Insurance Agency2",
+        "technicalRepresentativeAgent": "Technical Representative (Agent)2",
+        "technicalRepresentativeBroker": "Technical Representative (Broker)2",
+        "any": "Any2",
+        "firm": "Firm2",
+        "insuranceAgency": "Insurance Agency2",
+        "insuranceBrokerCompany": "Insurance Broker Company2",
+        "searchBy": "Search by:2",
+        "englishName": "English Name2",
+        "chineseName": "Chinese Name2",
+        "HKIDNo": "HKID No.2",
+        "licenseNo": "License No.2",
+        "BRNo": "BR No.(For firm search only)2",
+        "licenseStatus": "License Status:2",
+        "active": "Active2",
+        "activeAndInactive": "Active and Inactive2"
+    }
+}

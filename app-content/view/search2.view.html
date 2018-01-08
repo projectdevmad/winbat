@@ -1,0 +1,112 @@
+﻿<div class="col-md-12 col-md-offset-0">
+    <h2>Register of Licensed Insurance Intermediaries</h2>
+    <form name="form" ng-submit="search()" role="form" class="form-inline">
+        <div class="containerSearch">
+            <div class="row">
+                <div id="filter-panel" class=" filter-panel">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <label for="happy" class="col-sm-2 col-md-2  control-label text-left">Search On:</label>
+                                <div class="col-sm-8 col-md-8">
+                                    <div class="input-group">
+                                        <div class="radioBtn btn-group">
+                                            <a class="btn btn-default  active" data-toggle="searchType" value="F" data-title="Firm" ng-click="changeSearchType('F')">Firm</a>
+                                            <a class="btn btn-default  notActive" data-toggle="searchType" value="I" data-title="Individual" ng-click="changeSearchType('I')">Individual</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="happy" class="col-sm-2 col-md-2 control-label text-left"></label>
+                                <div class="col-sm-4 col-md-4" ng-show="searchType=='F'">
+                                    <div class="funkyradio">
+                                        <div class="funkyradio-default">
+                                            <input type="radio" name="SearchType1" value="A" id="SearchType1a" ng-model="searchType1" ng-disabled="searchType=='I'" />
+                                            <label for="SearchType1a">Insurance Agency</label>
+                                        </div>
+                                        <div class="funkyradio-primary">
+                                            <input type="radio" name="SearchType1" value="B" id="SearchType1b" ng-model="searchType1" ng-disabled="searchType=='I'" />
+                                            <label for="SearchType1b">Insurance Broker Company</label>
+                                        </div>
+                                        <div class="funkyradio-success">
+                                            <input type="radio" name="SearchType1" value="Any" id="SearchType1c" ng-model="searchType1" ng-disabled="searchType=='I'" />
+                                            <label for="SearchType1c">Any</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-md-5" ng-show="searchType=='I'">
+                                    <div class="funkyradio">
+                                        <div class="funkyradio-default">
+                                            <input type="radio" name="SearchType2" value="I" id="SearchType2a" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                            <label for="SearchType2a">Individual Insurance Agency</label>
+                                        </div>
+                                        <div class="funkyradio-primary">
+                                            <input type="radio" name="SearchType2" value="A" id="SearchType2b" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                            <label for="SearchType2b">Technical Representative (Agent)</label>
+                                        </div>
+                                        <div class="funkyradio-primary">
+                                            <input type="radio" name="SearchType2" value="B" id="SearchType2c" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                            <label for="SearchType2c">Technical Representative (Broker)</label>
+                                        </div>
+                                        <div class="funkyradio-success">
+                                            <input type="radio" name="SearchType2" value="Any" id="SearchType2d" ng-model="searchType2" ng-disabled="searchType=='F'" />
+                                            <label for="SearchType2d">Any</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="happy" class="col-sm-2 col-md-2 control-label text-left">Search by: </label>
+                                <div class="col-sm-10 col-md-10">
+                                    <div class="input-group">
+                                        <div class="radioBtn btn-group">
+                                            <a class="btn btn-default  active" data-toggle="searchBy" data-title="EName" ng-click="changeSearchBy('EName')">English Name</a>
+                                            <a class="btn btn-default  notActive" data-toggle="searchBy" data-title="CName" ng-click="changeSearchBy('CName')">Chinese Name</a>
+                                            <a class="btn btn-default  notActive" data-toggle="searchBy" data-title="HKID" ng-click="changeSearchBy('HKID')">HKID No.</a>
+                                            <a class="btn btn-default  notActive" data-toggle="searchBy" data-title="License" ng-click="changeSearchBy('License')">License No.</a>
+                                            <a class="btn btn-default  notActive" data-toggle="searchBy" data-title="BR" ng-click="changeSearchBy('BR')">BR No.(For firm search only)</a>
+                                        </div>
+                                        <input type="text" class="form-control" ng-model="searchTxt">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="happy" class="col-sm-2 col-md-2 control-label text-left">License Status:</label>
+                                <div class="col-sm-10 col-md-10">
+                                    <div class="radioBtn btn-group">
+                                        <a class="btn btn-default  active" data-toggle="licenseStatus" data-title="A" ng-click="changeLicense('A')">Actve</a>
+                                        <a class="btn btn-default  notActive" data-toggle="licenseStatus" data-title="AI" ng-click="changeLicense('AI')">Active & Inactive</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="pull-right">
+                                        <a href='./' class="btn btn-default">Cancel</a>
+                                        <button type="submit" ng-disabled="dataLoading" class="btn btn-primary" ng-click="search()">Search</button>
+                                        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="jsGrid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('.containerSearch').on('click', '.radioBtn a', function() {
+        var sel = $(this).data('title');
+        var tog = $(this).data('toggle');
+
+        $(this).parent().find('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+        $(this).parent().find('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+    });
+
+});
+</script>

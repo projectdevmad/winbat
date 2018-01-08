@@ -1,0 +1,63 @@
+{	
+  "Relevance":"Relevance",
+  "Price":"Price",
+  "Popularity":"Popularity",
+  "Sortby":"Sort by",
+  "LearnMore":"Learn More",
+  "Items":"Items",
+  "Country":"Country",
+  "outofmerchants":"out of %s merchants",
+  
+  "AddMyTastingNote":"Add My Tasting Note",
+  "Year":"Year",
+  "Category":"Category",
+  "Look":"Look",
+  "Clarity":"Clarity",
+  "Intensity":"Intensity",
+  "Color":"Color",
+  "Other":"Other",
+  "Legs":"Legs",
+  "Deposit":"Deposit",
+  "Bubbles":"Bubbles",
+  "Smell":"Smell",
+  "Flower":"Flower",
+  "Citrus":"Citrus",
+  "TreeFruit":"Tree Fruit",
+  "TropicalFruit":"Tropical Fruit",
+  "Red Fruit":"Red Fruit",
+  "Black Fruit":"Black Fruit",
+  "Dried Fruit":"Dried Fruit",
+  "Noble Fruit":"Noble Fruit",
+  "Herbal/Spice":"Herbal/Spice",
+  "Vegetable":"Vegetable",
+  "Earth":"Earth",
+  "Yeast":"Yeast",
+  "Oak":"Oak",
+  "Aging":"Aging",
+  "Fewer":"Fewer",
+  "More":"More",
+  "Sweetness":"Sweetness",
+  "Acidity":"Acidity",
+  "Tannin":"Tannin",
+  "Body":"Body",
+  "Alcohol":"Alcohol",
+  "Overall":"Overall",
+  
+     
+     
+     
+     
+     
+  "merchant":{
+    
+     
+     
+  },
+    "contact":
+    {	
+		"ContactUs":"Contact Us",
+		"DiscoverRootstock":"Discover Rootstock",
+        "message": "(If you have a query or an issue with Rootstock, please get in touch with us. We appreciate feedback, and will endeavour to reply to all correspondence.)",
+        "discover":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+    }
+}
