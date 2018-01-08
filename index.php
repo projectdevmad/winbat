@@ -1,6 +1,4 @@
-<? 
-print_r($_GET);
-?><!doctype html>
+<!doctype html>
 <html ng-app="app">
 
 <head>
