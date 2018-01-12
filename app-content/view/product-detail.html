@@ -52,54 +52,49 @@
 	<div class="container width-990 product-item long">
 		<div class="row">
 			<div class="col-md-4 col-sm-3 col-xs-12 pt-sm-30 pl-xs-0 pr-xs-0">
-				<div class="p-img"><img src="./app-content/images/product.jpg" class="img-fullwidth" /></div>
+				<div class="p-img"><img ng-src="{{product.img_url}}" class="img-fullwidth" /></div>
 			</div>
 			<div class="col-md-5 col-sm-6 col-xs-12 pt-20">
-				<h2 class="name">Chateau Bordeneuve, Bordeaux, France</h2>
+				<h2 class="name" ng-bind-html="smell.display">Chateau Bordeneuve, Bordeaux, France</h2>
 				<div class="details mb-30 mb-xs-15">
-					<div><span class="text-grey">Year:</span> 2015</div>
-					<div><span class="text-grey">Region:</span> Bordeaux</div>
-					<div><span class="text-grey">Grape:</span> Bordeaux Blend Red</div>
-					<div><span class="text-grey">Style:</span> Red - Savory and Classic</div>
+					<div><span class="text-grey">Year:</span> {{product.vintage}}</div>
+					<div><span class="text-grey" >Region:</span> {{product.region}}</div>
+					<div><span class="text-grey">Grape:</span>  {{product.grape}}</div>
+					<div><span class="text-grey">Style:</span>  {{product.style}}</div>
 				</div>
-				<div class="color mb-15 mb-xs-10"><span style="background-color: #560F33;"></span> Garnet</div>
-                <ul class="icons mb-20 mb-xs-10">
-					<li tabindex="-1"><i class="icon-strawberry"></i><div>987</div><span>Strawberry</span></li>
+				<div class="color mb-15 mb-xs-10"><span style="background-color: {{product.taste_color}};"></span> {{product.taste}}</div>
+                <ul class="icons mb-20 mb-xs-10" >
+					<li tabindex="-1"  ng-repeat="smell in product.tasting_note.smell">
+                    <i class="icon-{{smell.taste}}" style="background-image: url('{{smell.img_url}}');"></i>
+                    <div ng-bind-html="smell.vote">987</div><span ng-bind-html="smell.taste">Strawberry</span>
+                    </li>
+                    <!--
 					<li tabindex="-1"><i class="icon-cherry"></i><div>762</div><span>Cherry</span></li>
 					<li tabindex="-1"><i class="icon-lemon"></i><div>991</div><span>Lemon</span></li>
 					<li tabindex="-1"><i class="icon-apple"></i><div>546</div><span>Apple</span></li>
+                    -->
 				</ul>
 			</div>
 			<div class="col-sm-3 col-xs-12 clearfix pt-20">
 				<div class="score mb-90 mb-xs-20 text-right xs-text-left">
-					<i class="icon-happy"></i> <span>133</span>
-					<i class="icon-sad"></i> <span>2</span>
+					<i class="icon-happy"></i> <span  ng-bind-html="product.happy">133</span>
+					<i class="icon-sad"></i> <span  ng-bind-html="product.sad">2</span>
 				</div>
 				<div class="ability-chart-wrapper pull-right xs-pull-none">
 					<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
 					<div class="ability-chart">
-						<div data-title="sweetness">
-							<span></span>
-							<span></span>
-						</div>
-						<div data-title="acidity">
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
-						<div data-title="Body">
-							<span></span>
-							<span></span>
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
-						<div data-title="Tannin">
-							<span></span>
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
+							<div data-title="sweetness">
+                           		<span ng-repeat="n in [].constructor(product.tasting_note.sweetness) track by $index"></span>
+                            </div>
+                            <div data-title="acidity">
+                                <span ng-repeat="n in [].constructor(product.tasting_note.acidity) track by $index"></span>
+                            </div>
+                            <div data-title="Body">
+                                <span ng-repeat="n in [].constructor(product.tasting_note.body) track by $index"></span>
+                            </div>
+                            <div data-title="Tannin">
+                                <span ng-repeat="n in [].constructor(product.tasting_note.tannin) track by $index"></span>
+                            </div>
 					</div>
 					<div class="ability-text">
 						<svg viewBox="0 0 200 200">
@@ -134,14 +129,14 @@
 			<div style="clear: both;"></div>
 			<div class="col-sm-8 col-xs-12 pt-80 pt-xs-40">
 				<div class="content">
-					<p>This is above average in popularity for wines from Bordeaux. Greater numbers of users have been searching for this wine compared to a year ago.<br />
+					<p  ng-bind-html="product.description">This is above average in popularity for wines from Bordeaux. Greater numbers of users have been searching for this wine compared to a year ago.<br />
 					This is comparatively inexpensive for Bordeaux wines. The price has been stable over the past year.
 					Available at only a few outlets in Europe and America. We have only spotted the 2014 and 2015 vintages for sale over the last month.</p>
 				</div>
 			</div>
 			<div class="col-xs-12 text-right pt-50 pt-xs-30 btn-group">
-				<a href="#" class="btn-themed mb-xs-5">View Tasting Note</a>
-				<a href="#/addMyTastingNote" class="btn-themed ml-20 ml-xs-0">Add My Tasting Note</a>
+				<a href="" class="btn-themed mb-xs-5">View Tasting Note</a>
+				<a href="#/addMyTastingNote/{{product.id}}" class="btn-themed ml-20 ml-xs-0">Add My Tasting Note</a>
 			</div>
 		</div>
 	</div>
@@ -154,52 +149,112 @@
 	<div class="product-list pt-30 pt-xs-15 pb-30 pb-xs-10 mb-60 mb-xs-20 bg-grey">
 		<div class="container width-990">
 			<div class="row pl-sm-5">
-                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
+            
+            	<!-- noted grid -->
+                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn" ng-repeat="note in notes">
                 	<div class="note-item shadow bg-white">
-                		<div class="no">#057</div>
+                		<div class="no">#{{note.id}}</div>
                 		<div class="user">
-                			<div class="user-img" style="background-image: url(./app-content/images/user-01.jpg);"></div>
-                			<div class="name">Paul Wong 0127</div>
-                			<i class="icon-happy"></i>
+                			<div class="user-img" style="background-image: url({{note.img_url}});"></div>
+                			<div class="name">{{note.name}}</div>
+                			<i class="icon-{{note.happiness}}"></i>
                 		</div>
                 		<div class="smell mt-30 clearfix">
                 			<span class="pull-left">Smell:</span>
                 			<div class="pull-left">
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
+								<i class="icon-{{smell.taste}}" ng-repeat=" smell in note.tasting_note.smell"></i>
+								<!--<i class="icon-cherry"></i>
 								<i class="icon-lemon"></i>
 								<i class="icon-apple"></i>
 								<i class="icon-strawberry"></i>
 								<i class="icon-cherry"></i>
 								<i class="icon-lemon"></i>
 								<i class="icon-apple"></i>
+                                -->
                 			</div>
                 		</div>
-						<div class="ability-chart-wrapper">
+                        <div class="details row mt-10" ng-if="note.details != null">
+                			<div class="col-sm-6 col-xs-12 item clearfix">
+                				<span class="pull-left">Color:</span>
+                				<div class="pull-left color"><span style="background-color: {{note.details.color_hex}};"></span> {{note.details.color}}</div>
+                			</div>
+                			<div class="col-sm-6 col-xs-12 item clearfix">
+                				<span class="pull-left">Legs:</span>
+                				<div class="pull-left"><span class="bar-{{note.details.legs}}"></span></div>
+                			</div>
+                			<div class="col-sm-6 col-xs-12 item clearfix">
+                				<span class="pull-left">Clarity:</span>
+                				<div class="pull-left"><span class="bar-{{note.details.clarity}}"></span></div>
+                			</div>
+                			<div class="col-sm-6 col-xs-12 item clearfix">
+                				<span class="pull-left">Deposit:</span>
+                				<div class="pull-left"><span class="bar-{{note.details.deposit}}"></span></div>
+                			</div>
+                			<div class="col-sm-6 col-xs-12 item clearfix">
+                				<span class="pull-left">Intensit:</span>
+                				<div class="pull-left"><span class="bar-{{note.details.intensit}}"></span></div>
+                			</div>
+                			<div class="col-sm-6 col-xs-12 item clearfix">
+                				<span class="pull-left">Bubbles:</span>
+                				<div class="pull-left"><span class="bar-{{note.details.bubbles}}"></span></div>
+                			</div>
+                		</div>
+                        <div class="ability-chart-wrapper pie-5" ng-if="note.details != null">
+							<div class="pie-chart" style="background-color: #F2F4F4;">
+								<div data-p="20" data-s="{{note.tasting_note.acidity}}"><div style="background-color: #EA3223;"></div></div>
+								<div data-p="20" data-s="{{note.tasting_note.alcohol}}"><div style="background-color: #A16AF7;"></div></div>
+								<div data-p="20" data-s="{{note.tasting_note.tannin}}"><div style="background-color: #377E22;"></div></div>
+								<div data-p="20" data-s="{{note.tasting_note.body}}"><div style="background-color: #F8D849;"></div></div>
+								<div data-p="20" data-s="{{note.tasting_note.sweetness}}"><div style="background-color: #0013F5;"></div></div>
+							</div>
+							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+							<div class="ability-bg"><div></div></div>
+							<div class="ability-text">
+								<svg viewBox="0 0 200 200">
+								  <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
+								  <text>
+									<textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
+									  acidity
+									</textPath>
+								  </text>
+								  <text>
+									<textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
+									  Alcohol
+									</textPath>
+								  </text>
+								  <text>
+									<textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
+									  Tannin
+									</textPath>
+								  </text>
+								  <text>
+									<textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
+									  Body
+									</textPath>
+								  </text>
+								  <text>
+									<textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
+									  sweetness
+									</textPath>
+								  </text>
+								</svg>
+							</div>
+						</div>
+						<div class="ability-chart-wrapper"  ng-if="note.details == null">
 							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
 							<div class="ability-chart">
 								<div data-title="sweetness">
-									<span></span>
-									<span></span>
-								</div>
-								<div data-title="acidity">
-									<span></span>
-									<span></span>
-									<span></span>
-								</div>
-								<div data-title="Body">
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-								</div>
-								<div data-title="Tannin">
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-								</div>
+                           			<span ng-repeat="n in [].constructor(note.tasting_note.sweetness) track by $index"></span>
+                                </div>
+                                <div data-title="acidity">
+                                    <span ng-repeat="n in [].constructor(note.tasting_note.acidity) track by $index"></span>
+                                </div>
+                                <div data-title="Body">
+                                    <span ng-repeat="n in [].constructor(note.tasting_note.body) track by $index"></span>
+                                </div>
+                                <div data-title="Tannin">
+                                    <span ng-repeat="n in [].constructor(note.tasting_note.tannin) track by $index"></span>
+                                </div>
 							</div>
 							<div class="ability-text">
 								<svg viewBox="0 0 200 200">
@@ -232,276 +287,9 @@
 						</div>
                 	</div>   
                 </div>
-                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
-                	<div class="note-item shadow bg-white">
-                		<div class="no">#056</div>
-                		<div class="user">
-                			<div class="user-img" style="background-image: url(./app-content/images/user-01.jpg);"></div>
-                			<div class="name">Paul Wong 0127</div>
-                			<i class="icon-happy"></i>
-                		</div>
-                		<div class="smell mt-30 clearfix">
-                			<span class="pull-left">Smell:</span>
-                			<div class="pull-left">
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-                			</div>
-                		</div>
-                		<div class="details row mt-10">
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Color:</span>
-                				<div class="pull-left color"><span style="background-color: #560F33;"></span> Garnet</div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Legs:</span>
-                				<div class="pull-left"><span class="bar-0"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Clarity:</span>
-                				<div class="pull-left"><span class="bar-1"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Deposit:</span>
-                				<div class="pull-left"><span class="bar-2"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Intensit:</span>
-                				<div class="pull-left"><span class="bar-3"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Bubbles:</span>
-                				<div class="pull-left"><span class="bar-4"></span></div>
-                			</div>
-                		</div>
-						<div class="ability-chart-wrapper pie-5">
-							<div class="pie-chart" style="background-color: #F2F4F4;">
-								<div data-p="20" data-s="3"><div style="background-color: #EA3223;"></div></div>
-								<div data-p="20" data-s="1"><div style="background-color: #A16AF7;"></div></div>
-								<div data-p="20" data-s="4"><div style="background-color: #377E22;"></div></div>
-								<div data-p="20" data-s="5"><div style="background-color: #F8D849;"></div></div>
-								<div data-p="20" data-s="2"><div style="background-color: #0013F5;"></div></div>
-							</div>
-							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
-							<div class="ability-bg"><div></div></div>
-							<div class="ability-text">
-								<svg viewBox="0 0 200 200">
-								  <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
-									  acidity
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
-									  Alcohol
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
-									  Tannin
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
-									  Body
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
-									  sweetness
-									</textPath>
-								  </text>
-								</svg>
-							</div>
-						</div>
-                	</div>   
-                </div>
-                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
-                	<div class="note-item shadow bg-white">
-                		<div class="no">#055</div>
-                		<div class="user">
-                			<div class="user-img" style="background-image: url(./app-content/images/user-01.jpg);"></div>
-                			<div class="name">Paul Wong 0127</div>
-                			<i class="icon-happy"></i>
-                		</div>
-                		<div class="smell mt-30 clearfix">
-                			<span class="pull-left">Smell:</span>
-                			<div class="pull-left">
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-                			</div>
-                		</div>
-                		<div class="details row mt-10">
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Color:</span>
-                				<div class="pull-left color"><span style="background-color: #560F33;"></span> Garnet</div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Legs:</span>
-                				<div class="pull-left"><span class="bar-0"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Clarity:</span>
-                				<div class="pull-left"><span class="bar-1"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Deposit:</span>
-                				<div class="pull-left"><span class="bar-2"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Intensit:</span>
-                				<div class="pull-left"><span class="bar-3"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Bubbles:</span>
-                				<div class="pull-left"><span class="bar-4"></span></div>
-                			</div>
-                		</div>
-						<div class="ability-chart-wrapper pie-5">
-							<div class="pie-chart" style="background-color: #F2F4F4;">
-								<div data-p="20" data-s="3"><div style="background-color: #EA3223;"></div></div>
-								<div data-p="20" data-s="1"><div style="background-color: #A16AF7;"></div></div>
-								<div data-p="20" data-s="4"><div style="background-color: #377E22;"></div></div>
-								<div data-p="20" data-s="5"><div style="background-color: #F8D849;"></div></div>
-								<div data-p="20" data-s="2"><div style="background-color: #0013F5;"></div></div>
-							</div>
-							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
-							<div class="ability-bg"><div></div></div>
-							<div class="ability-text">
-								<svg viewBox="0 0 200 200">
-								  <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
-									  acidity
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
-									  Alcohol
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
-									  Tannin
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
-									  Body
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
-									  sweetness
-									</textPath>
-								  </text>
-								</svg>
-							</div>
-						</div>
-                	</div>   
-                </div>
-                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
-                	<div class="note-item shadow bg-white">
-                		<div class="no">#054</div>
-                		<div class="user">
-                			<div class="user-img" style="background-image: url(./app-content/images/user-01.jpg);"></div>
-                			<div class="name">Paul Wong 0127</div>
-                			<i class="icon-happy"></i>
-                		</div>
-                		<div class="smell mt-30 clearfix">
-                			<span class="pull-left">Smell:</span>
-                			<div class="pull-left">
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-                			</div>
-                		</div>
-                		<div class="details row mt-10">
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Color:</span>
-                				<div class="pull-left color"><span style="background-color: #560F33;"></span> Garnet</div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Legs:</span>
-                				<div class="pull-left"><span class="bar-0"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Clarity:</span>
-                				<div class="pull-left"><span class="bar-1"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Deposit:</span>
-                				<div class="pull-left"><span class="bar-2"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Intensit:</span>
-                				<div class="pull-left"><span class="bar-3"></span></div>
-                			</div>
-                			<div class="col-sm-6 col-xs-12 item clearfix">
-                				<span class="pull-left">Bubbles:</span>
-                				<div class="pull-left"><span class="bar-4"></span></div>
-                			</div>
-                		</div>
-						<div class="ability-chart-wrapper pie-5">
-							<div class="pie-chart" style="background-color: #F2F4F4;">
-								<div data-p="20" data-s="3"><div style="background-color: #EA3223;"></div></div>
-								<div data-p="20" data-s="1"><div style="background-color: #A16AF7;"></div></div>
-								<div data-p="20" data-s="4"><div style="background-color: #377E22;"></div></div>
-								<div data-p="20" data-s="5"><div style="background-color: #F8D849;"></div></div>
-								<div data-p="20" data-s="2"><div style="background-color: #0013F5;"></div></div>
-							</div>
-							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
-							<div class="ability-bg"><div></div></div>
-							<div class="ability-text">
-								<svg viewBox="0 0 200 200">
-								  <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
-									  acidity
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
-									  Alcohol
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
-									  Tannin
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
-									  Body
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
-									  sweetness
-									</textPath>
-								  </text>
-								</svg>
-							</div>
-						</div>
-                	</div>   
-                </div>
+                
+                <!-- End grid -->
+
             </div>
 		</div>
 	</div>

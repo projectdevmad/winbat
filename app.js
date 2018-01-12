@@ -47,12 +47,22 @@
                 templateUrl: 'app-content/view/product-detail.html',
                 controllerAs: 'vm'
             })
+			.when('/productDetails/:id', {
+                controller: 'ProductController',
+                templateUrl: 'app-content/view/product-detail.html',
+                controllerAs: 'vm'
+            })
 			.when('/merchant', {
                 controller: 'MerchantController',
                 templateUrl: 'app-content/view/merchant.html',
                 controllerAs: 'vm'
             })
 			.when('/merchantDetails', {
+                controller: 'MerchantController',
+                templateUrl: 'app-content/view/merchant-detail.html',
+                controllerAs: 'vm'
+            })
+			.when('/merchantDetails/:id', {
                 controller: 'MerchantController',
                 templateUrl: 'app-content/view/merchant-detail.html',
                 controllerAs: 'vm'
@@ -68,6 +78,11 @@
                 controllerAs: 'vm'
             })
 			.when('/addMyTastingNote', {
+                controller: 'addMyTastingNoteController',
+                templateUrl: 'app-content/view/add-my-tasting-note.html',
+                controllerAs: 'vm'
+            })
+			.when('/addMyTastingNote/:id', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
                 controllerAs: 'vm'

@@ -8,19 +8,18 @@
     HomeController.$inject = ['searchService', '$location', '$scope', '$routeParams', '$rootScope', '$http'];
 
     function HomeController(searchService, $location, $scope, $routeParams, $rootScope, $http) {
-        $scope.url = "./json/inventory.jsonp";
+        $scope.url = "./json/inventory2.json";
         $scope.details = {};
         $scope.recentlyTastedWines = [];
         $scope.trendingWines = [];
         $scope.hotDeals = [];
-        $scope.licenseNo = $routeParams.license;
 
 
         init();
 
         function init() {
-            var $params = { "q": "Chateau%20Lafite%20Rothschild" };
-            var url = "./json/inventory.jsonp";
+           // var $params = { "q": "Chateau%20Lafite%20Rothschild" };
+           // var url = "./json/invemtory2.json";
 
            // url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/inventory?q=Chateau%20Lafite%20Rothschild";
             /*
@@ -33,10 +32,11 @@
 
 
 
-            $scope.promise = searchService.ajaxJsonp($scope.url).then(function(data) {
-                $scope.recentlyTastedWines = data;
-                $scope.trendingWines = data;
-                $scope.hotDeals = data;
+            //$scope.promise = searchService.ajaxJsonp($scope.url).then(function(data) {
+			$scope.promise = searchService.search($scope.url).then(function(data) {
+                $scope.recentlyTastedWines = data.products;
+                $scope.trendingWines = data.products;
+                $scope.hotDeals = data.products;
                 //console.log(data);
             });
 

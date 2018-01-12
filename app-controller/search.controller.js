@@ -10,22 +10,20 @@
 
     function SearchController(searchService, $location, $rootScope, $http, $scope, $translate, $translatePartialLoader, $routeParams, $timeout, $q) {
         var vm = this;
-
-      
-        console.log();
         $scope.keyword = "";
-         $scope.year = "";
-          $scope.region = "";
-           $scope.price = "";
-            $scope.style = "";
-            $scope.grapes = "";
+        $scope.year = "";
+        $scope.region = "";
+        $scope.price = "";
+        $scope.style = "";
+        $scope.grapes = "";
         $scope.busy = false;
         $scope.recentlyTastedWines = [];
-
+		//$scope.url = "https://private-anon-87f38d1934-winebatapi.apiary-proxy.com/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
         //$scope.url = "./json/jsonp.php?callback=JSON_CALLBACK";
-        $scope.url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/product?q=Chateau%20Mouton";
-
+        $scope.url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
+		
         init();
+		
         function init() {
             searchData(0, 30, "", "");
         }
@@ -44,9 +42,7 @@
             console.log($event.target.value);
             $scope.searchBy = $event.target.value;
         }
-        $scope.changeLicense = function changeLicense(val) {
-            $scope.licenseStatus = val;
-        }
+       
         $scope.viewRecord = function viewRecord() {
 
 

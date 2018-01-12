@@ -1,35 +1,43 @@
 <div class="product-item long shadow bg-white clearfix">
 					<div class="img pull-left">
-						<img ng-src="{{product.catalog.img}}" />
+						<img ng-src="{{product.img_url}}" />
 						<div class="visible-xs text-center p-15 pt-10 pb-10">
-							<div class="price mb-5">$900</div>
-							<a href="#/productDetails" class="btn-themed">Learn More</a>
+							<div class="price mb-5" ng-bind-html="product.price | currency:$:0">$900</div>
+							<a href="#/productDetails/{{product.id}}" class="btn-themed">Learn More</a>
 						</div>
 					</div>
 					<div class="content pull-left">
-						<a href="#/productDetails"><h4 class="name mb-5" ng-bind-html="product.catalog.name">Chateau Bordeneuve, Bordeaux, France</h4></a>
-						<div class="year mb-5" ng-bind-html="product.catalog.vintage">2015</div>
+						<a href="#/productDetails/{{product.id}}"><h4 class="name mb-5" ng-bind-html="product.display">Chateau Bordeneuve, Bordeaux, France</h4></a>
+						<div class="year mb-5" ng-bind-html="product.vintage">2015</div>
 						<div class="clearfix">
 							<div class="pull-left">
 								<div class="score mb-15 mb-xs-20">
-									<i class="icon-happy"></i> <span>133</span>
-									<i class="icon-sad"></i> <span>2</span>
+									<i class="icon-happy"></i> <span  ng-bind-html="product.happy">133</span>
+									<i class="icon-sad"></i> <span  ng-bind-html="product.sad">2</span>
 								</div>
-								<div class="color mb-15"><span style="background-color: #560F33;"></span> Garnet</div>
-								<ul class="icons mb-20 mb-xs-10">
-									<li tabindex="-1" ng-repeat="smell in product.tasting_note.smell"><i class="icon-strawberry" style="background-image: url('{{smell.img_url}}');"></i><div ng-bind-html="smell.vote">987</div><span ng-bind-html="smell.taste">Strawberry</span></li>
-									<!--<li tabindex="-1"><i class="icon-cherry"></i><div>762</div><span>Cherry</span></li>
-									<li tabindex="-1"><i class="icon-lemon"></i><div>991</div><span>Lemon</span></li>
-									<li tabindex="-1"><i class="icon-apple"></i><div>546</div><span>Apple</span></li>-->
-								</ul>
-								<a href="#" class="add-to-note">Add My Tasting Note</a>
+                                <div  ng-if=" product.tasting_note.smell.length>0">
+                                    <div class="color mb-15"><span style="background-color: {{product.taste_color}};"></span>{{product.taste}}</div>
+                                    <ul class="icons mb-20 mb-xs-10">
+                                        <li tabindex="-1" ng-repeat="smell in product.tasting_note.smell">
+                                            <i class="icon-{{smell.taste}}" style="background-image: url('{{smell.img_url}}');"></i>
+                                            <div ng-bind-html="smell.vote">987</div><span ng-bind-html="smell.taste">Strawberry</span>
+                                        </li>
+                                        <!--<li tabindex="-1"><i class="icon-cherry"></i><div>762</div><span>Cherry</span></li>
+                                        <li tabindex="-1"><i class="icon-lemon"></i><div>991</div><span>Lemon</span></li>
+                                        <li tabindex="-1"><i class="icon-apple"></i><div>546</div><span>Apple</span></li>-->
+                                    </ul>
+                                    <a href="#/addMyTastingNote/{{product.id}}" class="add-to-note">Add My Tasting Note</a>
+                                </div>
+                                <div  ng-if=" product.tasting_note.smell.length==0">
+                                 	<a href="#/addMyTastingNote/{{product.id}}" class="add-to-note">Be the first to review this wine</a>
+                                </div>
 							</div>
 							<div class="pull-right pt-20 pt-xs-30">
 								<div class="ability-chart-wrapper">
 									<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
 									<div class="ability-chart">
 										<div data-title="sweetness">
-											<span ng-repeat="_ in ((_ = []) && (_.length=product.tasting_note.sweetness) && _) track by $index"></span>
+											<span ng-repeat="n in [].constructor(product.tasting_note.sweetness) track by $index"></span>
 										</div>
 										<div data-title="acidity">
 											<span ng-repeat="n in [].constructor(product.tasting_note.acidity) track by $index"></span>
@@ -38,7 +46,7 @@
 											<span ng-repeat="n in [].constructor(product.tasting_note.body) track by $index"></span>
 										</div>
 										<div data-title="Tannin">
-											<span ng-repeat="n in [].constructor(product.tasting_note.tanin) track by $index"></span>
+											<span ng-repeat="n in [].constructor(product.tasting_note.tannin) track by $index"></span>
 										</div>
 									</div>
 									<div class="ability-text">
@@ -74,22 +82,24 @@
 						</div>
 					</div>
 					<div class="right pull-right text-center line-height-1">
-						<div class="discount mb-30">-25%</div>
+						<div class="discount mb-30" ng-bind-html="product.price_org | '%'">-{{(product.price_org - product.price)/product.price_org * 100| number :0 }}%</div>
 						<div class="p-20 pt-0">
-							<div class="mb-15 font-15"><del>$1,200</del></div>
-							<div class="price mb-10" ng-bind-html="'$'+product.inventories[0].price">$900</div>
+							<div class="mb-15 font-15" ><del ng-bind-html="product.price_org | currency:$:0">$1,200</del></div>
+							<div class="price mb-10" ng-bind-html="product.price | currency:$:0">$900</div>
 							<div class="merchant" ng-bind-html="product.inventories[0].merchant"></div>
-							<div class="merchant-more pt-10">
-								<div class="pt-10"><a href="#" class="more">More...</a></div>
+							<div class="merchant-more pt-10" ng-if=" product.inventories.length>1">
+								<div class="pt-10"><a href="" class="more">More...</a></div>
 								<div class="content">
-									<p ng-repeat="merchant in product.inventories"><span ng-bind-html="merchant.merchant">Merchant 2</span> <span ng-bind-html="'$'+merchant.price">$920</span></p>
+									<p ng-repeat="merchant in product.inventories">
+                                    <a href="{{merchant.merchant_url}}" ><span ng-bind-html="merchant.merchant">Merchant 2</span> <span ng-bind-html="merchant.price  | currency:$:0">$920</span></a>
+                                    </p>
 									<!--<p>Merchant 3  $925</p>
 									<p>Merchant 4  $930</p>
                                     -->
 								</div>
 							</div>
 							<!--<a ng-href="product.inventories[0].merchant_url"  class="btn-themed">Learn More</a>-->
-							<a href="#/productDetails"  class="btn-themed">Learn More</a>
+							<a href="#/productDetails/{{product.id}}"  class="btn-themed">Learn More</a>
 						</div>
 					</div>
 				</div>
