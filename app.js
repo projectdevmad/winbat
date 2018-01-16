@@ -58,12 +58,12 @@
                 controllerAs: 'vm'
             })
 			.when('/merchantDetails', {
-                controller: 'MerchantController',
+                controller: 'MerchantDetailsController',
                 templateUrl: 'app-content/view/merchant-detail.html',
                 controllerAs: 'vm'
             })
 			.when('/merchantDetails/:id', {
-                controller: 'MerchantController',
+                controller: 'MerchantDetailsController',
                 templateUrl: 'app-content/view/merchant-detail.html',
                 controllerAs: 'vm'
             })
@@ -140,5 +140,16 @@
 		};
 	
 	});
+	angular.module('app').directive('productItemSm', function() {
+	   return {
+		 restrict: 'E',
+		 scope: {product: '='},
+		 //  template: '<h2>Label list:{{labelsArray}}:</h2><div class="label label-warning" ng-repeat="label in labelsArray">{{label.name}}</div>',
+		   templateUrl: './app-content/view/product-item-sm.tpl.html',
+		   restrict: 'E',
+		};
+	
+	});
+	
 
 })();

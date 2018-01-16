@@ -4,7 +4,7 @@
 		"name": " Paul Wong 0127 ",
 		"img_url": "./app-content/images/user-01.jpg",
 		"details": null,
-		"happiness":"happy",
+		"happiness": "happy",
 		"tasting_note": {
 			"acidity": 3,
 			"tannin": 3,
@@ -38,13 +38,13 @@
 		"id": "058",
 		"name": " Paul Wong 01273333 ",
 		"img_url": "./app-content/images/user-01.jpg",
-		"happiness":"sad",
+		"happiness": "sad",
 		"details": {
-			"color_hex": "560F33",
+			"color_hex": "#560F33",
 			"color": "Garnet",
-			"garnetLegs": "0",
-			"clarity": "0",
-			"deposit:": "2",
+			"legs": "2",
+			"clarity": "2",
+			"deposit": "2",
 			"intensit": "3",
 			"bubbles": "4"
 		},
@@ -53,7 +53,7 @@
 			"tannin": 3,
 			"sweetness": 4,
 			"body": 5,
-			"alcohol":2,
+			"alcohol": 2,
 			"smell": [
 				{
 					"img_url": "https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/apple.svg",

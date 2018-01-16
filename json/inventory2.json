@@ -46,9 +46,19 @@
 					},
 					{
 						"img_url": "https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/butter.svg",
-						"taste": "butter",
+						"taste": "cherry",
 						"vote": 37
-					}
+					},
+				  {
+					"img_url": "https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/butter.svg",
+					"taste": "strawberry",
+					"vote": 939
+				  },
+				  {
+					"img_url": "https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/butter.svg",
+					"taste": "lemon",
+					"vote": 546
+				  }
 				]
 			}
 		},

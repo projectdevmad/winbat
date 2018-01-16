@@ -78,7 +78,6 @@ $(document).ready(function(){
 	});
 	
 	$(".pie-chart > div[data-p]").each(function(){
-		
 		var scale;
 		if($(this).data("s") != null){
 			scale = $(this).data("s") / 5;

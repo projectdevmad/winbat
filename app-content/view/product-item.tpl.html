@@ -2,18 +2,18 @@
 					<div class="img pull-left">
 						<img ng-src="{{product.img_url}}" />
 						<div class="visible-xs text-center p-15 pt-10 pb-10">
-							<div class="price mb-5" ng-bind-html="product.price | currency:$:0">$900</div>
+							<div class="price mb-5" ng-bind-html="product.price | currency:$:0"></div>
 							<a href="#/productDetails/{{product.id}}" class="btn-themed">Learn More</a>
 						</div>
 					</div>
 					<div class="content pull-left">
-						<a href="#/productDetails/{{product.id}}"><h4 class="name mb-5" ng-bind-html="product.display">Chateau Bordeneuve, Bordeaux, France</h4></a>
-						<div class="year mb-5" ng-bind-html="product.vintage">2015</div>
+						<a href="#/productDetails/{{product.id}}"><h4 class="name mb-5" ng-bind-html="product.display"></h4></a>
+						<div class="year mb-5" ng-bind-html="product.vintage"></div>
 						<div class="clearfix">
 							<div class="pull-left">
 								<div class="score mb-15 mb-xs-20">
-									<i class="icon-happy"></i> <span  ng-bind-html="product.happy">133</span>
-									<i class="icon-sad"></i> <span  ng-bind-html="product.sad">2</span>
+									<i class="icon-happy"></i> <span  ng-bind-html="product.happy"></span>
+									<i class="icon-sad"></i> <span  ng-bind-html="product.sad"></span>
 								</div>
                                 <div  ng-if=" product.tasting_note.smell.length>0">
                                     <div class="color mb-15"><span style="background-color: {{product.taste_color}};"></span>{{product.taste}}</div>
@@ -82,7 +82,7 @@
 						</div>
 					</div>
 					<div class="right pull-right text-center line-height-1">
-						<div class="discount mb-30" ng-bind-html="product.price_org | '%'">-{{(product.price_org - product.price)/product.price_org * 100| number :0 }}%</div>
+						<div class="discount mb-30" >-{{(product.price_org - product.price)/product.price_org * 100| number :0 }}%</div>
 						<div class="p-20 pt-0">
 							<div class="mb-15 font-15" ><del ng-bind-html="product.price_org | currency:$:0">$1,200</del></div>
 							<div class="price mb-10" ng-bind-html="product.price | currency:$:0">$900</div>

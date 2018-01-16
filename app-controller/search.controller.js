@@ -76,7 +76,7 @@
 
         };
 		function searchData(){
-			$scope.promise = searchService.search($scope.url + "&pag=1").then(function(data) {
+			$scope.promise = searchService.search($scope.url + "?page=1").then(function(data) {
                  console.log(data.products);
                 if (data.products.length == 0){
                     $scope.loadEnd = true;

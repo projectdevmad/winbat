@@ -1,0 +1,61 @@
+{
+	"items":654,
+	"merchants": [
+		{
+			"id":"1",
+			"merchant": "Cavissima",
+			"img_url": "app-content/images/mer-01.jpg",
+			"merchant_url": "https://www.y18.hk/index.php",
+			"made_from": "Rhone-Alpes<br />France",
+			"items": 1852,
+			"desc": "Lorem ipsum dolor sit",
+			"address":"3 Rue Claude Chappe, 69370 Saint Didier au Mont d'Or, Rhone-Alpes ",
+			"phone":"+33 (0)4 8107 6035",
+			"countrys": [
+				{
+					"country": "France",
+					"color": "#F8D849",
+					"ratio": 50
+				},
+				{
+					"country": "Italy",
+					"color": "#377E22",
+					"ratio": 25
+				},
+				{
+					"country": "Others",
+					"color": "#F2F4F4",
+					"ratio": 25
+				}
+			]
+		}, 
+		{
+			"id":"2",
+			"merchant": "Cavissima",
+			"img_url": "app-content/images/mer-01.jpg",
+			"merchant_url": "https://www.y18.hk/index.php",
+			"made_from": "Rhone-Alpes<br />France",
+			"items": 1852,
+			"desc": "Lorem ipsum dolor sit",
+			"address":"3 Rue Claude Chappe, 69370 Saint Didier au Mont d'Or, Rhone-Alpes ",
+			"phone":"+33 (0)4 8107 6035",
+			"countrys": [
+				{
+					"country": "France",
+					"color": "#F8D849",
+					"ratio": 50
+				},
+				{
+					"country": "Italy",
+					"color": "#377E22",
+					"ratio": 25
+				},
+				{
+					"country": "Others",
+					"color": "#F2F4F4",
+					"ratio": 25
+				}
+			]
+		}
+	]
+}
