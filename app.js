@@ -37,7 +37,7 @@
                 templateUrl: 'app-content/view/search.html',
                 controllerAs: 'vm'
             })
-            .when('/search/:searchType', {
+            .when('/search/:params', {
                 controller: 'SearchController',
                 templateUrl: 'app-content/view/search.html',
                 controllerAs: 'vm'
@@ -77,6 +77,11 @@
                 templateUrl: 'app-content/view/contact.html',
                 controllerAs: 'vm'
             })
+			.when('/register', {
+                controller: 'RegisterController',
+                templateUrl: 'app-content/view/register.html',
+                controllerAs: 'vm'
+            })
 			.when('/addMyTastingNote', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
@@ -93,6 +98,12 @@
     run.$inject = ['$rootScope', '$location', '$cookies', '$http', '$translate', '$templateCache', '$timeout'];
 
     function run($rootScope, $location, $cookies, $http, $translate, $templateCache, $timeout) {
+		$rootScope.searchFormData = {};
+		$rootScope.regions =	regions;
+		$rootScope.prices =	prices;
+		$rootScope.styles =	styles;
+		$rootScope.grapes =	grapes;
+		
         // keep user logged in after page refresh
         $rootScope.changeLanguage = function(lang) {
             console.log("change to " + lang)
@@ -101,6 +112,7 @@
         $rootScope.$on('$viewContentLoaded', function() {
             $templateCache.removeAll();
         });
+		
         $rootScope.delay = 0;
         $rootScope.minDuration = 0;
         $rootScope.message = 'Please Wait...';
@@ -128,6 +140,16 @@
                 });
             }, 100);
         }
+		
+		$rootScope.clickSearch = function clickSearch(){
+			var paramString = $("#searchForm").serialize();
+			$rootScope.searchFormData = deparam(paramString);
+			
+			
+			$location.path('/search/'+paramString);
+			return false;
+			alert("click search");	
+		}
     }
 
 	angular.module('app').directive('productItem', function() {
@@ -150,6 +172,44 @@
 		};
 	
 	});
+	angular.module('app').directive('searchBar', function() {
+	   return {
+		 restrict: 'E',
+		 scope: {data: '='},
+		 //  template: '<h2>Label list:{{labelsArray}}:</h2><div class="label label-warning" ng-repeat="label in labelsArray">{{label.name}}</div>',
+		   templateUrl: './app-content/view/search-bar.tpl.html',
+		   restrict: 'E',
+		};
+	
+	});
+	angular.module('app').directive('searchBarSm', function() {
+	   return {
+		 restrict: 'E',
+		 scope: {data: '='},
+		 //  template: '<h2>Label list:{{labelsArray}}:</h2><div class="label label-warning" ng-repeat="label in labelsArray">{{label.name}}</div>',
+		   templateUrl: './app-content/view/search-bar-sm.tpl.html',
+		   restrict: 'E',
+		};
+	
+	});
 	
 
 })();
+
+function deparam(query) {
+    var pairs, i, keyValuePair, key, value, map = {};
+    // remove leading question mark if its there
+    if (query.slice(0, 1) === '?') {
+        query = query.slice(1);
+    }
+    if (query !== '') {
+        pairs = query.split('&');
+        for (i = 0; i < pairs.length; i += 1) {
+            keyValuePair = pairs[i].split('=');
+            key = decodeURIComponent(keyValuePair[0]);
+            value = (keyValuePair.length > 1) ? decodeURIComponent(keyValuePair[1]) : undefined;
+            map[key] = value;
+        }
+    }
+    return map;
+}

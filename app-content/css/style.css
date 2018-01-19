@@ -1825,6 +1825,12 @@ input:focus + .form-suggest,
 	width: 40px;
 	text-align: center;
 	margin-right: 33px;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.add-note .smell .radio-a.active {
+  opacity: 0.5;
 }
 
 .add-note .smell .radio-a > input:checked + i {
@@ -1860,4 +1866,140 @@ input:focus + .form-suggest,
 	height: auto;
 	overflow: visible;
 	opacity: 1;
+}
+
+/* Account */
+.account h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 40px;
+}
+
+.account .form-group {
+  width: 400px;
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.account .form-group label {
+  position: absolute;
+  width: 165px;
+  right: 100%;
+  line-height: 40px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.account .form-group .form-control {
+  height: 40px;
+  border: 0;
+  font-size: 13px;
+}
+
+.account .form-group .form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #c8cccc;
+}
+.account .form-group .form-control::-moz-placeholder { /* Firefox 19+ */
+  color: #c8cccc;
+}
+.account .form-group .form-control:-ms-input-placeholder { /* IE 10+ */
+  color: #c8cccc;
+}
+.account .form-group .form-control:-moz-placeholder { /* Firefox 18- */
+  color: #c8cccc;
+}
+
+.account .form-group .reminder {
+  position: absolute;
+  top: 10px;
+  left: 100%;
+  width: 140px;
+  padding-left: 10px;
+  font-size: 11px;
+  color: #c8cccc;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.account .form-statement {
+  font-size: 11px;
+  width: 300px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.account .btn-submit .btn-themed {
+  background: none;
+  width: 155px;
+  margin: auto;
+}
+
+.account form .have-account span {
+  font-size: 13px;
+  color: #7c8080;
+  padding-bottom: 10px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0);
+}
+
+.account form .have-account span:hover {
+  border-bottom: 1px solid #c8cccc;
+}
+
+.account form .have-account a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.account .form-group .row {
+  margin: 0 -5px;
+}
+
+.account .form-group [class*=col-] {
+  padding: 0 5px;
+}
+
+.account .form-group .select-f {
+  border: 0;
+}
+
+.account .form-group .select-f-list {
+  border: 0;
+  padding: 0;
+  margin-top: 3px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.account .form-group .select-f-list option:hover {
+	background-color: #c8cccc;
+}
+
+.form-ok {
+  background-image: url(../images/tick.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 14px;
+  height: 11px;
+}
+
+.account .form-group .form-ok {
+  position: absolute;
+  top: 16px;
+  left: 100%;
+  margin-left: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.account .form-group .form-control.ok ~ .form-ok {
+  visibility: visible;
+  opacity: 1;
+}
+
+.account .form-group .form-control.ok ~ .reminder {
+  display: none;
 }

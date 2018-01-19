@@ -1,65 +1,16 @@
-<section class="search pt-10 pb-40 pb-xs-10">
-    <div class="container width-990 pl-xs-10 pr-xs-10">
-        <div class="form-group form-search">
-            <input type="text" class="form-control border-bottom short" name="keyword" placeholder="Wine Name" ng-model="keyword" />
-            <button ng-click="clickSearch()"><i class="icon-search"></i></button>
-        </div>
-        <div class="filter clearfix pl-sm-5 pr-sm-5">
-            <div class="form-group">
-                <input type="text" class="form-control border-bottom short" name="year" placeholder="Year" minlength="4" maxlength="4" pattern="\d*" />
-            </div>
-            <div class="form-group">
-                <select name="region" class="form-control border-bottom short">
-                    <option value="">Region</option>
-                    <option value="1">Lorem Ipsum xxxxx</option>
-                    <option value="2">Lorem Ipsum xxxxx</option>
-                    <option value="3">Lorem Ipsum xxxxx</option>
-                </select>
-                <div class="select-f border-bottom text-center"><span>Region</span></div>
-            </div>
-            <div class="form-group">
-                <select name="price" class="form-control border-bottom short">
-                    <option value=""></option>
-                    <option value="1">$500 - $1,000</option>
-                    <option value="1">$500 - $1,000</option>
-                    <option value="1">$500 - $1,000</option>
-                </select>
-                <div class="select-f border-bottom text-center"><span>Price</span></div>
-            </div>
-            <div class="form-group">
-                <select name="style" class="form-control border-bottom short">
-                    <option value=""></option>
-                    <option value="1">Savory and Classic</option>
-                    <option value="1">Savory and Classic</option>
-                    <option value="1">Savory and Classic</option>
-                </select>
-                <div class="select-f border-bottom text-center"><span>Style</span></div>
-            </div>
-            <div class="form-group">
-                <select name="grapes" class="form-control border-bottom short">
-                    <option value=""></option>
-                    <option value="1">Bordeaux Blend Red</option>
-                    <option value="1">Bordeaux Blend Red</option>
-                    <option value="1">Bordeaux Blend Red</option>
-                </select>
-                <div class="select-f border-bottom text-center"><span>Grapes</span></div>
-            </div>
-        </div>
-    </div>
-</section>
+<search-bar data='searchData'></search-bar>
 <section class="product-list pb-5 pb-xs-0">
     <div class="container width-990">
         <div class="clearfix mb-20 mb-xs-10 product-list-head">
             <div class="pull-left pt-5 pt-xs-0 pb-xs-5"><b>4</b> out of 4 wines</div>
             <div class="pull-right">
                 <div class="form-group m-0">
-                    <select name="sort" class="form-control">
+                    <select name="sort" class="form-control" ng-model="sortBy" ng-change="changeSortBy()">
                         <option value=""></option>
-                        <option value="1">Relevance</option>
-                        <option value="1">Price</option>
-                        <option value="1">Popularity</option>
+                        <option value="relevance" >Relevance</option>
+                        <option value="price">Price</option>
+                        <option value="popularity">Popularity</option>
                     </select>
-                    <div class="select-f text-center">Sort by <span>Relevance</span></div>
                 </div>
             </div>
         </div>
@@ -69,7 +20,7 @@
     <section class="product-list pt-30 pt-xs-15 pb-30 pb-xs-10 mb-60 mb-xs-20 bg-grey" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">
         <div class="container width-990 pl-sm-10 pr-sm-10">
             <div class="row pl-sm-5">
-                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn" ng-repeat="TastedWine in recentlyTastedWines track by $index">
+                <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn" ng-repeat="TastedWine in searchResult track by $index">
                  <product-item product='TastedWine'></product-item>
                     
                 </div>

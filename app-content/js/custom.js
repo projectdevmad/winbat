@@ -28,11 +28,21 @@ $(document).ready(function(){
 	// Form
 	$(".select-f").each(function(){
 		$(this).attr("tabindex", "-1");
-		$(this).attr("ol-title", $(this).find("span").html());
+    if($(this).attr("ol-title")===""){
+		  $(this).attr("ol-title", $(this).find("span").html());
+    }
 		$(this).after("<div class='select-f-list'></div>");
 		$(this).siblings(".select-f-list").html($(this).siblings("select").html());
+    
+    if($(this).siblings("select").find("option[selected]").length){
+      $(this).siblings("select").find("option[selected]").attr("selected", "true");
+			$(this).find("span").html($(this).siblings("select").find("option[selected]").html());
+    }
+    
+    
 		$(this).siblings(".select-f-list").find("option").click(function(){
 			$(this).closest(".select-f-list").siblings(".select-f").find("span").html($(this).html());
+			$(this).closest(".select-f-list").siblings("select").find("option").removeAttr("selected");
 			$(this).closest(".select-f-list").siblings("select").find("option[value='" + $(this).attr("value") + "']").attr("selected", "true");
 		});
 	});

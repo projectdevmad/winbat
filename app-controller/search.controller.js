@@ -10,22 +10,41 @@
 
     function SearchController(searchService, $location, $rootScope, $http, $scope, $translate, $translatePartialLoader, $routeParams, $timeout, $q) {
         var vm = this;
-        $scope.keyword = "";
-        $scope.year = "";
-        $scope.region = "";
-        $scope.price = "";
-        $scope.style = "";
-        $scope.grapes = "";
+		$scope.page = 0;
+		$scope.params = "";
+		$scope.searchData=[];
+        $scope.keyword = "1";
+        $scope.year = "2";
+        $scope.region = "3";
+        $scope.price = "4";
+        $scope.style = "5";
+        $scope.grapes = "6";
+		$scope.sortBy = "";
         $scope.busy = false;
-        $scope.recentlyTastedWines = [];
+        $scope.searchResult = [];
 		//$scope.url = "https://private-anon-87f38d1934-winebatapi.apiary-proxy.com/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
-        //$scope.url = "./json/jsonp.php?callback=JSON_CALLBACK";
-        $scope.url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
-		
+        $scope.url = "./json/inventory2.json";
+      //  $scope.url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
+		if ($routeParams.params){
+			$scope.params = $routeParams.params;
+			$scope.searchData = deparam($routeParams.params);
+		}else{
+			$scope.params = "";
+		}
         init();
 		
         function init() {
-            searchData(0, 30, "", "");
+			
+			if ($scope.param){
+				console.log($scope.searchData);
+				$scope.keyword = $scope.searchData.keyword;
+				$scope.year = $scope.searchData.year;
+				$scope.region = $scope.searchData.region;
+				$scope.price = $scope.searchData.price;
+				$scope.style = $scope.searchData.style;
+				$scope.grapes = $scope.searchData.grapes;
+			}
+          //  searchData(0, 30, "", "");
         }
 
         $scope.clickLink = function clickLink() {
@@ -53,40 +72,32 @@
             $('#myModal').modal('toggle');
         }
 
-        function searchData(startIndex, pageSize, sortField, sortOrder) {
-            //  var startIndex = (filter.pageIndex - 1) * filter.pageSize;\
-            console.log("searchClick");
-            var $params = { "q": "Chateau%20Lafite%20Rothschild" };
-            var params = { searchType: $scope.searchType, searchType1: $scope.searchType1, searchType2: $scope.searchType2, searchBy: $scope.searchBy, searchTxt: $scope.searchTxt, licenseStatus: $scope.licenseStatus, startIndex: startIndex, pageSize: pageSize, sortField: sortField, sortOrder: sortOrder };
-            
-//			$scope.promise = searchService.jsonSearch($scope.url).then(function(data) {
-			$scope.promise = searchService.search($scope.url).then(function(data) {
-                $scope.recentlyTastedWines = data.products;
-                console.log(data);
-            });
-
-
-        }
+       
         $scope.loadMore = function() {
 			console.log("loadmore");
+			if ($scope.loadEnd) return;
             if ($scope.busy) return;
             $scope.busy = true;
+			$scope.page++;
             //$scope.promise = searchService.jsonSearch($scope.url + "&pag=1").then(function(data) {
 			searchData();
 
         };
+		$scope.changeSortBy = function(){
+			console.log("change sort by ");
+			$scope.page=1;
+			searchData();
+		}
 		function searchData(){
-			$scope.promise = searchService.search($scope.url + "?page=1").then(function(data) {
-                 console.log(data.products);
+			$scope.promise = searchService.search($scope.url + "?page="+$scope.page+"&sortBy="+$scope.sortBy+"&"+$scope.params).then(function(data) {
                 if (data.products.length == 0){
                     $scope.loadEnd = true;
                     return;
                 }
-                $scope.recentlyTastedWines = $scope.recentlyTastedWines.concat(data.products);
-               // $scope.recentlyTastedWines.push(data);
+                $scope.searchResult = $scope.searchResult.concat(data.products);
+               // $scope.searchResult.push(data);
                 
                 $scope.busy = false;
-                console.log($scope.recentlyTastedWines);
               
                 if ($(window).scrollTop() + $(window).height() == $(document).height()) {
                   //  $(window).scrollTop($(window).scrollTop()-500);

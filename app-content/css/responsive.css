@@ -823,6 +823,34 @@
 		height: 45px;
 		line-height: 45px;
 	}
+  
+  .account h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .account .form-group {
+    padding: 0 20px;
+  }
+
+  .account .form-group label {
+    position: static;
+    width: 100%;
+    line-height: inherit;
+    padding-right: 0;
+  }
+  
+  .account .form-group .reminder {
+    position: static;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 0;
+  }
+
+  .account .form-group .form-ok {
+    top: 60px;
+    left: calc(100% - 20px);
+  }
 
 }
 
