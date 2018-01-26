@@ -85,10 +85,12 @@ header .navbar-nav {
 	z-index: 9;
 }
 
-header .nav > li > a {
+header .nav > li > a,
+.top-username {
 	padding: 0 15px;
 	background: none !important;
 	font-size: 12px;
+  line-height: 20px;
 }
 
 header .nav > li > a .caret {
@@ -102,6 +104,11 @@ header .dropdown-menu {
 
 header .dropdown-menu > li > a:hover, header .dropdown-menu > li > a:focus {
 	background: #F2F4F4;
+}
+
+header .dropdown-toggle:hover + .dropdown-menu,
+header .dropdown-menu:hover {
+  display: block;
 }
 
 .footer-links {
@@ -661,7 +668,7 @@ h1.big-title {
 	font-size: 14px;
 	width: 100%;
 	height: 50px;
-	line-height: 50px;
+	line-height: 47px;
 	background-color: #fff;
 	position: relative;
 }
@@ -675,7 +682,7 @@ h1.big-title {
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	display: block;
-	top: calc(50% - 1px);
+	top: calc(50% - 2px);
 	right: 5%;
 }
 
@@ -848,7 +855,7 @@ input.invisible {
 	position: relative;
 	display: inline-block;
 	top: -10px;
-  width: 230px;
+  width: 500px;
 }
 
 .form-dot:before {
@@ -883,7 +890,7 @@ input.invisible {
 	background-color: #444444;
 }
 
-.form-dot > .dot-a.active:after {
+.form-dot > .dot-a.active dot {
 	content: "";
 	display: block;
 	width: 12px;
@@ -895,6 +902,7 @@ input.invisible {
 	left: 50%;
 	transform: translateX(-50%);
 	border-radius: 100%;
+  z-index: 9;
 }
 
 .form-dot > .dot-a > span {
@@ -965,7 +973,7 @@ input.invisible {
 	padding: 15px 20px;
 	background-color: #fff;
 	border:  1px solid #C8CCCC;
-	z-index: 1;
+	z-index: 10;
 }
 
 .form-suggest m {
@@ -990,8 +998,8 @@ input:focus + .form-suggest,
 }
 
 .radio-a i[class*=icon-] {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 }
 
 .radio-a > span {
@@ -1547,12 +1555,30 @@ input:focus + .form-suggest,
 	min-height: 180px;
 }
 
+.latest-notes.profile .note-item {
+  padding-left: 150px;
+  padding-right: 220px;
+}
+
 .note-item .no {
 	position: absolute;
 	top: 15px;
 	right: 20px;
 	font-size: 13px;
 	font-weight: 600;
+  color: #7c8080;
+}
+
+.note-item .product-img {
+  width: 120px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.note-item .product-img img {
+  width: 100%;
 }
 
 .note-item .user {
@@ -1579,6 +1605,11 @@ input:focus + .form-suggest,
 
 .note-item .user [class^=icon-] {
 	vertical-align: middle;
+  width: 32px;
+  height: 32px;
+}
+
+.profile .note-item .user [class^=icon-] {
 }
 
 .note-item .smell {
@@ -1589,6 +1620,11 @@ input:focus + .form-suggest,
 	vertical-align: middle;
 	margin-right: 15px;
 	margin-bottom: 10px;
+  width: 32px;
+  height: 32px;
+}
+
+.profile .note-item .smell i {
 }
 
 .note-item .smell span {
@@ -2102,7 +2138,7 @@ input:focus + .form-suggest,
 	font-size: 9px;
 	text-align: center;
 	position: relative;
-	width: 40px;
+	width: 83px;
 	top: -10px;
 	vertical-align: top;
 }
@@ -2206,14 +2242,29 @@ input:focus + .form-suggest,
   transition: all 0.3s ease;
   background-color: rgba(255, 255, 255, 0.5);
   text-transform: capitalize;
+  z-index: 9;
 }
 
 .add-note .smell .radio-a:hover g {
   opacity: 1;
 }
 
-.add-note .smell .radio-a.active {
+.add-note .smell .radio-a.active i {
   opacity: 0.5;
+}
+
+.add-note .smell .radio-a.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../images/check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px auto;
 }
 
 .add-note .smell .radio-a > input:checked + i {
@@ -2401,7 +2452,7 @@ input:focus + .form-suggest,
 }
 
 .account.login .form-group label {
-  width: 100px;
+  width: 165px;
 }
 
 .account.login .form-group .form-control {
@@ -2442,6 +2493,11 @@ input:focus + .form-suggest,
 
 .profile .note-item .ability-chart-wrapper {
   right: 150px;
+}
+
+.profile .note-item .details + .ability-chart-wrapper {
+  right: 15px;
+  bottom:  70px;
 }
 
 .profile .note-item .no {
@@ -2492,6 +2548,11 @@ input:focus + .form-suggest,
 
 .profile-detail .content {
   border-bottom: 1px solid rgba(200, 204, 204, 0.5);
+}
+
+.profile-detail.my-profile .content {
+  border-bottom: 0;
+  min-height: 500px;
 }
 
 .profile-detail .user .user-img {
@@ -2606,4 +2667,14 @@ input:focus + .form-suggest,
   font-weight: 400;
   margin-top: 10px;
   float: right;
+}
+
+.forget-pw p {
+  width: 350px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.account.login.forget-pw .form-group label {
+  width: 60px;
 }

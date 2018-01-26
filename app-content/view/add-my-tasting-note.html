@@ -7,10 +7,10 @@
 	<div class="bg-grey pt-30 pb-30 pt-xs-10 pb-xs-10">
 		<div class="container width-990 product-item">
 			<div class="clearfix">
-				<div class="pull-left">
+				<div class="pull-left xs-pull-none mb-xs-10">
 					<h2 class="name m-0" ng-bind-html="product.display">Chateau Bordeneuve, Bordeaux, France</h2>
 				</div>
-				<div class="pull-right pl-15 pr-15">
+				<div class="pull-right xs-pull-none">
 					<div class="details font-11">
 						<span class="text-grey">{{'Year' | translate}}:</span> {{product.vintage}}<br />
 						<span class="text-grey">{{'Category' | translate}}:</span> {{product.grape}}
@@ -124,33 +124,109 @@
 			<div class="form-content pull-right">
 				<div class="form-tag">
 					<div class="tag" style="display: none;"></div>
-					<input type="text" placeholder="Search" data-placeholder="Search" ng-model="formData.smell" />
-					<div class="form-suggest">
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-						<div class="item"><i class="icon-apple"></i>Apple</div>
-						<div class="item"><i class="icon-cherry"></i>Cherry</div>
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
-					</div>
+					<input id="inputtags" type="text" placeholder="Search" data-placeholder="Search" ng-model="formData.smell" />
+					<div class="form-suggest"></div>
 					
 					<script>
-						$(".form-tag .form-suggest > .item").click(function(){
-							var content = $(this).html() + '<div class="cross"></div>';
-							$(".form-tag .tag:first-child").clone().insertBefore($(".form-tag > input")).html(content).show();
-							
-							$(".form-tag input").removeAttr("placeholder");
-							
-							$(".form-tag .tag > .cross").click(function(){
-								$(this).parent().remove();
-								if($(".form-tag .tag").length <= 1){
-									$(".form-tag input").attr("placeholder", $(".form-tag input").data("placeholder"));
-								}
-							});
-						});
+            $(".smell .smell-more .radio-a").each(function(){
+              $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
+              suggest();
+            });
+            $("#inputtags").keydown(function(){
+              $(".form-suggest").html("");
+              $(".smell .smell-more .radio-a").each(function(){
+                if($(this).find("g").html().toLowerCase().includes($("#inputtags").val().toLowerCase())){
+                  if($(".form-tag .tag ." + $(this).find("i").attr("class")).length){
+                    return false;
+                  }
+                  
+                  $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
+                }
+              });
+              suggest();
+              if($(".form-suggest .item").length < 1){
+                $(".form-suggest").html("<m>No results matched</m>");
+              }
+            });
+            
+            function suggest(){
+              $(".form-tag .form-suggest > .item").click(function(){
+                
+                $("#inputtags").val("");
+                
+                var ol_content = $(this).html();
+			    var content = ol_content + '<div class="cross"></div><input class="smellsInput" type="hidden" name="smells[]" value="'+$(this).find("g").html()+'">';
+                var icon_name = $(this).children("[class*='icon-']").attr("class");
+
+                if($(".form-tag .tag ." + icon_name).length){
+                  return false;
+                }
+                
+                $(".form-tag .form-suggest ." + icon_name).parent().remove();
+
+                $(".form-tag .tag:first-child").clone().insertBefore($(".form-tag > input")).html(content).show();
+                $(".smell .radio-a").each(function(){
+                  if($(this).html()==ol_content){
+                    $(this).addClass("active");
+                  }
+                });
+
+                $(".form-tag input").removeAttr("placeholder");
+
+                $(".form-tag .tag > .cross").click(function(){
+                  $(this).parent().remove();
+                  $(".smell .radio-a").each(function(){
+                    if($(this).html()==ol_content){
+                      $(this).removeClass("active");
+                    }
+                  });
+                  if($(".form-tag .tag").length <= 1){
+                    $(".form-tag input").attr("placeholder", $(".form-tag input").data("placeholder"));
+                  }
+                });
+              });
+            }
+        
+            $(".smell .radio-a").click(function(){
+              var ol_content = $(this).html();
+							//var content = ol_content + '<div class="cross"></div><input type="hidden" name="small of ' + $(this).find("g").html() + '" value="1">';
+			  var content = ol_content + '<div class="cross"></div><input class="smellsInput" type="hidden" name="smells[]" value="'+$(this).find("g").html()+'">';
+
+              if(!$(this).hasClass("active")){
+                $(".form-tag .tag:first-child").clone().insertBefore($(".form-tag > input")).html(content).show();
+				angular.element(jQuery('.smellsHidden')).triggerHandler('input')
+                $(".form-tag input").removeAttr("placeholder");
+
+                $(".form-tag .tag > .cross").click(function(){
+                  $(this).parent().remove();
+                  $(".smell .radio-a").each(function(){
+                    if($(this).html()==ol_content){
+                      $(this).removeClass("active");
+                    }
+                  });
+                  if($(".form-tag .tag").length <= 1){
+                    $(".form-tag input").attr("placeholder", $(".form-tag input").data("placeholder"));
+                  }
+                });
+                $(".smell .radio-a").each(function(){
+                  if($(this).html()==ol_content){
+                    $(this).addClass("active");
+                  }
+                });
+              }else{
+                $(this).removeClass("active");
+                $(".form-tag .tag").each(function(){
+                  if($(this).html()==content){
+                    $(this).remove();
+                  }
+                });
+                $(".smell .radio-a").each(function(){
+                  if($(this).html()==ol_content){
+                    $(this).removeClass("active");
+                  }
+                });
+              }
+            });
 					</script>
 				</div>
 			</div>
@@ -159,166 +235,162 @@
 			<div class="form-item clearfix mt-30 mt-xs-0">
 				<div class="form-name pull-left"></div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-strawberry"></i><g>strawberry</g></label>
+					<label class="radio-a"><i class="icon-cherry"></i><g>cherry</g></label>
+					<label class="radio-a"><i class="icon-lemon"></i><g>lemon</g></label>
+					<label class="radio-a"><i class="icon-apple"></i><g>apple</g></label>
+					<label class="radio-a"><i class="icon-coffee"></i><g>coffee</g></label>
+					<label class="radio-a"><i class="icon-flower"></i><g>flower</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Flower' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-iris"></i><g>iris</g></label>
+					<label class="radio-a"><i class="icon-peony"></i><g>peony</g></label>
+					<label class="radio-a"><i class="icon-elderflower"></i><g>elderflower</g></label>
+					<label class="radio-a"><i class="icon-acacia"></i><g>acacia</g></label>
+					<label class="radio-a"><i class="icon-lilac"></i><g>lilac</g></label>
+					<label class="radio-a"><i class="icon-jasmine"></i><g>jasmine</g></label>
+					<label class="radio-a"><i class="icon-honeysuckle"></i><g>honeysuckle</g></label>
+					<label class="radio-a"><i class="icon-violet"></i><g>violet</g></label>
+					<label class="radio-a"><i class="icon-lavender"></i><g>lavender</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Citrus' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-lime"></i><g>lime</g></label>
+					<label class="radio-a"><i class="icon-lemon"></i><g>lemon</g></label>
+					<label class="radio-a"><i class="icon-grapefruit"></i><g>grapefruit</g></label>
+					<label class="radio-a"><i class="icon-orange"></i><g>orange</g></label>
+					<label class="radio-a"><i class="icon-marmalade"></i><g>marmalade</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'TreeFruit' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-apple"></i><g>apple</g></label>
+					<label class="radio-a"><i class="icon-pear"></i><g>pear</g></label>
+					<label class="radio-a"><i class="icon-nectarine"></i><g>nectarine</g></label>
+					<label class="radio-a"><i class="icon-peach"></i><g>peach</g></label>
+					<label class="radio-a"><i class="icon-apricot"></i><g>apricot</g></label>
+					<label class="radio-a"><i class="icon-persimmon"></i><g>persimmon</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'TropicalFruit' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-pineapple"></i><g>pineapple</g></label>
+					<label class="radio-a"><i class="icon-mango"></i><g>mango</g></label>
+					<label class="radio-a"><i class="icon-guava"></i><g>guava</g></label>
+					<label class="radio-a"><i class="icon-kiwi"></i><g>kiwi</g></label>
+					<label class="radio-a"><i class="icon-lychee"></i><g>lychee</g></label>
+					<label class="radio-a"><i class="icon-bubblegum"></i><g>bubblegum</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'RedFruit' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-redplum"></i><g>red plum</g></label>
+					<label class="radio-a"><i class="icon-strawberry"></i><g>strawberry</g></label>
+					<label class="radio-a"><i class="icon-cherry"></i><g>cherry</g></label>
+					<label class="radio-a"><i class="icon-pomegranate"></i><g>pomegranate</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'BlackFruit' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-blackcurrant"></i><g>blackcurrant</g></label>
+					<label class="radio-a"><i class="icon-plum"></i><g>plum</g></label>
+					<label class="radio-a"><i class="icon-blackberry"></i><g>blackberry</g></label>
+					<label class="radio-a"><i class="icon-blueberry"></i><g>blueberry</g></label>
+					<label class="radio-a"><i class="icon-olive"></i><g>olive</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'DriedFruit' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-raisin"></i><g>raisin</g></label>
+					<label class="radio-a"><i class="icon-fig"></i><g>fig</g></label>
+					<label class="radio-a"><i class="icon-date"></i><g>date</g></label>
+					<label class="radio-a"><i class="icon-fruitcake"></i><g>fruitcake</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'NobleRot' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-honeycomb"></i><g>honeycomb</g></label>
+					<label class="radio-a"><i class="icon-ginger"></i><g>ginger</g></label>
+					<label class="radio-a"><i class="icon-saffron"></i><g>saffron</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Herbal/Spice' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-thyme"></i><g>thyme</g></label>
+					<label class="radio-a"><i class="icon-mint"></i><g>mint</g></label>
+					<label class="radio-a"><i class="icon-whitepepper"></i><g>white pepper</g></label>
+					<label class="radio-a"><i class="icon-redpepper"></i><g>red pepper</g></label>
+					<label class="radio-a"><i class="icon-blackpepper"></i><g>black pepper</g></label>
+					<label class="radio-a"><i class="icon-cinnamon"></i><g>cinnamon</g></label>
+					<label class="radio-a"><i class="icon-fennel"></i><g>fennel</g></label>
+					<label class="radio-a"><i class="icon-anise"></i><g>anise</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Vegetable' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-tomato"></i><g>tomato</g></label>
+					<label class="radio-a"><i class="icon-greenalmond"></i><g>green almond</g></label>
+					<label class="radio-a"><i class="icon-jalapeno"></i><g>jalapeno</g></label>
+					<label class="radio-a"><i class="icon-bellpepper"></i><g>bell pepper</g></label>
+					<label class="radio-a"><i class="icon-gooseberry"></i><g>gooseberry</g></label>
+					<label class="radio-a"><i class="icon-grass"></i><g>grass</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Earth' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-petroleum"></i><g>petroleum</g></label>
+					<label class="radio-a"><i class="icon-volcanicrocks"></i><g>volcanic rocks</g></label>
+					<label class="radio-a"><i class="icon-redbeet"></i><g>red beet</g></label>
+					<label class="radio-a"><i class="icon-pottingsoil"></i><g>potting soil</g></label>
+					<label class="radio-a"><i class="icon-wetgravel"></i><g>wet gravel</g></label>
+					<label class="radio-a"><i class="icon-slate"></i><g>slate</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Yeast' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-lager"></i><g>lager</g></label>
+					<label class="radio-a"><i class="icon-sourdough"></i><g>sourdough</g></label>
+					<label class="radio-a"><i class="icon-cream"></i><g>cream</g></label>
+					<label class="radio-a"><i class="icon-butter"></i><g>butter</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Oak' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-dill"></i><g>dill</g></label>
+					<label class="radio-a"><i class="icon-smoke"></i><g>smoke</g></label>
+					<label class="radio-a"><i class="icon-cigarbox"></i><g>cigar box</g></label>
+					<label class="radio-a"><i class="icon-bakingspices"></i><g>baking spices</g></label>
+					<label class="radio-a"><i class="icon-coconut"></i><g>coconut</g></label>
+					<label class="radio-a"><i class="icon-vanilla"></i><g>vanilla</g></label>
 				</div>
 			</div>
 			<div class="form-item clearfix mt-20 smell-more">
 				<div class="form-name pull-left">{{'Aging' | translate}}</div>
 				<div class="form-content pull-right">
-					<label class="radio-a"><i class="icon-strawberry"></i></label>
-					<label class="radio-a"><i class="icon-cherry"></i></label>
-					<label class="radio-a"><i class="icon-lemon"></i></label>
-					<label class="radio-a"><i class="icon-apple"></i></label>
-					<label class="radio-a"><i class="icon-coffee"></i></label>
-					<label class="radio-a"><i class="icon-flower"></i></label>
+					<label class="radio-a"><i class="icon-leather"></i><g>leather</g></label>
+					<label class="radio-a"><i class="icon-cocoa"></i><g>cocoa</g></label>
+					<label class="radio-a"><i class="icon-coffee"></i><g>coffee</g></label>
+					<label class="radio-a"><i class="icon-tobacco"></i><g>tobacco</g></label>
+					<label class="radio-a"><i class="icon-nuts"></i><g>nuts</g></label>
+					<label class="radio-a"><i class="icon-driedfruit"></i><g>dried fruit</g></label>
+					<label class="radio-a"><i class="icon-mushroom"></i><g>mushroom</g></label>
+					<label class="radio-a"><i class="icon-truffle"></i><g>truffle</g></label>
 				</div>
 			</div>
 			<button type="button" class="btn-a more-opener">{{'More' | translate}}...</button>
@@ -401,7 +473,7 @@
 			</div>
 		</div>
 		<hr class="mt-30 mb-15" />
-		<h3 class="s-title">{{'AddMyTastingNote' | translate}}Overall</h3>
+		<h3 class="s-title">{{'Overall' | translate}}</h3>
 		<div class="form-item">
 			<label class="radio-a" for="overall-1"><input type="radio" name="overall" value="happy" id="overall-1" class="invisible" checked  ng-model="formData.overall" /><span></span><i class="icon-happy"></i></label>
 			<label class="radio-a" for="overall-2"><input type="radio" name="overall" value="sad" id="overall-2" class="invisible"  ng-model="formData.overall" /><span></span><i class="icon-sad"></i></label>

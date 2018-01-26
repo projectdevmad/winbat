@@ -19,7 +19,7 @@
         $scope.price = "";
         $scope.style = "";
         $scope.grapes = "";
-		$scope.sortBy = "";
+		$scope.sortby = "";
         $scope.busy = false;
         $scope.searchResult = [];
 		//$scope.url = "https://private-anon-87f38d1934-winebatapi.apiary-proxy.com/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
@@ -36,7 +36,6 @@
         function init() {
 			
 			if ($scope.param){
-				console.log($scope.searchData);
 				$scope.keyword = $scope.searchData.keyword;
 				$scope.year = $scope.searchData.year;
 				$scope.region = $scope.searchData.region;
@@ -58,7 +57,7 @@
             $scope.searchType = val;
         }
         $scope.changeSearchBy = function changeSearchBy($event) {
-            console.log($event.target.value);
+           // console.log($event.target.value);
             $scope.searchBy = $event.target.value;
         }
        
@@ -77,7 +76,6 @@
 			
 			if ($scope.loadEnd) return;
             if ($scope.busy) return;
-			console.log("loadmore");
             $scope.busy = true;
 			$scope.page++;
             //$scope.promise = searchService.jsonSearch($scope.url + "&pag=1").then(function(data) {
@@ -85,12 +83,11 @@
 
         };
 		$scope.changeSortBy = function(){
-			console.log("change sort by ");
 			$scope.page=1;
 			searchData();
 		}
 		function searchData(){
-			$scope.promise = searchService.search($scope.url + "?page="+$scope.page+"&sortBy="+$scope.sortBy+"&"+$scope.params).then(function(data) {
+			$scope.promise = searchService.search($scope.url + "?page="+$scope.page+"&sortby="+$scope.sortby+"&"+$scope.params).then(function(data) {
                 if (data.products.length == 0){
                     $scope.loadEnd = true;
                     return;

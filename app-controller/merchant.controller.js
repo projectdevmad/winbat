@@ -14,6 +14,7 @@
         $scope.details = {};
 		$scope.merchants = [];
 		$scope.page = 0;
+		$scope.formData = {};
         //init();
 		
 
@@ -27,13 +28,15 @@
             //$location.path('/viewRecord/' + $scope.licenseNo);
 
         }
-        $scope.clickSearch = function clickSearch() {
+        $scope.clickSearchMerchantMerchant = function clickSearchMerchant() {
 			$scope.page=1;
-            $location.path('/merchant/');
+			$scope.merchants = [];
+			searchData();
+           // $location.path('/merchant/');
         }
 		
 		$scope.loadMore = function() {
-			console.log("loadmore");
+			 
             if ($scope.busy) return;
             $scope.busy = true;
             //$scope.promise = searchService.jsonSearch($scope.url + "&pag=1").then(function(data) {
@@ -44,8 +47,11 @@
 		$scope.loadMore();
 		
 		function searchData(){
-			$scope.promise = searchService.search($scope.url + "?pag="+$scope.page).then(function(data) {
-                 console.log(data);
+			$scope.formData.page = $scope.page;
+			if ($scope.formData){
+				var parmas = ObjecttoParams($scope.formData);
+			}
+			$scope.promise = searchService.search($scope.url + "?"+parmas).then(function(data) {
                 if (data.merchants.length == 0){
                     $scope.loadEnd = true;
                     return;

@@ -3,14 +3,14 @@
 		<div class="row pl-5 pr-5">
 			<div class="col-xs-9 pl-10 pr-10 pr-xs-5">
 				<div class="form-group form-search">
-					<input type="text" class="form-control border-bottom short" name="keyword" placeholder="Merchant Name" />
-					<button ng-click="clickSearch()"><i class="icon-search"></i></button>
+					<input type="text" class="form-control border-bottom short" name="keyword" placeholder="Merchant Name"  ng-model="formData.keyword" />
+					<button ng-click="clickSearchMerchant()"><i class="icon-search"></i></button>
 				</div>
 			</div>
 			<div class="col-xs-3 pl-10 pr-10 pl-xs-0">
 				<div class="filter clearfix pl-sm-5 pr-sm-5">
 					<div class="form-group">
-						<select name="region" class="form-control border-bottom short">
+						<select name="region" class="form-control border-bottom short" ng-model="formData.region">
 							<option value="">{{'Country' | translate}}</option>
 							<option value="1">Lorem Ipsum xxxxx</option>
 							<option value="2">Lorem Ipsum xxxxx</option>
@@ -30,11 +30,11 @@
 			<div class="pull-left pt-5 pt-xs-0 pb-xs-5"><b>{{merchants.length}}</b> out of {{totalItems}} merchants</div>
 			<div class="pull-right">
 				<div class="form-group m-0">
-					<select name="sort" class="form-control">
+					<select name="sort" class="form-control"  ng-model="formData.sortby">
 						<option value=""></option>
-						<option value="1"> {{'Relevance' | translate}}</option>
-						<option value="2"> {{'Price' | translate}}</option>
-						<option value="3"> {{'Popularity' | translate}}</option>
+						<option value="relevance"> {{'Relevance' | translate}}</option>
+						<option value="price"> {{'Price' | translate}}</option>
+						<option value="popularity"> {{'Popularity' | translate}}</option>
 					</select>
 					<div class="select-f text-center">{{'Sortby' | translate}} <span>{{'Relevance' | translate}}</span></div>
 				</div>

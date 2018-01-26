@@ -121,22 +121,24 @@
 		display: block !important;
     }
 	
-	header .navbar-nav .open .dropdown-menu {
+	header .navbar-nav .dropdown-menu {
 		position: static;
 		float: none;
 		width: auto;
 		margin-top: 0;
-		background-color: transparent;
+		background-color: #F2F4F4 !important;
 		border: 0;
 		-webkit-box-shadow: none;
 				box-shadow: none;
 	}
 	
-	header .navbar-nav .open .dropdown-menu > li > a {
+	header .navbar-nav .dropdown-menu > li > a {
 		line-height: 20px;
+    text-align: center;
+    padding: 5px 25px 5px 20px !important;
 	}
 	
-	header .navbar-nav .open .dropdown-menu > li > a, header .navbar-nav .open .dropdown-menu .dropdown-header {
+	header .navbar-nav .dropdown-menu > li > a, header .navbar-nav .dropdown-menu .dropdown-header {
 		padding: 5px 15px 5px 25px;
 	}
 	
@@ -186,8 +188,44 @@
 	
 	header .nav > li > a {
 		font-size: 14px;
-		padding: 5px 15px;
+		padding: 10px 20px;
 	}
+  
+  .menu-overlap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #000;
+    z-index: 998;
+    transition: all 0.3s ease;
+  }
+  
+  #menu.open + .menu-overlap {
+    opacity: 0.5;
+    visibility: visible;
+  }
+  
+  #menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 220px;
+    max-width: 100%;
+    background-color: #fff;
+    text-align: center;
+    transform: translateX(220px);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  
+  #menu.open {
+    transform: none;
+  }
 	
 	.footer-links a {
 		padding: 0 10px;
@@ -230,7 +268,7 @@
 		width: 195px;
 	}
 
-	.note-item {
+	.note-item, .latest-notes.profile .note-item {
 		padding: 25px 180px 60px 30px;
 	}
 
@@ -242,6 +280,12 @@
   .profile .note-item .ability-chart-wrapper {
     right: 20px;
     bottom: 50px;
+  }
+  
+  .note-item .product-img {
+    position: static;
+    transform: none;
+    margin: 15px 0;
   }
 	
 	.form-dot {
@@ -578,6 +622,11 @@
 		font-size: 5px;
 		height: 10px;
 	}
+  
+  .row.cen {
+    max-width: 320px;
+    margin: auto;
+  }
 
 	.merchant .search .col-xs-9 {
 		width: 60%;
@@ -675,6 +724,10 @@
 	.merchant.search .col-xs-3 {
 		width: 40%;
 	}
+  
+  .latest-notes.profile .note-item {
+		padding: 25px 30px 10px;
+	}
 	
 	.pages-banner > div {
 		padding-bottom: 75%;
@@ -704,6 +757,9 @@
 		width: 130px;
 		height: 130px;
 		padding: 10px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
 	}
 
 	.product-detail .product-item.long .ability-bg {
@@ -735,8 +791,16 @@
 	}
 
 	.note-item {
-		padding: 25px 20px 30px;
+		padding: 25px 20px 10px;
+    /*max-width: 320px;
+    margin: auto;*/
 	}
+  
+  /*.product-item {
+    max-width: 320px;
+    margin: auto;
+    position: relative;
+  }*/
 	
 	.note-item .ability-chart-wrapper {
 		position: relative;
@@ -758,6 +822,10 @@
 	.note-item .smell span {
 		font-size: 11px;
 		width: 55px;
+	}
+	
+	.note-item .details {
+		margin-bottom: 30px;
 	}
 	
 	.note-item .details > .item {
@@ -801,6 +869,15 @@
 	.add-note .form-item .form-content {
 		width: 100% !important;
 	}
+  
+  .add-note .color-item > .short-name {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .add-note .color-a {
+    max-width: 20%;
+  }
 	
 	.add-note .smell > .form-name {
 		display: none;
@@ -821,9 +898,10 @@
 	}
 	
 	.add-note .btn-group .btn-themed {
-		width: calc(50% - 10px);
+		width: 100%;
 		height: 45px;
 		line-height: 45px;
+    margin-top: 5px;
 	}
   
   .account h2 {
@@ -869,8 +947,9 @@
   
   .note-item .user .name,
   .profile .note-item .name {
+    display: block;
     font-size: 12px;
-    margin: 0 10px 0 0;
+    margin: 5px 0 25px;
   }
   
   .profile .note-item .name {
@@ -880,9 +959,9 @@
   
   .note-item .smell,
   .profile .note-item .smell {
-    width: 50%;
+    width: 70%;
     min-height: 45px;
-    margin-bottom: 25px;
+    margin: 10px 0 !important;
   }
   
   .note-item .smell span,
@@ -897,22 +976,26 @@
   
   .note-item .smell i,
   .profile .note-item .smell i {
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
   }
   
   .note-item .ability-chart-wrapper,
-  .profile .note-item .ability-chart-wrapper {
+  .profile .note-item .ability-chart-wrapper,
+  .profile .note-item .details + .ability-chart-wrapper {
     position: absolute;
-    top: 60px;
+    top: 25px;
     right: 15px;
     bottom: auto;
   }
   
+  .profile .note-item .ability-chart-wrapper,
+  .profile .note-item .details + .ability-chart-wrapper {
+    top: 30px;
+  }
+  
   .note-item .like {
-    position: static;
-    margin-top: 20px;
   }
   
   .profile-detail .user .user-img {
@@ -964,17 +1047,33 @@
     margin-top: 10px;
     padding: 0;
   }
-
-}
-
-@media only screen and (max-width: 425px) {
   
   .account.login .form-group {
     padding: 0;
   }
   
   .account.login .btn-submit .btn-themed {
-    width: 100%;
+    width: 300px;
+    max-width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+  
+  .login .g-recaptcha {
+    transform: scale(0.93);
+    transform-origin: top left;
+  }
+  
+  .row.cen {
+    max-width: 320px;
+    margin-left: -15px;
+    margin-right: -15px;
   }
 
 }

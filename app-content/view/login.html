@@ -1,0 +1,33 @@
+<section class="pages pt-50 pb-50 pt-xs-30 pb-xs-30 mb-80 mb-xs-30 account login">
+	<div class="container width-990">
+    <h2 class="text-center">Log into Rootstock</h2>
+    <form method="post" ng-submit="login()" name="form" id="form" role="form">
+      <div class="form-group mb-10">
+        <label class="pt-xs-10 pb-xs-10">Email</label>
+        <input type="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required ng-model="data.email" />
+      </div>
+      <div class="form-group mb-10">
+        <label class="pt-xs-10 pb-xs-10">Password</label>
+        <input type="password" name="password" class="form-control" required ng-model="data.password"/>
+      </div>
+      <div class="forget-pw text-center mb-40">
+        <a ng-href="#/forgetpassword">Forget password?</a>  
+      </div>
+      <div class="mb-50">
+        <div class="g-recaptcha" data-sitekey="6Ld0CUIUAAAAAJ5ieh2pqXy_VfyL5ni_sZN5EsCv"></div>
+      </div>
+      <!-- site key: 6Ld0CUIUAAAAAJ5ieh2pqXy_VfyL5ni_sZN5EsCv
+      Secret key: 6Ld0CUIUAAAAAAeekMnL_kVkyi9HVD44Ih1BljKB -->
+      <div class="btn-submit mb-40 mb-xs-30">
+        <button id="submit" class="btn-themed">Login</button>
+      </div>
+      <div class="have-account text-center">
+        <span>Don't have an account? <a href="#/register">Sign up</a></span>
+      </div>
+    </form>
+	</div>
+</section>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="./app-content/js/bootstrap.min.js"></script>
+<script src="./app-content/js/custom.js"></script>

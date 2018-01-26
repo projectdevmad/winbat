@@ -5,12 +5,13 @@
             <div class="pull-left pt-5 pt-xs-0 pb-xs-5"><b>{{searchResult.length}}</b> out of {{totalItems}} wines</div>
             <div class="pull-right">
                 <div class="form-group m-0">
-                    <select name="sort" class="form-control" ng-model="sortBy" ng-change="changeSortBy()">
-                        <option value="">Sort By</option>
-                        <option value="relevance" >Relevance</option>
-                        <option value="price">Price</option>
-                        <option value="popularity">Popularity</option>
-                    </select>
+                   <select name="sort" class="form-control"  ng-model="sortby" ng-change="changeSortBy()">
+						<option value=""></option>
+						<option value="relevance"> {{'Relevance' | translate}}</option>
+						<option value="price"> {{'Price' | translate}}</option>
+						<option value="popularity"> {{'Popularity' | translate}}</option>
+					</select>
+					<div class="select-f text-center">{{'Sortby' | translate}} <span>{{'Relevance' | translate}}</span></div>
                 </div>
             </div>
         </div>

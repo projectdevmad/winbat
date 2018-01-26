@@ -16,7 +16,7 @@
             });
         })
 
-    function config($routeProvider, $locationProvider, $translateProvider, $translatePartialLoader, $typeaheadProvider) {
+    function config($routeProvider, $locationProvider, $translateProvider, $translatePartialLoader, $typeaheadProvider, $rootScope) {
         // $locationProvider.html5Mode(true);
 
         $translateProvider.useLoader('$translatePartialLoader', {
@@ -87,24 +87,57 @@
                 templateUrl: 'app-content/view/login.html',
                 controllerAs: 'vm'
             })
+			.when('/forgetPassword', {
+                controller: 'ForgetPasswordController',
+                templateUrl: 'app-content/view/forget-password.html',
+                controllerAs: 'vm'
+            })
 			.when('/profile', {
                 controller: 'ProfileController',
                 templateUrl: 'app-content/view/profile.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
                 controllerAs: 'vm'
             })
 			.when('/myProfile', {
-                controller: 'ProfileController',
+                controller: 'MyProfileController',
                 templateUrl: 'app-content/view/my-profile.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
                 controllerAs: 'vm'
             })
 			.when('/addMyTastingNote', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
                 controllerAs: 'vm'
             })
 			.when('/addMyTastingNote/:id', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
                 controllerAs: 'vm'
             })
 
@@ -137,7 +170,21 @@
            if ($rootScope.globals.currentUser) {
                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
            }
-		   console.log($rootScope.globals.currentUser);
+		    /* $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute){
+
+		  //  $rootScope.$on('$locationChangeStart', function (event, next, current) {
+				console.log(currRoute);
+				var appTo = currRoute.path.indexOf('/secure') !== -1;
+				if(!$rootScope.globals.currentUser){
+					console.log('DENY');
+					event.preventDefault();
+					$location.path('/login');
+				}
+				else {
+					console.log('ALLOW');
+					$location.path('/index');
+				}
+			});*/
 /*
            $rootScope.$on('$locationChangeStart', function (event, next, current) {
                // redirect to login page if not logged in and trying to access a restricted page
