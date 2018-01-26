@@ -13,17 +13,17 @@
 		$scope.page = 0;
 		$scope.params = "";
 		$scope.searchData=[];
-        $scope.keyword = "1";
-        $scope.year = "2";
-        $scope.region = "3";
-        $scope.price = "4";
-        $scope.style = "5";
-        $scope.grapes = "6";
+        $scope.keyword = "";
+        $scope.year = "";
+        $scope.region = "";
+        $scope.price = "";
+        $scope.style = "";
+        $scope.grapes = "";
 		$scope.sortBy = "";
         $scope.busy = false;
         $scope.searchResult = [];
 		//$scope.url = "https://private-anon-87f38d1934-winebatapi.apiary-proxy.com/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
-        $scope.url = "./json/inventory2.json";
+        $scope.url = "./json/search.json";
       //  $scope.url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
 		if ($routeParams.params){
 			$scope.params = $routeParams.params;
@@ -74,9 +74,10 @@
 
        
         $scope.loadMore = function() {
-			console.log("loadmore");
+			
 			if ($scope.loadEnd) return;
             if ($scope.busy) return;
+			console.log("loadmore");
             $scope.busy = true;
 			$scope.page++;
             //$scope.promise = searchService.jsonSearch($scope.url + "&pag=1").then(function(data) {
@@ -95,6 +96,7 @@
                     return;
                 }
                 $scope.searchResult = $scope.searchResult.concat(data.products);
+				$scope.totalItems =  data.totalItems;
                // $scope.searchResult.push(data);
                 
                 $scope.busy = false;

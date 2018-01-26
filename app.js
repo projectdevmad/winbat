@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'bw.paging', 'cgBusy' , 'infinite-scroll'])
+        .module('app', ['ngRoute', 'ngCookies', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'bw.paging', 'cgBusy' , 'infinite-scroll', 'ui.bootstrap'])
         .config(config)
         .run(run);
 
@@ -82,6 +82,21 @@
                 templateUrl: 'app-content/view/register.html',
                 controllerAs: 'vm'
             })
+			.when('/login', {
+                controller: 'LoginController',
+                templateUrl: 'app-content/view/login.html',
+                controllerAs: 'vm'
+            })
+			.when('/profile', {
+                controller: 'ProfileController',
+                templateUrl: 'app-content/view/profile.html',
+                controllerAs: 'vm'
+            })
+			.when('/myProfile', {
+                controller: 'ProfileController',
+                templateUrl: 'app-content/view/my-profile.html',
+                controllerAs: 'vm'
+            })
 			.when('/addMyTastingNote', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
@@ -118,11 +133,12 @@
         $rootScope.message = 'Please Wait...';
         $rootScope.backdrop = true;
         $rootScope.promise = null;
-        /*   $rootScope.globals = $cookies.getObject('globals') || {};
+           $rootScope.globals = $cookies.getObject('globals') || {};
            if ($rootScope.globals.currentUser) {
                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
            }
-
+		   console.log($rootScope.globals.currentUser);
+/*
            $rootScope.$on('$locationChangeStart', function (event, next, current) {
                // redirect to login page if not logged in and trying to access a restricted page
                var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
@@ -148,7 +164,14 @@
 			
 			$location.path('/search/'+paramString);
 			return false;
-			alert("click search");	
+			
+		}
+		$rootScope.logout = function(){
+			$rootScope.user = {};
+			$rootScope.globals = {};
+            $cookies.remove('globals');
+            $http.defaults.headers.common.Authorization = 'Basic';
+			$location.path("index");
 		}
     }
 
@@ -166,7 +189,6 @@
 	   return {
 		 restrict: 'E',
 		 scope: {product: '='},
-		 //  template: '<h2>Label list:{{labelsArray}}:</h2><div class="label label-warning" ng-repeat="label in labelsArray">{{label.name}}</div>',
 		   templateUrl: './app-content/view/product-item-sm.tpl.html',
 		   restrict: 'E',
 		};
@@ -176,7 +198,6 @@
 	   return {
 		 restrict: 'E',
 		 scope: {data: '='},
-		 //  template: '<h2>Label list:{{labelsArray}}:</h2><div class="label label-warning" ng-repeat="label in labelsArray">{{label.name}}</div>',
 		   templateUrl: './app-content/view/search-bar.tpl.html',
 		   restrict: 'E',
 		};
@@ -186,7 +207,6 @@
 	   return {
 		 restrict: 'E',
 		 scope: {data: '='},
-		 //  template: '<h2>Label list:{{labelsArray}}:</h2><div class="label label-warning" ng-repeat="label in labelsArray">{{label.name}}</div>',
 		   templateUrl: './app-content/view/search-bar-sm.tpl.html',
 		   restrict: 'E',
 		};
@@ -213,3 +233,10 @@ function deparam(query) {
     }
     return map;
 }
+function ObjecttoParams(obj) {
+    var p = [];
+    for (var key in obj) {
+        p.push(key + '=' + encodeURIComponent(obj[key]));
+    }
+    return p.join('&');
+};

@@ -10,6 +10,7 @@
 	
 	function MerchantController(searchService, $location, $scope, $routeParams, $rootScope, $http,$timeout) {
         $scope.url = "./json/merchantList.json";
+		$scope.totalItems = 0;
         $scope.details = {};
 		$scope.merchants = [];
 		$scope.page = 0;
@@ -50,7 +51,7 @@
                     return;
                 }
 				$scope.merchants = $scope.merchants.concat(data.merchants);
-
+				$scope.totalItems  = data.totalItems;
                 $scope.busy = false;
               //	$timeout(aaa, 500);
 				var t=setTimeout("pieChart()",1000)

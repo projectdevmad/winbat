@@ -9,6 +9,7 @@
 
     function HomeController(searchService, $location, $scope, $routeParams, $rootScope, $http) {
         $scope.url = "./json/inventory2.json";
+		$scope.keyword = "";
         $scope.details = {};
         $scope.recentlyTastedWines = [];
         $scope.trendingWines = [];
@@ -53,7 +54,7 @@
 
         }
         $scope.clickSearch = function clickSearch() {
-            $location.path('/search/');
+            $location.path('/search/keyword='+$scope.keyword);
         }
        
     }

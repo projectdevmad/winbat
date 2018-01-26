@@ -5,6 +5,10 @@
 		"img_url": "./app-content/images/user-01.jpg",
 		"details": null,
 		"happiness": "happy",
+		"product_name" : "Chateau Bordeneuve, Bordeaux, France",
+		"like": 200,
+		"dislike" : 300,
+		"create_time" :"2017-12-04 13:55",
 		"tasting_note": {
 			"acidity": 3,
 			"tannin": 3,
@@ -39,6 +43,10 @@
 		"name": " Paul Wong 01273333 ",
 		"img_url": "./app-content/images/user-01.jpg",
 		"happiness": "sad",
+		"product_name" : "Chateau Bordeneuve, Bordeaux, France",
+		"like": 200,
+		"dislike" : 300,
+		"create_time" :"2017-12-04 13:55",
 		"details": {
 			"color_hex": "#560F33",
 			"color": "Garnet",

@@ -87,7 +87,6 @@
 				</div>
 			</div>
 			<div class="col-xs-12 text-right pt-50 pt-xs-30 btn-group">
-				<a href="" class="btn-themed mb-xs-5">View Tasting Note</a>
 				<a href="#/addMyTastingNote/{{product.id}}" class="btn-themed ml-20 ml-xs-0">Add My Tasting Note</a>
 			</div>
 		</div>
@@ -237,6 +236,14 @@
 								</svg>
 							</div>
 						</div>
+              <div class="like">
+                <div class="item">
+                  <a href="" ><i class="icon-like"></i></a> {{note.like}}
+                </div>
+                <div class="item">
+                  <a href="" ><i class="icon-dislike"></i></a> {{note.dislike}}
+                </div>
+              </div>
                 	</div>   
                 </div>
                 

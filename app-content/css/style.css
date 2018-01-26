@@ -159,7 +159,7 @@ h1.big-title {
 	font-weight: 600;
 }
 
-.icon-search:before {
+.icon-search {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/search.png);
@@ -169,7 +169,7 @@ h1.big-title {
 	height: 22px;
 }
 
-.icon-strawberry:before {
+.icon-strawberry {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/f-01.png);
@@ -179,7 +179,7 @@ h1.big-title {
 	height: 30px;
 }
 
-.icon-cherry:before {
+.icon-cherry {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/f-02.png);
@@ -189,7 +189,7 @@ h1.big-title {
 	height: 29px;
 }
 
-.icon-lemon:before {
+.icon-lemon {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/f-03.png);
@@ -199,7 +199,7 @@ h1.big-title {
 	height: 27px;
 }
 
-.icon-apple:before {
+.icon-apple {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/f-04.png);
@@ -209,7 +209,7 @@ h1.big-title {
 	height: 31px;
 }
 
-.icon-coffee:before {
+.icon-coffee {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/f-05.png);
@@ -219,7 +219,7 @@ h1.big-title {
 	height: 31px;
 }
 
-.icon-flower:before {
+.icon-flower {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/f-06.png);
@@ -229,7 +229,7 @@ h1.big-title {
 	height: 31px;
 }
 
-.icon-happy:before {
+.icon-happy {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/happy.png);
@@ -239,7 +239,7 @@ h1.big-title {
 	height: 25px;
 }
 
-.icon-sad:before {
+.icon-sad {
 	content: "";
 	display: inline-block;
 	background-image: url(../images/sad.png);
@@ -247,6 +247,356 @@ h1.big-title {
 	background-repeat: no-repeat;
 	width: 25px;
 	height: 25px;
+}
+
+.icon-like {
+	content: "";
+	display: inline-block;
+	background-image: url(../images/like.svg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 17px;
+}
+
+.icon-dislike {
+	content: "";
+	display: inline-block;
+	background-image: url(../images/dislike.svg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 17px;
+}
+
+/* add note icons */
+[class^=icon-] {
+  display: inline-block;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-iris {
+  background-image: url(../images/icons/iris.svg);
+}
+
+.icon-peony {
+  background-image: url(../images/icons/peony.svg);
+}
+
+.icon-elderflower {
+  background-image: url(../images/icons/elderflower.svg);
+}
+
+.icon-acacia {
+  background-image: url(../images/icons/acacia.svg);
+}
+
+.icon-lilac {
+  background-image: url(../images/icons/lilac.svg);
+}
+
+.icon-jasmine {
+  background-image: url(../images/icons/jasmine.svg);
+}
+
+.icon-honeysuckle {
+  background-image: url(../images/icons/honeysuckle.svg);
+}
+
+.icon-violet {
+  background-image: url(../images/icons/violet.svg);
+}
+
+.icon-lavender {
+  background-image: url(../images/icons/lavender.svg);
+}
+
+.icon-lime {
+  background-image: url(../images/icons/lime.svg);
+}
+
+.icon-lemon {
+  background-image: url(../images/icons/lemon.svg);
+}
+
+.icon-grapefruit {
+  background-image: url(../images/icons/grapefruit.svg);
+}
+
+.icon-orange {
+  background-image: url(../images/icons/orange.svg);
+}
+
+.icon-marmalade {
+  background-image: url(../images/icons/marmalade.svg);
+}
+
+.icon-apple {
+  background-image: url(../images/icons/apple.svg);
+}
+
+.icon-pear {
+  background-image: url(../images/icons/pear.svg);
+}
+
+.icon-nectarine {
+  background-image: url(../images/icons/nectarine.svg);
+}
+
+.icon-peach {
+  background-image: url(../images/icons/peach.svg);
+}
+
+.icon-apricot {
+  background-image: url(../images/icons/apricot.svg);
+}
+
+.icon-persimmon {
+  background-image: url(../images/icons/persimmon.svg);
+}
+
+.icon-pineapple {
+  background-image: url(../images/icons/pineapple.svg);
+}
+
+.icon-mango {
+  background-image: url(../images/icons/mango.svg);
+}
+
+.icon-guava {
+  background-image: url(../images/icons/guava.svg);
+}
+
+.icon-kiwi {
+  background-image: url(../images/icons/kiwi.svg);
+}
+
+.icon-lychee {
+  background-image: url(../images/icons/lychee.svg);
+}
+
+.icon-bubblegum {
+  background-image: url(../images/icons/bubblegum.svg);
+}
+
+.icon-redplum {
+  background-image: url(../images/icons/red_plum.svg);
+}
+
+.icon-strawberry {
+  background-image: url(../images/icons/strawberry.svg);
+}
+
+.icon-cherry {
+  background-image: url(../images/icons/cherry.svg);
+}
+
+.icon-pomegranate {
+  background-image: url(../images/icons/pomegranate.svg);
+}
+
+.icon-blackcurrant {
+  background-image: url(../images/icons/blackcurrant.svg);
+}
+
+.icon-plum {
+  background-image: url(../images/icons/plum.svg);
+}
+
+.icon-blackberry {
+  background-image: url(../images/icons/blackberry.svg);
+}
+
+.icon-blueberry {
+  background-image: url(../images/icons/blueberry.svg);
+}
+
+.icon-olive {
+  background-image: url(../images/icons/olive.svg);
+}
+
+.icon-raisin {
+  background-image: url(../images/icons/raisin.svg);
+}
+
+.icon-fig {
+  background-image: url(../images/icons/fig.svg);
+}
+
+.icon-date {
+  background-image: url(../images/icons/date.svg);
+}
+
+.icon-fruitcake {
+  background-image: url(../images/icons/fruitcake.svg);
+}
+
+.icon-honeycomb {
+  background-image: url(../images/icons/honeycomb.svg);
+}
+
+.icon-ginger {
+  background-image: url(../images/icons/ginger.svg);
+}
+
+.icon-saffron {
+  background-image: url(../images/icons/saffron.svg);
+}
+
+.icon-thyme {
+  background-image: url(../images/icons/thyme.svg);
+}
+
+.icon-mint {
+  background-image: url(../images/icons/mint.svg);
+}
+
+.icon-whitepepper {
+  background-image: url(../images/icons/white_pepper.svg);
+}
+
+.icon-redpepper {
+  background-image: url(../images/icons/red_pepper.svg);
+}
+
+.icon-blackpepper {
+  background-image: url(../images/icons/black_pepper.svg);
+}
+
+.icon-cinnamon {
+  background-image: url(../images/icons/cinnamon.svg);
+}
+
+.icon-fennel {
+  background-image: url(../images/icons/fennel.svg);
+}
+
+.icon-anise {
+  background-image: url(../images/icons/anise.svg);
+}
+
+.icon-tomato {
+  background-image: url(../images/icons/tomato.svg);
+}
+
+.icon-greenalmond {
+  background-image: url(../images/icons/green_almond.svg);
+}
+
+.icon-jalapeno {
+  background-image: url(../images/icons/jalapeno.svg);
+}
+
+.icon-bellpepper {
+  background-image: url(../images/icons/bell_pepper.svg);
+}
+
+.icon-gooseberry {
+  background-image: url(../images/icons/gooseberry.svg);
+}
+
+.icon-grass {
+  background-image: url(../images/icons/grass.svg);
+}
+
+.icon-petroleum {
+  background-image: url(../images/icons/petroleum.svg);
+}
+
+.icon-volcanicrocks {
+  background-image: url(../images/icons/volcanic_rocks.svg);
+}
+
+.icon-redbeet {
+  background-image: url(../images/icons/red_beet.svg);
+}
+
+.icon-pottingsoil {
+  background-image: url(../images/icons/potting_soil.svg);
+}
+
+.icon-wetgravel {
+  background-image: url(../images/icons/wet_gravel.svg);
+}
+
+.icon-slate {
+  background-image: url(../images/icons/slate.svg);
+}
+
+.icon-lager {
+  background-image: url(../images/icons/lager.svg);
+}
+
+.icon-sourdough {
+  background-image: url(../images/icons/sourdough.svg);
+}
+
+.icon-cream {
+  background-image: url(../images/icons/cream.svg);
+}
+
+.icon-butter {
+  background-image: url(../images/icons/butter.svg);
+}
+
+.icon-dill {
+  background-image: url(../images/icons/dill.svg);
+}
+
+.icon-smoke {
+  background-image: url(../images/icons/smoke.svg);
+}
+
+.icon-cigarbox {
+  background-image: url(../images/icons/cigar_box.svg);
+}
+
+.icon-bakingspices {
+  background-image: url(../images/icons/baking_spices.svg);
+}
+
+.icon-coconut {
+  background-image: url(../images/icons/coconut.svg);
+}
+
+.icon-vanilla {
+  background-image: url(../images/icons/vanilla.svg);
+}
+
+.icon-leather {
+  background-image: url(../images/icons/leather.svg);
+}
+
+.icon-cocoa {
+  background-image: url(../images/icons/cocoa.svg);
+}
+
+.icon-coffee {
+  background-image: url(../images/icons/coffee.svg);
+}
+
+.icon-tobacco {
+  background-image: url(../images/icons/tobacco.svg);
+}
+
+.icon-nuts {
+  background-image: url(../images/icons/nuts.svg);
+}
+
+.icon-driedfruit {
+  background-image: url(../images/icons/dried_fruit.svg);
+}
+
+.icon-mushroom {
+  background-image: url(../images/icons/mushroom.svg);
+}
+
+.icon-truffle {
+  background-image: url(../images/icons/truffle.svg);
 }
 
 .cross {
@@ -498,12 +848,13 @@ input.invisible {
 	position: relative;
 	display: inline-block;
 	top: -10px;
+  width: 230px;
 }
 
 .form-dot:before {
 	content: "";
 	position: absolute;
-	width: calc(100% - 22px );
+	width: calc(80% + 16px);
 	height: 1px;
 	left: -0.5px;
 	bottom: 15px;
@@ -511,13 +862,13 @@ input.invisible {
 }
 
 .form-dot > .dot-a {
-	width: 46px;
+	width: 20%;
 	height: 30px;
 	position: relative;
 }
 
 .form-dot > .dot-a:first-child {
-	margin-left: -23px;
+	margin-left: -10%;
 }
 
 .form-dot > .dot-a:before {
@@ -609,10 +960,16 @@ input.invisible {
 	right: -1px;
 	height: auto;
 	min-height: 40px;
+  max-height: 200px;
+  overflow-y: auto;
 	padding: 15px 20px;
 	background-color: #fff;
 	border:  1px solid #C8CCCC;
 	z-index: 1;
+}
+
+.form-suggest m {
+  font-size: 12px;
 }
 
 input:focus + .form-suggest,
@@ -630,6 +987,11 @@ input:focus + .form-suggest,
 
 .radio-a > *, .radio-a > *:before {
 	vertical-align: middle;
+}
+
+.radio-a i[class*=icon-] {
+  width: 30px;
+  height: 30px;
 }
 
 .radio-a > span {
@@ -742,7 +1104,7 @@ input:focus + .form-suggest,
 	width: 22px;
 	line-height: 25px;
 	text-align: center;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 .product-item.long .color {
@@ -836,7 +1198,8 @@ input:focus + .form-suggest,
 
 .product-item.long .icons li > i {
 	display: block;
-	height: 31px;
+  width: 25px;
+	height: 25px;
 }
 
 .product-item.long .icons li > div {
@@ -1214,7 +1577,7 @@ input:focus + .form-suggest,
 	margin-right: 25px;
 }
 
-.note-item .user [class^=icon-]:before {
+.note-item .user [class^=icon-] {
 	vertical-align: middle;
 }
 
@@ -1222,7 +1585,7 @@ input:focus + .form-suggest,
 	font-size: 0;
 }
 
-.note-item .smell i:before {
+.note-item .smell i {
 	vertical-align: middle;
 	margin-right: 15px;
 	margin-bottom: 10px;
@@ -1778,6 +2141,7 @@ input:focus + .form-suggest,
 .add-note .smell .form-tag .tag {
 	padding: 0 20px 0 25px;
 	white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .add-note .form-tag .tag i {
@@ -1792,6 +2156,7 @@ input:focus + .form-suggest,
 	position: relative;
 	padding-left: 17px;
 	cursor: pointer;
+  text-transform: capitalize;
 }
 
 .add-note .form-suggest .item + .item {
@@ -1825,8 +2190,26 @@ input:focus + .form-suggest,
 	width: 40px;
 	text-align: center;
 	margin-right: 33px;
+  margin-bottom: 20px;
   font-size: 0;
   cursor: pointer;
+  position: relative;
+}
+
+.add-note .smell .radio-a g {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 9px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.5);
+  text-transform: capitalize;
+}
+
+.add-note .smell .radio-a:hover g {
+  opacity: 1;
 }
 
 .add-note .smell .radio-a.active {
@@ -1849,7 +2232,7 @@ input:focus + .form-suggest,
 }
 
 .add-note .smell .form-name {
-	line-height: 35px;
+	line-height: 20px;
 }
 
 .add-note .smell .smell-more {
@@ -1930,6 +2313,10 @@ input:focus + .form-suggest,
   margin: auto;
 }
 
+.account .form-statement a:hover {
+  text-decoration: underline;
+}
+
 .account .btn-submit .btn-themed {
   background: none;
   width: 155px;
@@ -2002,4 +2389,221 @@ input:focus + .form-suggest,
 
 .account .form-group .form-control.ok ~ .reminder {
   display: none;
+}
+
+/* Login */
+.login {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.account.login .form-group {
+  width: 300px;
+}
+
+.account.login .form-group label {
+  width: 100px;
+}
+
+.account.login .form-group .form-control {
+  border: 1px solid #c8cccc;
+}
+
+.forget-pw a {
+  display: inline-block;
+  font-size: 13px;
+  color: #7c8080;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0);
+}
+
+.forget-pw a:hover {
+  border-bottom: 1px solid #c8cccc;
+}
+
+.login .g-recaptcha {
+  width: 300px;
+  margin: auto;
+}
+
+/* Profile */
+.top-title-bar {
+  box-shadow: 0 5px 5px rgba(149, 149, 149, 0.1);
+}
+
+.top-title-bar h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.latest-notes.profile .product-list {
+  box-shadow: 0 5px 5px rgba(149, 149, 149, 0.1);
+}
+
+.profile .note-item .ability-chart-wrapper {
+  right: 150px;
+}
+
+.profile .note-item .no {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.profile .note-item .name {
+  font-family: "Merriweather", "Microsoft Jhenghei";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 5px 0 0;
+}
+
+.profile .show-more a {
+  display: inline-block;
+  font-size: 13px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #000;
+}
+
+.note-item .like {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  font-size: 0;
+}
+
+.note-item .like .item {
+  display: inline-block;
+  font-size: 13px;
+  color: #444444;
+}
+
+.note-item .like .item + .item {
+  margin-left: 15px;
+}
+
+.note-item .like [class^=icon-] {
+  vertical-align: baseline;
+  margin-right: 2px;
+}
+
+.profile-detail {
+  position: relative;
+}
+
+.profile-detail .content {
+  border-bottom: 1px solid rgba(200, 204, 204, 0.5);
+}
+
+.profile-detail .user .user-img {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	border-radius: 100%;
+	background-position: center;
+	background-size: cover;
+	vertical-align: middle;
+	margin-right: 35px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-detail .user .name {
+	display: inline-block;
+	font-size: 20px;
+  font-weight: 600;
+	vertical-align: middle;
+	margin-right: 25px;
+}
+
+.profile-content .item {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-content .item span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #7c8080;
+  width: 160px;
+  padding-right: 10px;
+  margin-right: 5px;
+	vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.profile-detail .item.edit span {
+  margin-right: 0;
+}
+
+.profile-detail .btn-themed {
+  width: 155px;
+  float: right;
+  margin-bottom: 5px;
+}
+
+.profile-detail .form-group {
+  display: inline-block;
+  width: 200px;
+  margin: 0;
+}
+
+.profile-detail .form-control {
+  height: 35px;
+  padding: 0 5px;
+}
+
+.profile-detail .form-group .reminder {
+  position: absolute;
+  top: 8px;
+  left: 100%;
+  width: 140px;
+  padding-left: 10px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #444444;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.profile-detail .btn-cancel {
+  opacity: 0.3;
+}
+
+.profile-detail .upload-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(68, 68, 68, 0.7);
+}
+
+.profile-detail .upload-img input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.profile-detail .upload-img label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+}
+
+.profile-detail .updated-msg {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 10px;
+  float: right;
 }
