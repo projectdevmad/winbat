@@ -9,7 +9,8 @@
     RegisterController.$inject = ['searchService', '$location', '$rootScope', '$http', '$scope', '$translate', '$translatePartialLoader', '$routeParams', '$timeout', '$q'];
 
     function RegisterController(searchService, $location, $rootScope, $http, $scope, $translate, $translatePartialLoader, $routeParams, $timeout, $q) {
-		$scope.url =  "./json/register.json";
+		//$scope.url =  "./json/register.json";
+		$scope.url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/user/signup";
 		$scope.form = {};
 		$scope.form.fname = "";
 		$scope.form.lname = "";  
@@ -22,31 +23,36 @@
 		
 		$scope.register = function (){
 			var method = 'POST';
-			console.log( JSON.stringify($scope.form));
+			//console.log( JSON.stringify($scope.form));
             return $http({
                 method: method,
                 url: $scope.url,
-			//	headers: {'Content-Type': 'application/json'},
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: ObjecttoParams($scope.form)
+				headers: {'Content-Type': 'application/json'},
+			//	headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                //data: ObjecttoParams($scope.form)
+				data: $scope.form
 
             }).
             then(function(response) {
-                if (response.status == 200) {
+				
+				//return {"username":"test3","password":null,"email":"admin@23.com"}
+                if (response.data.username) {
 					var data = response.data;
-					if (data.status){
+					if (data.username){
 						 alert("You are successfully registered. Welcome to RootStock.");	
 					}else{
 						 alert("service connection failed");	
 					}
+					console.log(data);
                     return response.data;
                 } else {
-                    alert("service connection failed");
+					
+                    alert(response.data.message);
                     return null;
                 }
 
             }, function(response) {
-
+				 alert(response.data.message);
             });
 			console.log($scope.form);
 			

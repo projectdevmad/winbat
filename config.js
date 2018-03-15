@@ -1,56 +1,56 @@
 var regions =[
 {
-	"key": "1",
+	"key": "Lorem Ipsum xxxxx1",
 	"value": "Lorem Ipsum xxxxx1"
 },
 {
-	"key": "2",
+	"key": "Lorem Ipsum xxxxx2",
 	"value": "Lorem Ipsum xxxxx2"
 },
 {
-	"key": "3",
+	"key": "Lorem Ipsum xxxxx3",
 	"value": "Lorem Ipsum xxxxx3"
 }
 ];
 var prices =[
 {
-	"key": "1",
+	"key": "500-1000",
 	"value": "$500 - $1,000"
 },
 {
-	"key": "2",
+	"key": "1000-2000",
 	"value": "$1,000 - $2,000"
 },
 {
-	"key": "3",
+	"key": "2000-3000",
 	"value": "$2,000 - $3,000"
 }
 ];
 var styles =[
 {
-	"key": "1",
+	"key": "Savory and Classic1",
 	"value": "Savory and Classic1"
 },
 {
-	"key": "2",
+	"key": "Savory and Classic2",
 	"value": "Savory and Classic2"
 },
 {
-	"key": "3",
+	"key": "Savory and Classic3",
 	"value": "Savory and Classic3"
 }
 ];
 var grapes =[
 {
-	"key": "1",
+	"key": "Bordeaux Blend Red1",
 	"value": "Bordeaux Blend Red1"
 },
 {
-	"key": "2",
+	"key": "Bordeaux Blend Red2",
 	"value": "Bordeaux Blend Red2"
 },
 {
-	"key": "3",
+	"key": "Bordeaux Blend Red3",
 	"value": "Bordeaux Blend Red3"
 }
 ];

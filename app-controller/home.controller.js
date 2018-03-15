@@ -8,12 +8,14 @@
     HomeController.$inject = ['searchService', '$location', '$scope', '$routeParams', '$rootScope', '$http'];
 
     function HomeController(searchService, $location, $scope, $routeParams, $rootScope, $http) {
-        $scope.url = "./json/inventory2.json";
+       // $scope.url = "./json/inventory2.json";
+	    $scope.url  = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/product/search?q=Chateau%20Mouton";
 		$scope.keyword = "";
         $scope.details = {};
         $scope.recentlyTastedWines = [];
         $scope.trendingWines = [];
         $scope.hotDeals = [];
+		$scope.keywords = [];
 
 
         init();
@@ -44,7 +46,17 @@
 
 
         }
-
+		$scope.searchKeyword = function searchKeyword(){
+			$scope.catalogUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/catalog/suggest?q="+$scope.keyword;
+			searchService.search($scope.catalogUrl).then(function(data) {
+                
+				if (data == null) return;
+				$scope.keywords = [];
+				for (var i =0; i<data.length; i++){
+					$scope.keywords.push(data[i].name);
+				}
+            });
+		}
         $scope.viewRecord = function viewRecord(licenseNo) {
             let params = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no, width=800,height=600,left=100,top=100";
 

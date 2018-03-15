@@ -5,13 +5,13 @@
 		<h1 class="big-title m-0 mb-5 text-center">Rootstock</h1>
 		<p class="desc text-center pb-30 mb-0 pb-xs-20">Find your ideal wine for the best price</p>
 		<div class="form-group mt-5 form-search">
-			<input type="text" class="form-control" name="keyword" ng-model="keyword" />
+			<input type="text" class="form-control border-bottom short" name="keyword" placeholder="Wine Name" ng-model="keyword" bs-options="state for state in $root.searchKeyword(keyword)"  bs-typeahead  />
 			<button ng-click="clickSearch()"><i class="icon-search" ></i></button>
 		</div>
 	</div>
 </section>
 
-<section class="product-list pt-80 pt-xs-50 pb-60 pb-xs-20 bg-grey" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}" >
+<section class="product-list pt-80 pt-xs-50 pb-60 pb-xs-20 bg-grey" cg-busy="{promise:thepromise,templateUrl:templateUrl,message:message,backdrop:'',delay:300,minDuration:minDuration}" >
 	<div class="container width-990 pl-sm-10 pr-sm-10">
 		<h2 class="title m-0 mb-40 mb-xs-20 pl-xs-10">Recently Tasted Wines</h2>
 		<div class="row pl-sm-5" >

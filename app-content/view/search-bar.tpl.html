@@ -1,8 +1,9 @@
 
 <form method="GET" name="searchForm" id="searchForm"><section class="search pt-10 pb-40 pb-xs-10">
     <div class="container width-990 pl-xs-10 pr-xs-10">
+       
         <div class="form-group form-search">
-            <input type="text" class="form-control border-bottom short" name="keyword" placeholder="Wine Name" ng-model="data.keyword" />
+            <input type="text" class="form-control border-bottom short" name="keyword" placeholder="Wine Name" ng-model="data.keyword" bs-options="state for state in $root.searchKeyword(data.keyword)"  bs-typeahead  />
             <button ng-click="$root.clickSearch()"><i class="icon-search"></i></button>
         </div>
         <div class="filter clearfix pl-sm-5 pr-sm-5">

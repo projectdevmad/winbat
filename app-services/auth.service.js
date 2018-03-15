@@ -31,11 +31,16 @@
                     });
             }, 1000);
 			*/
-          
-            $http.post('./json/login.json', { username: username, password: password })
+          	var login_url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/user/login";
+            $http.post(login_url, { username: username, password: password } ,{withCredentials: true})
                 .success(function (response) {
+					
                     callback(response);
-                });
+					
+                })
+				.error(function(data, status) {
+				 	alert(data.message);
+				});
 
         }
 

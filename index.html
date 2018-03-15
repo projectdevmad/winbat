@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./app-content/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="./app-content/css/utility-classes.css">
     <link rel="stylesheet" href="./app-content/css/custom-bootstrap-margin-padding.css">
+    <link rel="stylesheet" href="./app-content/css/magnific-popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Merriweather" rel="stylesheet">
     <link rel="stylesheet" href="./app-content/css/style.css">
@@ -23,7 +24,7 @@
 </head>
 
 <body>
-    <div class="loading"></div>
+    <div class="loading" ></div>
     <div class="wrapper">
         <header>
             <div class="container-fluid pl-30 pl-md-15 pr-30 pr-md-15">
@@ -111,8 +112,9 @@
     <script src="./app-content/js/angular-strap.tpl.js"></script>
     <script src="./app-content/js/angular-busy.js"></script>
     <script src="./app-content/js/ui-bootstrap.js"></script>
-    
-    
+   <script src="//www.google.com/recaptcha/api.js"></script>
+    <script src="./app-content/js/angular-recaptcha.js"></script>
+ <!-- -->   
     <!-- App Core -->
     <script src="config.js"></script>
     <script src="app.js"></script>
@@ -139,6 +141,9 @@
     <script src="./app-content/js/typeahead.tpl.js"></script>
     <script src="./app-content/js/ng-infinite-scroll.js"></script>
     <script src="./app-content/js/draggabilly.pkgd.min.js"></script>
+    <script src="./app-content/js/jquery.magnific-popup.min.js"></script>
+    <script src="./app-content/js/custom.js"></script>
+    
     <script>
     new WOW().init();
 	$(document).ready(function(){
@@ -150,7 +155,7 @@
 	  $(this).parent().hide().siblings(".content").show();
 	  return false;
 	});
-	})
+	});
     </script>
 </body>
 

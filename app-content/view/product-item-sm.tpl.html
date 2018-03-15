@@ -1,53 +1,57 @@
 <div class="product-item long shadow bg-white clearfix">
 					<div class="img pull-left">
-						<img ng-src="{{product.img_url}}" />
+						<img ng-src="{{product.catalog.img}}" />
 						<div class="visible-xs text-center p-15 pt-10 pb-10">
 							<div class="price mb-5" ng-bind-html="product.price | currency:$:0"></div>
-							<a href="#/productDetails/{{product.id}}" class="btn-themed">Learn More</a>
+							<a href="#/productDetails/{{product.catalog.name}}/{{product.catalog.vintage}}" class="btn-themed">Learn More</a>
 						</div>
 					</div>
 					<div class="content pull-left">
-						<a href="#/productDetails/{{product.id}}"><h4 class="name mb-5" ng-bind-html="product.display"></h4></a>
+						<a href="#/productDetails/{{product.catalog.name}}/{{product.catalog.vintage}}"><h4 class="name mb-5" ng-bind-html="product.display"></h4></a>
 						<div class="year mb-5" ng-bind-html="product.vintage"></div>
 						<div class="clearfix">
 							<div class="pull-left">
-								<div class="score mb-15 mb-xs-20">
-									<i class="icon-happy"></i> <span  ng-bind-html="product.happy">133</span>
-									<i class="icon-sad"></i> <span  ng-bind-html="product.sad">2</span>
+								<div class="score mb-15 mb-xs-20" ng-show='(product.overall_tasting_note.total && product.overall_tasting_note.overall )'>
+									<i class="icon-happy"></i> <span  ng-bind-html="$root.getHappy(product.overall_tasting_note)"></span>
+									<i class="icon-sad"></i> <span  ng-bind-html="$root.getSad(product.overall_tasting_note)"></span>
 								</div>
-                                <div  ng-if=" product.tasting_note.smell.length>0">
-                                    <div class="color mb-15"><span style="background-color: {{product.taste_color}};"></span>{{product.taste}}</div>
+                                <div  ng-if=" product.overall_tasting_note.smells.length>0">
+                                    <div class="color mb-15"><span style="background-color: {{product.overall_tasting_note.color.base}};"></span>{{product.overall_tasting_note.color.base}}</div>
                                     <ul class="icons mb-20 mb-xs-10">
-                                        <li tabindex="-1" ng-repeat="smell in product.tasting_note.smell">
-                                            <i class="icon-{{smell.taste}}" style="background-image: url('{{smell.img_url}}');"></i>
-                                            <div ng-bind-html="smell.vote">987</div><span ng-bind-html="smell.taste">Strawberry</span>
+                                        <li tabindex="-1" ng-repeat="smell in product.overall_tasting_note.smells">
+                                            <i class="icon-{{smell.name}}" style="background-image: url('{{smell.img_url}}');"></i>
+                                            <div ng-bind-html="smell.vote">987</div><span ng-bind-html="smell.name">Strawberry</span>
                                         </li>
                                         <!--<li tabindex="-1"><i class="icon-cherry"></i><div>762</div><span>Cherry</span></li>
                                         <li tabindex="-1"><i class="icon-lemon"></i><div>991</div><span>Lemon</span></li>
                                         <li tabindex="-1"><i class="icon-apple"></i><div>546</div><span>Apple</span></li>-->
                                     </ul>
-                                    <a href="#/addMyTastingNote/{{product.id}}" class="add-to-note">Add My Tasting Note</a>
+                                    <a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="add-to-note">Add My Tasting Note</a>
                                 </div>
-                                <div  ng-if=" product.tasting_note.smell.length==0">
-                                 	<a href="#/addMyTastingNote/{{product.id}}" class="add-to-note">Be the first to review this wine</a>
+                                <div  ng-if=" product.overall_tasting_note.smells.length==null">
+                                 	<a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="add-to-note">Be the first to review this wine</a>
                                 </div>
 							</div>
 							<div class="pull-right pt-xs-30 visible-xs">
 								<div class="ability-chart-wrapper">
 									<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
 									<div class="ability-chart">
+										<div class="pull-right pt-20 pt-xs-30">
+								<div class="ability-chart-wrapper">
+									<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+									<div class="ability-chart">
 										<div data-title="sweetness">
-											<span ng-repeat="n in [].constructor(product.tasting_note.sweetness) track by $index"></span>
-										</div>
-										<div data-title="acidity">
-											<span ng-repeat="n in [].constructor(product.tasting_note.acidity) track by $index"></span>
-										</div>
-										<div data-title="Body">
-											<span ng-repeat="n in [].constructor(product.tasting_note.body) track by $index"></span>
-										</div>
-										<div data-title="Tannin">
-											<span ng-repeat="n in [].constructor(product.tasting_note.tannin) track by $index"></span>
-										</div>
+                           		<span ng-repeat="n in [].constructor($root.parseInteger(product.overall_tasting_note.taste.sweetness)) track by $index"></span>
+                            </div>
+                            <div data-title="acidity">
+                                <span ng-repeat="n in [].constructor($root.parseInteger(product.overall_tasting_note.taste.acidity)) track by $index"></span>
+                            </div>
+                            <div data-title="Body">
+                                <span ng-repeat="n in [].constructor($root.parseInteger(product.overall_tasting_note.taste.body)) track by $index"></span>
+                            </div>
+                            <div data-title="Tannin">
+                                <span ng-repeat="n in [].constructor($root.parseInteger(product.overall_tasting_note.taste.tannin)) track by $index"></span>
+                            </div>
 									</div>
 									<div class="ability-text">
 										<svg viewBox="0 0 200 200">
@@ -87,17 +91,17 @@
 							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
 							<div class="ability-chart">
 										<div data-title="sweetness">
-											<span ng-repeat="n in [].constructor(product.tasting_note.sweetness) track by $index"></span>
-										</div>
-										<div data-title="acidity">
-											<span ng-repeat="n in [].constructor(product.tasting_note.acidity) track by $index"></span>
-										</div>
-										<div data-title="Body">
-											<span ng-repeat="n in [].constructor(product.tasting_note.body) track by $index"></span>
-										</div>
-										<div data-title="Tannin">
-											<span ng-repeat="n in [].constructor(product.tasting_note.tannin) track by $index"></span>
-										</div>
+                           		<span ng-repeat="n in [].constructor(parseInteger(product.overall_tasting_note.taste.sweetness)) track by $index"></span>
+                            </div>
+                            <div data-title="acidity">
+                                <span ng-repeat="n in [].constructor(parseInteger(product.overall_tasting_note.taste.acidity)) track by $index"></span>
+                            </div>
+                            <div data-title="Body">
+                                <span ng-repeat="n in [].constructor(parseInteger(product.overall_tasting_note.taste.body)) track by $index"></span>
+                            </div>
+                            <div data-title="Tannin">
+                                <span ng-repeat="n in [].constructor(parseInteger(product.overall_tasting_note.taste.tannin)) track by $index"></span>
+                            </div>
 									</div>
 									<div class="ability-text">
 										<svg viewBox="0 0 200 200">
@@ -128,7 +132,7 @@
 										</svg>
 									</div>
 						</div>
-						<a href="#/productDetails/{{product.id}}" class="btn-themed hidden-xs">Learn More</a>
+						<a href="#/productDetails/{{product.catalog.name}}/{{product.catalog.vintage}}" class="btn-themed hidden-xs">Learn More</a>
 					</div>
 				</div>
 

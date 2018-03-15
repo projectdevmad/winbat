@@ -523,6 +523,7 @@
 		width: 30%;
 		height: auto;
 		padding: 12px 0 0;
+    text-align: center;
 	}
 	
 	.product-item.long .img:after {
@@ -538,8 +539,8 @@
 	
 	.product-item.long .img img {
 		position: relative;
-		width: 100%;
-		height: auto;
+		max-width: 100%;
+		max-height: 110px;;
 	}
 	
 	.product-item.long .name {

@@ -15,6 +15,7 @@
 		}
 		$scope.notesList = []; //Tasting Input Record
 		$scope.user = $rootScope.globals.currentUser.user;
+		console.log($rootScope.globals.currentUser);
 		$scope.busy = false;
 		
 		$scope.loadmore = function (){
@@ -23,7 +24,7 @@
 				return;	
 			}
 			$scope.busy = true;
-			$scope.promise = searchService.search('./json/userNotesList.json?memberid='+$scope.user.id + "&page="+$scope.page).then(function(data) {
+			$scope.promise = searchService.search('./json/userNotesList.json?memberid='+$scope.user + "&page="+$scope.page).then(function(data) {
                 if (data.length == 0){
                     $scope.loadEnd = true;
                     return;

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'bw.paging', 'cgBusy' , 'infinite-scroll', 'ui.bootstrap'])
+        .module('app', ['ngRoute', 'ngCookies', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'bw.paging', 'cgBusy' , 'infinite-scroll', 'ui.bootstrap' ])
         .config(config)
         .run(run);
 
@@ -11,8 +11,8 @@
         .config(function($typeaheadProvider) {
             angular.extend($typeaheadProvider.defaults, {
                 animation: 'am-flip-x',
-                minLength: 2,
-                limit: 8
+                minLength: 1,
+                limit: 20
             });
         })
 
@@ -47,7 +47,7 @@
                 templateUrl: 'app-content/view/product-detail.html',
                 controllerAs: 'vm'
             })
-			.when('/productDetails/:id', {
+			.when('/productDetails/:name/:year', {
                 controller: 'ProductController',
                 templateUrl: 'app-content/view/product-detail.html',
                 controllerAs: 'vm'
@@ -128,7 +128,7 @@
 				},
                 controllerAs: 'vm'
             })
-			.when('/addMyTastingNote/:id', {
+			.when('/addMyTastingNote/:name/:year', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
 				resolve:{
@@ -161,8 +161,8 @@
             $templateCache.removeAll();
         });
 		
-        $rootScope.delay = 0;
-        $rootScope.minDuration = 0;
+        $rootScope.delay = 300;
+        $rootScope.minDuration = 300;
         $rootScope.message = 'Please Wait...';
         $rootScope.backdrop = true;
         $rootScope.promise = null;
@@ -217,11 +217,62 @@
 			$rootScope.user = {};
 			$rootScope.globals = {};
             $cookies.remove('globals');
+			$cookies.remove('JSESSIONID');
             $http.defaults.headers.common.Authorization = 'Basic';
-			$location.path("index");
+			
+			var logout_url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/user/logout";
+			return $http({
+                method: "Post",
+                url: logout_url,
+                withCredentials: true
+
+            }).then(function(response) {
+				$location.path("login");
+			})
+			
+		}
+		$rootScope.searchKeyword = function searchKeyword(name){
+			$rootScope.keyword;
+			if (name == null || name == "" ) return null;
+			var catalogUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/catalog/suggest?q="+name;
+			return $http({
+                method: "GET",
+                url: catalogUrl,
+                data: []
+
+            }).
+            then(function(response) {
+				var data = response.data;
+                if (response.status == 200) {
+                   if (data == null) return;
+						$rootScope.keywords = [];
+					for (var i =0; i<data.length; i++){
+						$rootScope.keywords.push(data[i].name);
+					}
+					return $rootScope.keywords;
+                } else {
+                    alert("service connection failed");
+                    return null;
+                }
+
+            }, function(response) {
+
+            });
+			
+		}
+		$rootScope.parseInteger = function parseInteger($val){
+			
+			if ($val == null) return 0;
+			return parseInt($val);
+		}
+		$rootScope.getHappy = function getHappy(tasting_note){
+			return Math.round((tasting_note.overall/5 )*tasting_note.total);
+		}
+		$rootScope.getSad = function getSad(tasting_note){
+			return Math.round(tasting_note.total*(1-(tasting_note.overall/5)));
 		}
     }
-
+	
 	angular.module('app').directive('productItem', function() {
 	   return {
 		 restrict: 'E',

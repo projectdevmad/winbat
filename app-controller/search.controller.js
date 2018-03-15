@@ -22,9 +22,9 @@
 		$scope.sortby = "";
         $scope.busy = false;
         $scope.searchResult = [];
-		//$scope.url = "https://private-anon-87f38d1934-winebatapi.apiary-proxy.com/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
+		
         $scope.url = "./json/search.json";
-      //  $scope.url = "http://ec2-54-144-62-155.compute-1.amazonaws.com:8080/api/search/product?q=Chateau%20Mouton&vintage=2010&price_to=5000&price_from=100";
+        $scope.url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/product/search?";
 		if ($routeParams.params){
 			$scope.params = $routeParams.params;
 			$scope.searchData = deparam($routeParams.params);
@@ -87,7 +87,23 @@
 			searchData();
 		}
 		function searchData(){
-			$scope.promise = searchService.search($scope.url + "?page="+$scope.page+"&sortby="+$scope.sortby+"&"+$scope.params).then(function(data) {
+			var param_plus = "";
+			if ($scope.searchData.keyword == null || $scope.searchData.keyword == ""){
+				
+				return;
+			}
+			if ($scope.searchData.price != null && $scope.searchData.price != ""){
+				var prices=$scope.searchData.price.split("-");
+				param_plus +="&price_to="+prices[1]+"&price_from="+prices[0];
+			}
+			if ($scope.searchData.year!= null && $scope.searchData.year != ""){
+				param_plus +="&vintage="+$scope.searchData.year;
+			}
+			
+			
+			var param = "q="+$scope.searchData.keyword+ param_plus
+			//$scope.promise = searchService.search($scope.url + "?page="+$scope.page+"&sortby="+$scope.sortby+"&"+$scope.params).then(function(data) {
+			$scope.promise = searchService.search($scope.url + param).then(function(data) {
                 if (data.products.length == 0){
                     $scope.loadEnd = true;
                     return;
@@ -104,6 +120,12 @@
 
             });
 		}	
+		$scope.parseInteger = function parseInteger($val){
+			console.log($val);
+			if ($val == null) return 0;
+			return parseInt($val);
+		}
+		
 
     }
 
