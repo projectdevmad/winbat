@@ -12,8 +12,8 @@
 		//$scope.url =  "./json/register.json";
 		$scope.url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/user/signup";
 		$scope.form = {};
-		$scope.form.fname = "";
-		$scope.form.lname = "";  
+		$scope.form.first_name = "";
+		$scope.form.last_name = "";  
 		$scope.form.email = "";  
 		$scope.form.password = "";  
 		$scope.form.passwordConfirm = "";
@@ -24,6 +24,8 @@
 		$scope.register = function (){
 			var method = 'POST';
 			//console.log( JSON.stringify($scope.form));
+			$scope.form.dob = $scope.form.bYear + "-" + $scope.form.bMonth  + "-" + ("0" + $scope.form.bDay).slice(-2);
+			//return;
             return $http({
                 method: method,
                 url: $scope.url,
@@ -39,7 +41,10 @@
                 if (response.data.username) {
 					var data = response.data;
 					if (data.username){
-						 alert("You are successfully registered. Welcome to RootStock.");	
+						 alert("You have been successfully registered. Please check with your registered email for confirmation email.");
+            // window.location.href="#/index";
+						 $location.path("index");;
+	
 					}else{
 						 alert("service connection failed");	
 					}

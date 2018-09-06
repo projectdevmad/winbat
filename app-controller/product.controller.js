@@ -9,32 +9,35 @@
     ProductController.$inject = ['searchService', '$location', '$rootScope', '$http', '$scope', '$translate', '$translatePartialLoader', '$routeParams', '$timeout', '$q'];
 
     function ProductController(searchService, $location, $rootScope, $http, $scope, $translate, $translatePartialLoader, $routeParams, $timeout, $q) {
-<<<<<<< HEAD
-	  
-	  }
-=======
 	  	
 		//alert("Get Product ID :" + $routeParams.id );
 		//$scope.url = "./json/product.json";
+		$scope.myNote = [];
 		var name = $routeParams.name;
 		var vintage = $routeParams.year;
 		$scope.url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/product/detail?name="+name+"&vintage="+vintage;
 		$scope.notesUrl = "./json/notesList.json";
 		
-		$scope.notesVoteUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/tasting/"+name+"?by=vote&vintage="+vintage;
+		$scope.notesVoteUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/tasting/"+name+"?by=self&vintage="+vintage;
 		$scope.notesLatestUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/tasting/"+name+"?by=latest&vintage="+vintage;
         $scope.product = {};
 		
 		$scope.promise = searchService.search($scope.url).then(function(data) {
+			if (data !=null)
                 $scope.product = data.products[0];
                
                 console.log(data);
          });
 		 
 		  $scope.promise = searchService.search($scope.notesVoteUrl).then(function(data) {
-                $scope.myNote = data[0];
+			  console.log(data);
+			  if (data != null){
+                $scope.myNote[0] =  data[0];
+			  }else{
+			  	$scope.myNote = null;
+			  }
                
-               // console.log(data[0]);
+                console.log($scope.myNote);
 				
          });
 		 $scope.promise = searchService.search($scope.notesLatestUrl).then(function(data) {
@@ -51,7 +54,7 @@
 			if (note.voted_for == null){
 				howVote = "up";
 				note.vote_up ++ ;
-				note.voted_for = true;	
+				note.voted_for = "up";	
 			}else{
 				howVote = "un_up";
 				note.vote_up -- ;
@@ -123,7 +126,6 @@
 			return parseInt($val);
 		}
 	}
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 
 
 })();

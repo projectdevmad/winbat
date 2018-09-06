@@ -13,9 +13,28 @@
 		if (!$rootScope.globals.currentUser){
 			$location.path("login");	
 		}
-		$scope.notesList = []; //Tasting Input Record
-		$scope.user = $rootScope.globals.currentUser.user;
+		
+		$scope.notes = []; //Tasting Input Record
+		$scope.user = $rootScope.globals.currentUser;
 		console.log($rootScope.globals.currentUser);
+		//$scope.user = $rootScope.globals.currentUser.user;
+		$scope.profileUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/profile/user";
+		
+		 $scope.promise =  $http({
+						url: $scope.profileUrl,
+						method: 'GET',
+						withCredentials: true
+					}).success(function(data){
+						$scope.user = data;
+						$rootScope.globals.currentUser = data;
+					}).error(function(data){
+						 //re-login
+							$rootScope.logout();
+							$location.path("login");
+							return;
+						
+					});
+		$scope.url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/profile/tasting/"+$scope.user.username;
 		$scope.busy = false;
 		
 		$scope.loadmore = function (){
@@ -23,13 +42,16 @@
 			if ($scope.busy == true){
 				return;	
 			}
+			if ($scope.page >1){
+				return;	
+			}
 			$scope.busy = true;
-			$scope.promise = searchService.search('./json/userNotesList.json?memberid='+$scope.user + "&page="+$scope.page).then(function(data) {
+			$scope.promise = searchService.search($scope.url).then(function(data) {
                 if (data.length == 0){
                     $scope.loadEnd = true;
                     return;
                 }
-                $scope.notesList = $scope.notesList.concat(data);
+                $scope.notes = $scope.notes.concat(data);
 				pieChart();
                 $scope.busy = false;
               

@@ -9,10 +9,6 @@
     addMyTastingNoteController.$inject = ['searchService', '$location', '$rootScope', '$http', '$scope', '$translate', '$translatePartialLoader', '$routeParams', '$timeout', '$q'];
 
     function addMyTastingNoteController(searchService, $location, $rootScope, $http, $scope, $translate, $translatePartialLoader, $routeParams, $timeout, $q) {
-<<<<<<< HEAD
-	  
-	  }
-=======
 		
 		if(!$rootScope.globals.currentUser){
 			$location.path("login");
@@ -29,7 +25,10 @@
 		$scope.uploadUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/tasting";
 		$scope.product = {};
 		$scope.smells = [];
-		$scope.formData= {};
+		$scope.formData= {"taste":{"sweetness":"1","acidity":"1","tannin":"1","body":"1"},"appearance":{"color":{"intensity":"1"}},"overall":"5"};
+		$scope.formDataFever= {"taste":{"sweetness":"1","acidity":"1","tannin":"1","body":"1"},"appearance":{"color":{"intensity":"1"}},"overall":"5"};
+		$scope.formDataPro= {"taste":{"sweetness":"1","acidity":"1","tannin":"1","body":"1","alcohol":"0"},"appearance":{"color":{"intensity":"1"},"bubbles":"0","deposit":"0","legs":"0","intensity":"0","clarity":"0"},"overall":"5"};
+		
 		//console.log($rootScope.globals.currentUser);
 		if (!$scope.name){
 			alert("Sorry , product not found");
@@ -66,7 +65,6 @@
                 console.log(data);
          });
 		 $scope.smellsChange = function (){
-			 console.log("changed");
 			$scope.smells = [];
 			 $(".smellsInput").each(function(){
 				 console.log($(this).val());
@@ -79,7 +77,13 @@
 			 $scope.smells = [];
 			 $(".smellsInput").each(function(){
 				$scope.smells.push({'name':$(this).val()});
-			 })
+			 });
+			  $("input").each(function(){
+				  console.log(angular.element(this));
+				  angular.element(this).triggerHandler('change');
+
+				  $(this).change();
+			  });
 			 $scope.formData.smells = $scope.smells;
 			 //$scope.formData.userid = $rootScope.globals.currentUser.user.id;
 			 
@@ -87,6 +91,11 @@
 			 $scope.formData.product = $scope.name;
 			 $scope.formData.author = $rootScope.globals.currentUser.username;
 			 $scope.formData.appearance.color.intensity = 1;
+			 
+			if (!$scope.validation()){
+				return false;
+			}
+			
 			 $scope.promise =  $http({
 						url: $scope.uploadUrl,
 						method: 'POST',
@@ -102,7 +111,9 @@
 
 						if(!data.success){
 						// if not successful, bind errors to error variables
-						alert("Your tasting note is successfully added. Thank you for your input.");//pls keep this alert after the submission
+						//alert("Your tasting note is successfully added. Thank you for your input.");pls keep this alert after the submission
+						//console.log("./productDetails/"+ $scope.product.catalog.name+"/"+$scope.product.catalog.vintage);
+						$location.path("productDetails/"+ $scope.product.catalog.name+"/"+$scope.product.catalog.vintage);
 
 						}else{
 							
@@ -117,7 +128,66 @@
 						}
 					});
 		 }
+		 $scope.validation = function(){
+			 $scope.invalidMsg="";
+			 if ($scope.formData.appearance.color.base == null){
+			 	$scope.invalidMsg +="*Please select the Color Base.<br>";
+			 }
+			 if ($scope.smells.length == 0){
+			 	$scope.invalidMsg +="*Please select the Smells.<br>";
+			 }
+			 if ($scope.invalidMsg !=""){
+				 $("#alert-danger").show();
+				 $('html, body').animate({ scrollTop: $('#alert-danger').offset().top }, 'slow');
+
+				 return false;
+			 }else {
+				return true; 
+			 }
+		 }
+		 $scope.pro = function pro(){
+					$(".pro").addClass("open");
+					$(".simple").removeClass("open");
+					$(".simple-opener").show();
+					$(".pro-opener").hide();
+					
+					//$scope.formData = $scope.formDataPro;
+					 $scope.formData.taste.alcohol = 1;
+					 $scope.formData.appearance.bubbles = 0;
+					 $scope.formData.appearance.deposit = 0;
+					 $scope.formData.appearance.legs = 0;
+					 $scope.formData.appearance.intensity = 0;
+					 $scope.formData.appearance.clarity = 0;
+					
+					
+					$timeout(function(){
+						$(".dot-a > input").trigger( "change" );
+						},500);
+				}
+				
+		$scope.simple=	function simple(){
+					$(".pro").removeClass("open");
+					$(".simple").addClass("open");
+					$(".simple-opener").hide();
+					$(".pro-opener").show();
+					
+					//$scope.formData = $scope.formDataFever;
+					//"bubbles":"0","deposit":"0","legs":"0","intensity":"0","clarity":"0"
+					delete $scope.formData.taste.alcohol;
+					delete $scope.formData.appearance.bubbles;
+					delete $scope.formData.appearance.deposit;
+					delete $scope.formData.appearance.legs;
+					delete $scope.formData.appearance.intensity;
+					delete $scope.formData.appearance.clarity;
+					
+					
+					$timeout(function(){
+						$(".dot-a > input").trigger( "change" );
+						},500);
+				}
 	}
+
+	
 	function applyJs(){
 		
 		
@@ -127,15 +197,39 @@
               suggest();
 			 
             });
-            $("#inputtags").keydown(function(){
+			
+            $("#inputtags").keyup(function(){
               $(".form-suggest").html("");
               $(".smell .smell-more .radio-a").each(function(){
-                if($(this).find("g").html().toLowerCase().includes($("#inputtags").val().toLowerCase())){
-                  if($(".form-tag .tag ." + $(this).find("i").attr("class")).length){
-                    return false;
+				  //console.log($(this).find("g").html());
+//				
+                if(!$(".form-tag > .tag [name='" + $(this).find("i").attr("name") + "']").length){
+                
+                  if($("#inputtags").val()==="" || $(this).find("g").html().toLowerCase().startsWith($("#inputtags").val().toLowerCase())){
+
+                    $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
                   }
-                  
-                  $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
+                }
+              });
+              suggest();
+              if($(".form-suggest .item").length < 1){
+                $(".form-suggest").html("<m>No results matched</m>");
+              }
+			  
+			  $("#inputtags").trigger('change');
+            });
+			
+            $("#inputtags").focusin(function(){
+              $(".form-suggest").html("");
+              $(".smell .smell-more .radio-a").each(function(){
+				  //console.log($(this).find("g").html());
+//				
+                if(!$(".form-tag > .tag [name='" + $(this).find("i").attr("name") + "']").length){
+                
+                  if($("#inputtags").val()==="" || $(this).find("g").html().toLowerCase().startsWith($("#inputtags").val().toLowerCase())){
+
+                    $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
+                  }
                 }
               });
               suggest();
@@ -147,6 +241,7 @@
             });
             
             function suggest(){
+			
               $(".form-tag .form-suggest > .item").click(function(){
                  
                 $("#inputtags").val("");
@@ -226,9 +321,13 @@
                   }
                 });
               }
+              suggest();
             });
+			
+			
+				
 	}
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
+	
 
 
 })();
