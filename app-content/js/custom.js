@@ -24,16 +24,60 @@ $(document).ready(function(){
 		for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 		return o;
 	}
+<<<<<<< HEAD
+=======
+  
+  $("header .navbar-toggle").click(function(e){
+    e.preventDefault();
+    $("#menu").addClass("open");
+  });
+  
+  $("header .menu-overlap, #menu [ng-href], #menu [href]").click(function(){
+    $("#menu").removeClass("open");
+  });
+  
+  setInterval(function(){
+    $(".product-img-popup").magnificPopup({
+      type: 'image'
+    });
+  },100);
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 	
 	// Form
 	$(".select-f").each(function(){
 		$(this).attr("tabindex", "-1");
+<<<<<<< HEAD
 		$(this).attr("ol-title", $(this).find("span").html());
 		$(this).after("<div class='select-f-list'></div>");
 		$(this).siblings(".select-f-list").html($(this).siblings("select").html());
 		$(this).siblings(".select-f-list").find("option").click(function(){
 			$(this).closest(".select-f-list").siblings(".select-f").find("span").html($(this).html());
 			$(this).closest(".select-f-list").siblings("select").find("option[value='" + $(this).attr("value") + "']").attr("selected", "true");
+=======
+		if($(this).attr("ol-title")===""){
+			  $(this).attr("ol-title", $(this).find("span").html());
+		}
+		$(this).after("<div class='select-f-list'></div>");
+		$(this).siblings(".select-f-list").html($(this).siblings("select").html());
+    
+		if($(this).siblings("select").find("option[selected]").length){
+		  $(this).siblings("select").find("option[selected]").attr("selected", "true");
+				$(this).find("span").html($(this).siblings("select").find("option[selected]").html());
+		}
+    
+    
+		$(this).siblings(".select-f-list").find("option").click(function(){
+			$(this).closest(".select-f-list").siblings(".select-f").find("span").html($(this).html());
+			$(this).closest(".select-f-list").siblings("select").find("option").removeAttr("selected");
+			$(this).closest(".select-f-list").siblings("select").find("option[value='" + $(this).attr("value") + "']").attr("selected", "true");
+			var $comp  = $(this).closest(".select-f-list").siblings("select");
+			var $value = $(this).attr("value");
+			var $scope = $comp.scope(); 
+			//$comp.val($value);
+			$comp.trigger('input'); // Use for Chrome/Firefox/Edge
+   			$comp.trigger('change');
+
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 		});
 	});
 	
@@ -78,7 +122,10 @@ $(document).ready(function(){
 	});
 	
 	$(".pie-chart > div[data-p]").each(function(){
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 		var scale;
 		if($(this).data("s") != null){
 			scale = $(this).data("s") / 5;
@@ -124,10 +171,45 @@ $(document).ready(function(){
 		if($(this).is(':checked')){
 			$(this).parent().siblings(".dot-a").children("input").removeAttr("checked");
 			$(this).parent().siblings(".dot-a").removeClass("active");
+<<<<<<< HEAD
 			$(this).parent().addClass("active");
 			$(this).parent().children("input").attr("checked", "checked");
 		}
 	});
+=======
+      $(this).parent().siblings(".dot-a").find("dot").removeAttr("style").removeClass(".ui-draggable .ui-draggable-handle").insertAfter(this);
+			$(this).parent().addClass("active");
+			$(this).attr("checked", "checked");
+		}
+	});
+  
+  $(".dot-a dot").draggabilly({
+    axis: "x",
+  }).on("dragEnd", function(){
+    var d_left = parseInt($(this).css("left").replace("px", ""));
+    var go_no;
+    var go_t;
+    if(d_left  > $(this).parent().width()){
+      go_no = Math.floor((d_left - $(this).parent().width()) / $(this).parent().width()) + 1 + $(this).closest(".form-dot").find(".dot-a").index($(this).parent());
+      go_t = $(this).closest(".form-dot").find(".dot-a").eq(go_no);
+      if(go_t.length){
+        go_t.find("input").click();
+      }else{
+        $(this).removeAttr("style").removeClass(".ui-draggable .ui-draggable-handle");
+      }
+    }else if(0 > d_left){
+      go_no = $(this).closest(".form-dot").find(".dot-a").index($(this).parent()) - (Math.floor(Math.abs(d_left) / $(this).parent().width()) + 1);
+      go_t = $(this).closest(".form-dot").find(".dot-a").eq(go_no);
+      if(go_no > -1 && go_t.length){
+        go_t.find("input").click();
+      }else{
+        $(this).removeAttr("style").removeClass(".ui-draggable .ui-draggable-handle");
+      }
+    }else{
+      $(this).removeAttr("style").removeClass(".ui-draggable .ui-draggable-handle");
+    }
+  });
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 	
 	$(".form-tag").click(function(){
 		$(this).children("input").focus();

@@ -2,7 +2,11 @@
     'use strict';
 
     angular
+<<<<<<< HEAD
         .module('app', ['ngRoute', 'ngCookies', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'bw.paging', 'cgBusy' , 'infinite-scroll'])
+=======
+        .module('app', ['ngRoute', 'ngCookies', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'bw.paging', 'cgBusy' , 'infinite-scroll', 'ui.bootstrap' ])
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
         .config(config)
         .run(run);
 
@@ -11,12 +15,21 @@
         .config(function($typeaheadProvider) {
             angular.extend($typeaheadProvider.defaults, {
                 animation: 'am-flip-x',
+<<<<<<< HEAD
                 minLength: 2,
                 limit: 8
             });
         })
 
     function config($routeProvider, $locationProvider, $translateProvider, $translatePartialLoader, $typeaheadProvider) {
+=======
+                minLength: 1,
+                limit: 20
+            });
+        })
+
+    function config($routeProvider, $locationProvider, $translateProvider, $translatePartialLoader, $typeaheadProvider, $rootScope) {
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
         // $locationProvider.html5Mode(true);
 
         $translateProvider.useLoader('$translatePartialLoader', {
@@ -37,7 +50,11 @@
                 templateUrl: 'app-content/view/search.html',
                 controllerAs: 'vm'
             })
+<<<<<<< HEAD
             .when('/search/:searchType', {
+=======
+            .when('/search/:params', {
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
                 controller: 'SearchController',
                 templateUrl: 'app-content/view/search.html',
                 controllerAs: 'vm'
@@ -47,13 +64,30 @@
                 templateUrl: 'app-content/view/product-detail.html',
                 controllerAs: 'vm'
             })
+<<<<<<< HEAD
+=======
+			.when('/productDetails/:name/:year', {
+                controller: 'ProductController',
+                templateUrl: 'app-content/view/product-detail.html',
+                controllerAs: 'vm'
+            })
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 			.when('/merchant', {
                 controller: 'MerchantController',
                 templateUrl: 'app-content/view/merchant.html',
                 controllerAs: 'vm'
             })
 			.when('/merchantDetails', {
+<<<<<<< HEAD
                 controller: 'MerchantController',
+=======
+                controller: 'MerchantDetailsController',
+                templateUrl: 'app-content/view/merchant-detail.html',
+                controllerAs: 'vm'
+            })
+			.when('/merchantDetails/:id', {
+                controller: 'MerchantDetailsController',
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
                 templateUrl: 'app-content/view/merchant-detail.html',
                 controllerAs: 'vm'
             })
@@ -67,9 +101,73 @@
                 templateUrl: 'app-content/view/contact.html',
                 controllerAs: 'vm'
             })
+<<<<<<< HEAD
 			.when('/addMyTastingNote', {
                 controller: 'addMyTastingNoteController',
                 templateUrl: 'app-content/view/add-my-tasting-note.html',
+=======
+			.when('/register', {
+                controller: 'RegisterController',
+                templateUrl: 'app-content/view/register.html',
+                controllerAs: 'vm'
+            })
+			.when('/login', {
+                controller: 'LoginController',
+                templateUrl: 'app-content/view/login.html',
+                controllerAs: 'vm'
+            })
+			.when('/forgetPassword', {
+                controller: 'ForgetPasswordController',
+                templateUrl: 'app-content/view/forget-password.html',
+                controllerAs: 'vm'
+            })
+			.when('/profile', {
+                controller: 'ProfileController',
+                templateUrl: 'app-content/view/profile.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
+                controllerAs: 'vm'
+            })
+			.when('/myProfile', {
+                controller: 'MyProfileController',
+                templateUrl: 'app-content/view/my-profile.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
+                controllerAs: 'vm'
+            })
+			.when('/addMyTastingNote', {
+                controller: 'addMyTastingNoteController',
+                templateUrl: 'app-content/view/add-my-tasting-note.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
+                controllerAs: 'vm'
+            })
+			.when('/addMyTastingNote/:name/:year', {
+                controller: 'addMyTastingNoteController',
+                templateUrl: 'app-content/view/add-my-tasting-note.html',
+				resolve:{
+					 Data: ['$http','$rootScope','$location', function ($http, $rootScope,$location) {
+               	  		 if(!$rootScope.globals.currentUser){
+							$location.path('/login');
+						}
+              		 }]
+				},
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
                 controllerAs: 'vm'
             })
 
@@ -78,6 +176,15 @@
     run.$inject = ['$rootScope', '$location', '$cookies', '$http', '$translate', '$templateCache', '$timeout'];
 
     function run($rootScope, $location, $cookies, $http, $translate, $templateCache, $timeout) {
+<<<<<<< HEAD
+=======
+		$rootScope.searchFormData = {};
+		$rootScope.regions =	regions;
+		$rootScope.prices =	prices;
+		$rootScope.styles =	styles;
+		$rootScope.grapes =	grapes;
+		
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
         // keep user logged in after page refresh
         $rootScope.changeLanguage = function(lang) {
             console.log("change to " + lang)
@@ -86,6 +193,7 @@
         $rootScope.$on('$viewContentLoaded', function() {
             $templateCache.removeAll();
         });
+<<<<<<< HEAD
         $rootScope.delay = 0;
         $rootScope.minDuration = 0;
         $rootScope.message = 'Please Wait...';
@@ -96,6 +204,34 @@
                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
            }
 
+=======
+		
+        $rootScope.delay = 300;
+        $rootScope.minDuration = 300;
+        $rootScope.message = 'Please Wait...';
+        $rootScope.backdrop = true;
+        $rootScope.promise = null;
+           $rootScope.globals = $cookies.getObject('globals') || {};
+           if ($rootScope.globals.currentUser) {
+               $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+           }
+		    /* $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute){
+
+		  //  $rootScope.$on('$locationChangeStart', function (event, next, current) {
+				console.log(currRoute);
+				var appTo = currRoute.path.indexOf('/secure') !== -1;
+				if(!$rootScope.globals.currentUser){
+					console.log('DENY');
+					event.preventDefault();
+					$location.path('/login');
+				}
+				else {
+					console.log('ALLOW');
+					$location.path('/index');
+				}
+			});*/
+/*
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
            $rootScope.$on('$locationChangeStart', function (event, next, current) {
                // redirect to login page if not logged in and trying to access a restricted page
                var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
@@ -113,8 +249,81 @@
                 });
             }, 100);
         }
+<<<<<<< HEAD
     }
 
+=======
+		
+		$rootScope.clickSearch = function clickSearch(){
+			var paramString = $("#searchForm").serialize();
+			$rootScope.searchFormData = deparam(paramString);
+			
+			
+			$location.path('/search/'+paramString);
+			return false;
+			
+		}
+		$rootScope.logout = function(){
+			$rootScope.user = {};
+			$rootScope.globals = {};
+            $cookies.remove('globals');
+			$cookies.remove('JSESSIONID');
+            $http.defaults.headers.common.Authorization = 'Basic';
+			
+			var logout_url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/user/logout";
+			return $http({
+                method: "Post",
+                url: logout_url,
+                withCredentials: true
+
+            }).then(function(response) {
+				$location.path("login");
+			})
+			
+		}
+		$rootScope.searchKeyword = function searchKeyword(name){
+			$rootScope.keyword;
+			if (name == null || name == "" ) return null;
+			var catalogUrl = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/catalog/suggest?q="+name;
+			return $http({
+                method: "GET",
+                url: catalogUrl,
+                data: []
+
+            }).
+            then(function(response) {
+				var data = response.data;
+                if (response.status == 200) {
+                   if (data == null) return;
+						$rootScope.keywords = [];
+					for (var i =0; i<data.length; i++){
+						$rootScope.keywords.push(data[i].name);
+					}
+					return $rootScope.keywords;
+                } else {
+                    alert("service connection failed");
+                    return null;
+                }
+
+            }, function(response) {
+
+            });
+			
+		}
+		$rootScope.parseInteger = function parseInteger($val){
+			
+			if ($val == null) return 0;
+			return parseInt($val);
+		}
+		$rootScope.getHappy = function getHappy(tasting_note){
+			return Math.round((tasting_note.overall/5 )*tasting_note.total);
+		}
+		$rootScope.getSad = function getSad(tasting_note){
+			return Math.round(tasting_note.total*(1-(tasting_note.overall/5)));
+		}
+    }
+	
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 	angular.module('app').directive('productItem', function() {
 	   return {
 		 restrict: 'E',
@@ -125,5 +334,63 @@
 		};
 	
 	});
+<<<<<<< HEAD
 
 })();
+=======
+	angular.module('app').directive('productItemSm', function() {
+	   return {
+		 restrict: 'E',
+		 scope: {product: '='},
+		   templateUrl: './app-content/view/product-item-sm.tpl.html',
+		   restrict: 'E',
+		};
+	
+	});
+	angular.module('app').directive('searchBar', function() {
+	   return {
+		 restrict: 'E',
+		 scope: {data: '='},
+		   templateUrl: './app-content/view/search-bar.tpl.html',
+		   restrict: 'E',
+		};
+	
+	});
+	angular.module('app').directive('searchBarSm', function() {
+	   return {
+		 restrict: 'E',
+		 scope: {data: '='},
+		   templateUrl: './app-content/view/search-bar-sm.tpl.html',
+		   restrict: 'E',
+		};
+	
+	});
+	
+
+})();
+
+function deparam(query) {
+    var pairs, i, keyValuePair, key, value, map = {};
+    // remove leading question mark if its there
+    if (query.slice(0, 1) === '?') {
+        query = query.slice(1);
+    }
+    if (query !== '') {
+        pairs = query.split('&');
+        for (i = 0; i < pairs.length; i += 1) {
+            keyValuePair = pairs[i].split('=');
+            key = decodeURIComponent(keyValuePair[0]);
+            value = (keyValuePair.length > 1) ? decodeURIComponent(keyValuePair[1]) : undefined;
+            map[key] = value;
+        }
+    }
+    return map;
+}
+function ObjecttoParams(obj) {
+    var p = [];
+    for (var key in obj) {
+        p.push(key + '=' + encodeURIComponent(obj[key]));
+    }
+    return p.join('&');
+};
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359

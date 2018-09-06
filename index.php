@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <? 
 print_r($_GET);
 ?><!doctype html>
+=======
+<!doctype html>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 <html ng-app="app">
 
 <head>

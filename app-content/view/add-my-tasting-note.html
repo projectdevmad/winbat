@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="add-note pt-10 pt-xs-20 pb-170 pb-xs-60">
 	<form method="post" autocomplete="off">
 	<div class="container width-990">
@@ -13,6 +14,24 @@
 					<div class="details font-11">
 						<span class="text-grey">{{'Year' | translate}}:</span> 2015<br />
 						<span class="text-grey">{{'Category' | translate}}:</span> Red
+=======
+<section class="add-note pt-10 pt-xs-20 pb-170 pb-xs-60"  cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">
+	<form method="post" autocomplete="off" name="notesForm" id="notesForm" ng-submit="submit()">
+	<div class="container width-990">
+		<h1 class="title">{{'AddMyTastingNote' | translate}}</h1>
+	</div>
+  
+	<div class="bg-grey pt-30 pb-30 pt-xs-10 pb-xs-10">
+		<div class="container width-990 product-item">
+			<div class="clearfix">
+				<div class="pull-left xs-pull-none mb-xs-10">
+					<a href="#productDetails/{{product.catalog.name}}/{{product.catalog.vintage}}"><h2 class="name m-0" ng-bind-html="product.catalog.name"></h2></a>
+				</div>
+				<div class="pull-right xs-pull-none">
+					<div class="details font-11">
+						<span class="text-grey">{{'Year' | translate}}:</span> {{product.catalog.vintage}}<br />
+						<span class="text-grey">{{'Category' | translate}}:</span> {{product.catalog.name}}
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 					</div>
 				</div>
 			</div>
@@ -25,11 +44,19 @@
 			<div class="form-name pull-left">{{'Clarity' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="clarity-1"><span>clear</span><input type="radio" name="clarity" class="invisible" id="clarity-1" value="1" checked /></label>
 					<label class="dot-a" for="clarity-2"><span></span><input type="radio" name="clarity" class="invisible" id="clarity-2" value="2" /></label>
 					<label class="dot-a" for="clarity-3"><span>off dry</span><input type="radio" name="clarity" class="invisible" id="clarity-3" value="3" /></label>
 					<label class="dot-a" for="clarity-4"><span></span><input type="radio" name="clarity" class="invisible" id="clarity-4" value="4" /></label>
 					<label class="dot-a" for="clarity-5"><span>hazy</span><input type="radio" name="clarity" class="invisible" id="clarity-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="clarity-1"><span>clear</span><input type="radio" name="clarity" class="invisible" id="clarity-1" value="0" checked  ng-model="formData.appearance.clarity"/><dot></dot></label>
+					<label class="dot-a" for="clarity-2"><span></span><input type="radio" name="clarity" class="invisible" id="clarity-2" value="1" ng-model="formData.appearance.clarity" /></label>
+					<label class="dot-a" for="clarity-3"><span>off dry</span><input type="radio" name="clarity" class="invisible" id="clarity-3" value="2" ng-model="formData.appearance.clarity" /></label>
+					<label class="dot-a" for="clarity-4"><span></span><input type="radio" name="clarity" class="invisible" id="clarity-4" value="3" ng-model="formData.appearance.clarity" /></label>
+					<label class="dot-a" for="clarity-5"><span>hazy</span><input type="radio" name="clarity" class="invisible" id="clarity-5" value="4" ng-model="formData.appearance.clarity" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -37,11 +64,19 @@
 			<div class="form-name pull-left">{{'Intensity' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="intensity-1"><span>pale</span><input type="radio" name="intensity" class="invisible" id="intensity-1" value="1" checked /></label>
 					<label class="dot-a" for="intensity-2"><span></span><input type="radio" name="intensity" class="invisible" id="intensity-2" value="2" /></label>
 					<label class="dot-a" for="intensity-3"><span>medium</span><input type="radio" name="intensity" class="invisible" id="intensity-3" value="3" /></label>
 					<label class="dot-a" for="intensity-4"><span></span><input type="radio" name="intensity" class="invisible" id="intensity-4" value="4" /></label>
 					<label class="dot-a" for="intensity-5"><span>deep</span><input type="radio" name="intensity" class="invisible" id="intensity-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="intensity-1"><span>pale</span><input type="radio" name="intensity" class="invisible" id="intensity-1" value="0" checked   ng-model="formData.appearance.intensity" /><dot></dot></label>
+					<label class="dot-a" for="intensity-2"><span></span><input type="radio" name="intensity" class="invisible" id="intensity-2" value="1" ng-model="formData.appearance.intensity"  /></label>
+					<label class="dot-a" for="intensity-3"><span>medium</span><input type="radio" name="intensity" class="invisible" id="intensity-3" value="3" ng-model="formData.appearance.intensity"  /></label>
+					<label class="dot-a" for="intensity-4"><span></span><input type="radio" name="intensity" class="invisible" id="intensity-4" value="3" ng-model="formData.appearance.intensity"  /></label>
+					<label class="dot-a" for="intensity-5"><span>deep</span><input type="radio" name="intensity" class="invisible" id="intensity-5" value="4" ng-model="formData.appearance.intensity"  /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -61,11 +96,19 @@
 				-->
 				<div class="short-item color-item">
 					<div class="short-name">{{'Red' | translate}}</div>
+<<<<<<< HEAD
 					<label class="color-a" for="color-1"><span>purple</span><bar style="background-color: #C42053;"></bar><input type="radio" name="red" class="invisible" id="color-1" value="purple" /></label>
 					<label class="color-a" for="color-2"><span>ruby</span><bar style="background-color: #921A36;"></bar><input type="radio" name="red" class="invisible" id="color-2" value="ruby" /></label>
 					<label class="color-a" for="color-3"><span>garnet</span><bar style="background-color: #6F0F11;"></bar><input type="radio" name="red" class="invisible" id="color-3" value="garnet" /></label>
 					<label class="color-a" for="color-4"><span>tawny</span><bar style="background-color: #491812;"></bar><input type="radio" name="red" class="invisible" id="color-4" value="tawny" /></label>
 					<label class="color-a" for="color-5"><span>brown</span><bar style="background-color: #332211;"></bar><input type="radio" name="red" class="invisible" id="color-5" value="brown" /></label>
+=======
+					<label class="color-a" for="color-1"><span>purple</span><bar style="background-color: #C42053;"></bar><input type="radio" name="red" class="invisible" id="color-1" value="purple"  ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-2"><span>ruby</span><bar style="background-color: #921A36;"></bar><input type="radio" name="red" class="invisible" id="color-2" value="ruby" ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-3"><span>garnet</span><bar style="background-color: #6F0F11;"></bar><input type="radio" name="red" class="invisible" id="color-3" value="garnet" ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-4"><span>tawny</span><bar style="background-color: #491812;"></bar><input type="radio" name="red" class="invisible" id="color-4" value="tawny" ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-5"><span>brown</span><bar style="background-color: #332211;"></bar><input type="radio" name="red" class="invisible" id="color-5" value="brown" ng-model="formData.appearance.color.base"  /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 					<div class="cross"></div>
 				</div>
 				<!-- For Rose Color Wine
@@ -81,37 +124,76 @@
 				-->
 			</div>
 		</div>
+<<<<<<< HEAD
+=======
+		<div class="form-item clearfix color ">
+			<div class="form-name pull-left">{{'Color Intensity' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="cintensity-1"><span>1</span><input type="radio" name="cintensity" class="invisible" id="cintensity-1" value="0" checked   ng-model="formData.appearance.color.intensity" /><dot></dot></label>
+					<label class="dot-a" for="cintensity-2"><span></span><input type="radio" name="cintensity" class="invisible" id="cintensity-2" value="1" ng-model="formData.appearance.color.intensity"  /></label>
+					<label class="dot-a" for="cintensity-3"><span>3</span><input type="radio" name="cintensity" class="invisible" id="cintensity-3" value="3" ng-model="formData.appearance.color.intensity"  /></label>
+					<label class="dot-a" for="cintensity-4"><span></span><input type="radio" name="cintensity" class="invisible" id="cintensity-4" value="3" ng-model="formData.appearance.color.intensity"  /></label>
+					<label class="dot-a" for="cintensity-5"><span>5</span><input type="radio" name="cintensity" class="invisible" id="cintensity-5" value="4" ng-model="formData.appearance.color.intensity"  /></label>
+				</div>
+			</div>
+		</div>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 		<div class="form-item clearfix short pro mt-10">
 			<div class="form-name pull-left">{{'Other' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="short-item">
 					<div class="short-name">{{'Legs' | translate}}</div>
 					<div class="form-dot">
+<<<<<<< HEAD
 						<label class="dot-a active" for="legs-1"><span>none</span><input type="radio" name="legs" class="invisible" id="legs-1" value="1" checked /></label>
 						<label class="dot-a" for="legs-2"><span></span><input type="radio" name="legs" class="invisible" id="legs-2" value="2" /></label>
 						<label class="dot-a" for="legs-3"><span>few</span><input type="radio" name="legs" class="invisible" id="legs-3" value="3" /></label>
 						<label class="dot-a" for="legs-4"><span></span><input type="radio" name="legs" class="invisible" id="legs-4" value="4" /></label>
 						<label class="dot-a" for="legs-5"><span>plenty</span><input type="radio" name="legs" class="invisible" id="legs-5" value="5" /></label>
+=======
+						<label class="dot-a active" for="legs-1"><span>none</span><input type="radio" name="legs" class="invisible" id="legs-1" value="0" checked ng-model="formData.appearance.legs"  /><dot></dot></label>
+						<label class="dot-a" for="legs-2"><span></span><input type="radio" name="legs" class="invisible" id="legs-2" value="1" ng-model="formData.appearance.legs" /></label>
+						<label class="dot-a" for="legs-3"><span>few</span><input type="radio" name="legs" class="invisible" id="legs-3" value="2" ng-model="formData.appearance.legs" /></label>
+						<label class="dot-a" for="legs-4"><span></span><input type="radio" name="legs" class="invisible" id="legs-4" value="3" ng-model="formData.appearance.legs" /></label>
+						<label class="dot-a" for="legs-5"><span>plenty</span><input type="radio" name="legs" class="invisible" id="legs-5" value="4" ng-model="formData.appearance.legs" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 					</div>
 				</div>
 				<div class="short-item">
 					<div class="short-name">{{'Deposit' | translate}}</div>
 					<div class="form-dot">
+<<<<<<< HEAD
 						<label class="dot-a active" for="deposit-1"><span>none</span><input type="radio" name="deposit" class="invisible" id="deposit-1" value="1" checked /></label>
 						<label class="dot-a" for="deposit-2"><span></span><input type="radio" name="deposit" class="invisible" id="deposit-2" value="2" /></label>
 						<label class="dot-a" for="deposit-3"><span>few</span><input type="radio" name="deposit" class="invisible" id="deposit-3" value="3" /></label>
 						<label class="dot-a" for="deposit-4"><span></span><input type="radio" name="deposit" class="invisible" id="deposit-4" value="4" /></label>
 						<label class="dot-a" for="deposit-5"><span>plenty</span><input type="radio" name="deposit" class="invisible" id="deposit-5" value="5" /></label>
+=======
+						<label class="dot-a active" for="deposit-1"><span>none</span><input type="radio" name="deposit" class="invisible" id="deposit-1" value="0" checked ng-model="formData.appearance.deposit" /><dot></dot></label>
+						<label class="dot-a" for="deposit-2"><span></span><input type="radio" name="deposit" class="invisible" id="deposit-2" value="1" ng-model="formData.appearance.deposit" /></label>
+						<label class="dot-a" for="deposit-3"><span>few</span><input type="radio" name="deposit" class="invisible" id="deposit-3" value="2" ng-model="formData.appearance.deposit" /></label>
+						<label class="dot-a" for="deposit-4"><span></span><input type="radio" name="deposit" class="invisible" id="deposit-4" value="3" ng-model="formData.appearance.deposit" /></label>
+						<label class="dot-a" for="deposit-5"><span>plenty</span><input type="radio" name="deposit" class="invisible" id="deposit-5" value="4" ng-model="formData.appearance.deposit" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 					</div>
 				</div>
 				<div class="short-item">
 					<div class="short-name">{{'Bubbles' | translate}}</div>
 					<div class="form-dot">
+<<<<<<< HEAD
 						<label class="dot-a active" for="bubbles-1"><span>small</span><input type="radio" name="bubbles" class="invisible" id="bubbles-1" value="1" checked /></label>
 						<label class="dot-a" for="bubbles-2"><span></span><input type="radio" name="bubbles" class="invisible" id="bubbles-2" value="2" /></label>
 						<label class="dot-a" for="bubbles-3"><span>medium</span><input type="radio" name="bubbles" class="invisible" id="bubbles-3" value="3" /></label>
 						<label class="dot-a" for="bubbles-4"><span></span><input type="radio" name="bubbles" class="invisible" id="bubbles-4" value="4" /></label>
 						<label class="dot-a" for="bubbles-5"><span>big</span><input type="radio" name="bubbles" class="invisible" id="bubbles-5" value="5" /></label>
+=======
+						<label class="dot-a active" for="bubbles-1"><span>small</span><input type="radio" name="bubbles" class="invisible" id="bubbles-1" value="0" checked ng-model="formData.appearance.bubbles"/><dot></dot></label>
+						<label class="dot-a" for="bubbles-2"><span></span><input type="radio" name="bubbles" class="invisible" id="bubbles-2" value="1" ng-model="formData.appearance.bubbles" /></label>
+						<label class="dot-a" for="bubbles-3"><span>medium</span><input type="radio" name="bubbles" class="invisible" id="bubbles-3" value="2" ng-model="formData.appearance.bubbles" /></label>
+						<label class="dot-a" for="bubbles-4"><span></span><input type="radio" name="bubbles" class="invisible" id="bubbles-4" value="3"  ng-model="formData.appearance.bubbles" /></label>
+						<label class="dot-a" for="bubbles-5"><span>big</span><input type="radio" name="bubbles" class="invisible" id="bubbles-5" value="4" ng-model="formData.appearance.bubbles" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 					</div>
 				</div>
 			</div>
@@ -123,6 +205,7 @@
 			<div class="form-content pull-right">
 				<div class="form-tag">
 					<div class="tag" style="display: none;"></div>
+<<<<<<< HEAD
 					<input type="text" placeholder="Search" data-placeholder="Search" />
 					<div class="form-suggest">
 						<div class="item"><i class="icon-strawberry"></i>Strawberry</div>
@@ -151,6 +234,12 @@
 							});
 						});
 					</script>
+=======
+					<input id="inputtags" type="text" placeholder="Search" data-placeholder="Search"  />
+					<div class="form-suggest"></div>
+					
+				
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -158,6 +247,7 @@
 			<div class="form-item clearfix mt-30 mt-xs-0">
 				<div class="form-name pull-left"></div>
 				<div class="form-content pull-right">
+<<<<<<< HEAD
 					<label class="radio-a"><i class="icon-strawberry"></i></label>
 					<label class="radio-a"><i class="icon-cherry"></i></label>
 					<label class="radio-a"><i class="icon-lemon"></i></label>
@@ -320,6 +410,27 @@
 					<label class="radio-a"><i class="icon-flower"></i></label>
 				</div>
 			</div>
+=======
+				  <!-- please use API: https://winebatapi.docs.apiary.io/#reference/0/smell/tasting-input -->
+				  
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/strawberry.svg)"></i><g>strawberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cherry.svg)"></i><g>cherry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lemon.svg)"></i><g>lemon</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/apple.svg)"></i><g>apple</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/coffee.svg)"></i><g>coffee</g></label>
+					<label class="radio-a"><i class="icon-flower"></i><g>flower</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more" ng-repeat = "(category , categorys) in inputs">
+				<div class="form-name pull-left">{{category}}</div>
+				<div class="form-content pull-right {{category}}" >
+				
+					<label class="radio-a"  ng-repeat = "input in categorys"><i class="icon-" style="background-image: url('{{input.img_url}}')"></i><g>{{input.name}}</g></label>
+					
+				</div>
+			</div>
+           
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 			<button type="button" class="btn-a more-opener">{{'More' | translate}}...</button>
 			<button type="button" class="btn-a more-closer" style="display: none;">{{'Fewer' | translate}}...</button>
 					
@@ -343,11 +454,19 @@
 			<div class="form-name pull-left">{{'Sweetness' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="sweetness-1"><span>very dry</span><input type="radio" name="sweetness" class="invisible" id="sweetness-1" value="1" checked /></label>
 					<label class="dot-a" for="sweetness-2"><span></span><input type="radio" name="sweetness" class="invisible" id="sweetness-2" value="2" /></label>
 					<label class="dot-a" for="sweetness-3"><span>off dry</span><input type="radio" name="sweetness" class="invisible" id="sweetness-3" value="3" /></label>
 					<label class="dot-a" for="sweetness-4"><span></span><input type="radio" name="sweetness" class="invisible" id="sweetness-4" value="4" /></label>
 					<label class="dot-a" for="sweetness-5"><span>very sweet</span><input type="radio" name="sweetness" class="invisible" id="sweetness-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="sweetness-1"><span>very dry</span><input type="radio" name="sweetness" class="invisible" id="sweetness-1" value="1" checked ng-model="formData.taste.sweetness" /><dot></dot></label>
+					<label class="dot-a" for="sweetness-2"><span></span><input type="radio" name="sweetness" class="invisible" id="sweetness-2" value="2" ng-model="formData.taste.sweetness" /></label>
+					<label class="dot-a" for="sweetness-3"><span>off dry</span><input type="radio" name="sweetness" class="invisible" id="sweetness-3" value="3" ng-model="formData.taste.sweetness" /></label>
+					<label class="dot-a" for="sweetness-4"><span></span><input type="radio" name="sweetness" class="invisible" id="sweetness-4" value="4" ng-model="formData.taste.sweetness" /></label>
+					<label class="dot-a" for="sweetness-5"><span>very sweet</span><input type="radio" name="sweetness" class="invisible" id="sweetness-5" value="5" ng-model="formData.taste.sweetness" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -355,11 +474,19 @@
 			<div class="form-name pull-left">{{'Acidity' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="acidity-1"><span>low</span><input type="radio" name="acidity" class="invisible" id="acidity-1" value="1" checked /></label>
 					<label class="dot-a" for="acidity-2"><span></span><input type="radio" name="acidity" class="invisible" id="acidity-2" value="2" /></label>
 					<label class="dot-a" for="acidity-3"><span>medium</span><input type="radio" name="acidity" class="invisible" id="acidity-3" value="3" /></label>
 					<label class="dot-a" for="acidity-4"><span></span><input type="radio" name="acidity" class="invisible" id="acidity-4" value="4" /></label>
 					<label class="dot-a" for="acidity-5"><span>high</span><input type="radio" name="acidity" class="invisible" id="acidity-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="acidity-1"><span>low</span><input type="radio" name="acidity" class="invisible" id="acidity-1" value="1" checked ng-model="formData.taste.acidity" /><dot></dot></label>
+					<label class="dot-a" for="acidity-2"><span></span><input type="radio" name="acidity" class="invisible" id="acidity-2" value="2" ng-model="formData.taste.acidity" /></label>
+					<label class="dot-a" for="acidity-3"><span>medium</span><input type="radio" name="acidity" class="invisible" id="acidity-3" value="3" ng-model="formData.taste.acidity" /></label>
+					<label class="dot-a" for="acidity-4"><span></span><input type="radio" name="acidity" class="invisible" id="acidity-4" value="4" ng-model="formData.taste.acidity" /></label>
+					<label class="dot-a" for="acidity-5"><span>high</span><input type="radio" name="acidity" class="invisible" id="acidity-5" value="5" ng-model="formData.taste.acidity" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -367,11 +494,19 @@
 			<div class="form-name pull-left">{{'Tannin' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="tannin-1"><span>low</span><input type="radio" name="tannin" class="invisible" id="tannin-1" value="1" checked /></label>
 					<label class="dot-a" for="tannin-2"><span></span><input type="radio" name="tannin" class="invisible" id="tannin-2" value="2" /></label>
 					<label class="dot-a" for="tannin-3"><span>medium</span><input type="radio" name="tannin" class="invisible" id="tannin-3" value="3" /></label>
 					<label class="dot-a" for="tannin-4"><span></span><input type="radio" name="tannin" class="invisible" id="tannin-4" value="4" /></label>
 					<label class="dot-a" for="tannin-5"><span>high</span><input type="radio" name="tannin" class="invisible" id="tannin-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="tannin-1"><span>low</span><input type="radio" name="tannin" class="invisible" id="tannin-1" value="1" checked  ng-model="formData.taste.tannin" /><dot></dot></label>
+					<label class="dot-a" for="tannin-2"><span></span><input type="radio" name="tannin" class="invisible" id="tannin-2" value="2" ng-model="formData.taste.tannin"  /></label>
+					<label class="dot-a" for="tannin-3"><span>medium</span><input type="radio" name="tannin" class="invisible" id="tannin-3" value="3" ng-model="formData.taste.tannin" /></label>
+					<label class="dot-a" for="tannin-4"><span></span><input type="radio" name="tannin" class="invisible" id="tannin-4" value="4" ng-model="formData.taste.tannin" /></label>
+					<label class="dot-a" for="tannin-5"><span>high</span><input type="radio" name="tannin" class="invisible" id="tannin-5" value="5" ng-model="formData.taste.tannin" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -379,11 +514,19 @@
 			<div class="form-name pull-left">{{'Body' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="body-1"><span>light</span><input type="radio" name="body" class="invisible" id="body-1" value="1" checked /></label>
 					<label class="dot-a" for="body-2"><span></span><input type="radio" name="body" class="invisible" id="body-2" value="2" /></label>
 					<label class="dot-a" for="body-3"><span>med</span><input type="radio" name="body" class="invisible" id="body-3" value="3" /></label>
 					<label class="dot-a" for="body-4"><span></span><input type="radio" name="body" class="invisible" id="body-4" value="4" /></label>
 					<label class="dot-a" for="body-5"><span>hazyfull</span><input type="radio" name="body" class="invisible" id="body-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="body-1"><span>light</span><input type="radio" name="body" class="invisible" id="body-1" value="1" checked ng-model="formData.taste.body" /><dot></dot></label>
+					<label class="dot-a" for="body-2"><span></span><input type="radio" name="body" class="invisible" id="body-2" value="2" ng-model="formData.taste.body" /></label>
+					<label class="dot-a" for="body-3"><span>med</span><input type="radio" name="body" class="invisible" id="body-3" value="3" ng-model="formData.taste.body" /></label>
+					<label class="dot-a" for="body-4"><span></span><input type="radio" name="body" class="invisible" id="body-4" value="4" ng-model="formData.taste.body" /></label>
+					<label class="dot-a" for="body-5"><span>hazyfull</span><input type="radio" name="body" class="invisible" id="body-5" value="5" ng-model="formData.taste.body" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
@@ -391,19 +534,34 @@
 			<div class="form-name pull-left">{{'Alcohol' | translate}}</div>
 			<div class="form-content pull-right">
 				<div class="form-dot">
+<<<<<<< HEAD
 					<label class="dot-a active" for="alcohol-1"><span>&lt; 10%</span><input type="radio" name="alcohol" class="invisible" id="alcohol-1" value="1" checked /></label>
 					<label class="dot-a" for="alcohol-2"><span></span><input type="radio" name="alcohol" class="invisible" id="alcohol-2" value="2" /></label>
 					<label class="dot-a" for="alcohol-3"><span>~13.5</span><input type="radio" name="alcohol" class="invisible" id="alcohol-3" value="3" /></label>
 					<label class="dot-a" for="alcohol-4"><span></span><input type="radio" name="alcohol" class="invisible" id="alcohol-4" value="4" /></label>
 					<label class="dot-a" for="alcohol-5"><span>> 15.5%</span><input type="radio" name="alcohol" class="invisible" id="alcohol-5" value="5" /></label>
+=======
+					<label class="dot-a active" for="alcohol-1"><span>&lt; 10%</span><input type="radio" name="alcohol" class="invisible" id="alcohol-1" value="0" checked ng-model="formData.taste.alcohol" /><dot></dot></label>
+					<label class="dot-a" for="alcohol-2"><span></span><input type="radio" name="alcohol" class="invisible" id="alcohol-2" value="1" ng-model="formData.taste.alcohol" /></label>
+					<label class="dot-a" for="alcohol-3"><span>~13.5</span><input type="radio" name="alcohol" class="invisible" id="alcohol-3" value="2" ng-model="formData.taste.alcohol" /></label>
+					<label class="dot-a" for="alcohol-4"><span></span><input type="radio" name="alcohol" class="invisible" id="alcohol-4" value="3" ng-model="formData.taste.alcohol" /></label>
+					<label class="dot-a" for="alcohol-5"><span>&gt; 15.5%</span><input type="radio" name="alcohol" class="invisible" id="alcohol-5" value="4" ng-model="formData.taste.alcohol" /></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				</div>
 			</div>
 		</div>
 		<hr class="mt-30 mb-15" />
+<<<<<<< HEAD
 		<h3 class="s-title">{{'AddMyTastingNote' | translate}}Overall</h3>
 		<div class="form-item">
 			<label class="radio-a" for="overall-1"><input type="radio" name="overall" value="happy" id="overall-1" class="invisible" checked /><span></span><i class="icon-happy"></i></label>
 			<label class="radio-a" for="overall-2"><input type="radio" name="overall" value="sad" id="overall-2" class="invisible" /><span></span><i class="icon-sad"></i></label>
+=======
+		<h3 class="s-title">{{'Overall' | translate}}</h3>
+		<div class="form-item">
+			<label class="radio-a" for="overall-1"><input type="radio" name="overall" value="5" id="overall-1" class="invisible" checked  ng-model="formData.overall" /><span></span><i class="icon-happy"></i></label>
+			<label class="radio-a" for="overall-2"><input type="radio" name="overall" value="1" id="overall-2" class="invisible"  ng-model="formData.overall" /><span></span><i class="icon-sad"></i></label>
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 		</div>
 		<div class="btn-group text-right mt-30">
 			<script>
@@ -421,12 +579,22 @@
 					$(".pro-opener").show();
 				}
 			</script>
+<<<<<<< HEAD
 			<button type="button" class="btn-themed simple-opener" onClick="simple();" style="display: none;">{{'Fewer' | translate}}</button>
 			<button type="button" class="btn-themed pro-opener" onClick="pro();">{{'More' | translate}}</button>
 			<button type="submit" class="btn-themed ml-20">{{'Submit' | translate}}</button>
 			<script>
 				$("form").submit(function(){
 					alert("Your tasting note is successfully added. Thank you for your input.");//pls keep this alert after the submission
+=======
+			<button type="button" class="btn-themed btn-cancel">{{'Cancel' | translate}}</button>
+			<button type="button" class="btn-themed simple-opener ml-20 ml-xs-0" onClick="simple();" style="display: none;">{{'Fewer' | translate}}</button>
+			<button type="button" class="btn-themed pro-opener ml-20 ml-xs-0" onClick="pro();">{{'More' | translate}}</button>
+			<button type="submit" class="btn-themed ml-20 ml-xs-0">{{'Submit' | translate}}</button>
+			<script>
+				$("form").submit(function(){
+					
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 				});
 			</script>
 		</div>
@@ -440,4 +608,10 @@
 	$('html, body').animate({
 		scrollTop: 0
 	}, 0);
+<<<<<<< HEAD
+=======
+  $('.btn-cancel').click(function(){
+    window.history.back();
+  });
+>>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 </script>

@@ -1,0 +1,15 @@
+{ 	
+	"success": true, 
+	"message": "Username or password is correct",
+	"user" : {
+		"id": 1,
+		"email": "user@winebat.com",
+		"username": "Winebat",
+		"fname": "Raymond",
+		"lname": "La",
+		"bMonth": "12",
+		"bDay": "01",
+		"bYear": "1997",
+		"img_url": "./app-content/images/user-01.jpg" 
+		}
+}
