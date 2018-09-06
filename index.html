@@ -46,7 +46,7 @@
                                 <li><a href="#">簡</a></li>
                             </ul>
                         </li>
-                        <li><a ng-href="#/merchant">Merchants</a></li>
+                        <!--<li><a ng-href="#/merchant">Merchants</a></li>hide before launch-->
                         <li><a ng-href="#/about">About Us</a></li>
                         <li><a ng-href="#/contact">Contact Us</a></li>
                     </ul>
@@ -54,7 +54,7 @@
                         <li ng-if="!$root.globals.currentUser.username"><a ng-href="#/register">Sign Up</a></li>
                         <li ng-if="!$root.globals.currentUser.username"><a ng-href="#/login">Login</a></li>
                         <!-- before login -->
-                       <li class="hidden-sm hidden-xs top-username" ng-if="$root.globals.currentUser.user.username" ng-bind-html="$root.globals.currentUser.user.username"></li>
+                       <li class="hidden-sm hidden-xs top-username" ng-if="$root.globals.currentUser.username" ng-bind-html="'Welcome,  '+$root.globals.currentUser.username"></li>
                         <li ng-if="$root.globals.currentUser.username"><a href="#/myProfile">My Account</a></li>
                         <li ng-if="$root.globals.currentUser.username"><a href="#/profile">My Tasting</a></li>
                         <li ng-if="$root.globals.currentUser.username"><a href="" ng-click="$root.logout()">Sign out</a></li>
@@ -79,9 +79,9 @@
                     <ul class="footer-links pl-15 pl-sm-0 pr-15 pr-sm-0">
                         <li><a href="#/contact">Contact Us</a></li>
                         <li><a href="#/about">About Us</a></li>
-                        <li><a href="#">Sell My Wines</a></li>
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <!--<li><a href="#">Sell My Wines</a></li>hide before launch-->
+                        <li><a href="#/terms">Terms and Conditions</a></li>
+                        <li><a href="#/policy">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="pull-right">
@@ -89,11 +89,9 @@
                         <li class="mr-15 ml-xs-5 mr-xs-5"><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li class="ml-xs-5 mr-xs-5"><a href="#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
-                    <p class="copyright mr-10 hidden-xs">Copyright
-                        2017 Winebat | All rights reserved.</p>
+                    <p class="copyright mr-10 hidden-xs">&copy; 2018 Rootstock | All rights reserved.</p>
                 </div>
-                <p class="copyright ml-5 visible-xs">Copyright
-                    2017 Winebat | All rights reserved.</p>
+                <p class="copyright ml-5 visible-xs">&copy; 2018 Rootstock | All rights reserved.</p>
             </div>
         </footer>
     </div>
@@ -112,7 +110,7 @@
     <script src="./app-content/js/angular-strap.tpl.js"></script>
     <script src="./app-content/js/angular-busy.js"></script>
     <script src="./app-content/js/ui-bootstrap.js"></script>
-   <script src="//www.google.com/recaptcha/api.js"></script>
+   <script src="//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <script src="./app-content/js/angular-recaptcha.js"></script>
  <!-- -->   
     <!-- App Core -->
@@ -126,6 +124,8 @@
     <script src="./app-controller/search.controller.js"></script>
     <script src="./app-controller/home.controller.js"></script>
     <script src="./app-controller/about.controller.js"></script>
+    <script src="./app-controller/policy.controller.js"></script>
+    <script src="./app-controller/terms.controller.js"></script>
     <script src="./app-controller/contact.controller.js"></script>
     <script src="./app-controller/merchant.controller.js"></script>
     <script src="./app-controller/merchantDetails.controller.js"></script>
@@ -134,6 +134,7 @@
 	  <script src="./app-controller/register.controller.js"></script>
     <script src="./app-controller/login.controller.js"></script>
     <script src="./app-controller/forgetPassword.controller.js"></script>
+    <script src="./app-controller/changePassword.controller.js"></script>
     <script src="./app-controller/profile.controller.js"></script>
     <script src="./app-controller/myProfile.controller.js"></script>
     <!-- Addition Plugin -->

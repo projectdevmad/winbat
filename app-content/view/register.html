@@ -1,14 +1,14 @@
-<section class="pages pt-50 pb-50 pt-xs-30 pb-xs-30 mb-80 mb-xs-30 bg-grey account">
+<section class="pages pt-50 pb-50 pt-xs-30 pb-xs-30 mb-80 mb-xs-30 account">
 	<div class="container width-990">
     <h2 class="text-center">Sign Up for Rootstock</h2>
     <form method="post" ng-submit="register()">
       <div class="form-group mb-10">
         <label class="pt-xs-10 pb-xs-10">First Name</label>
-        <input type="text" name="first_name" class="form-control" required ng-model="form.fname"/>
+        <input type="text" name="first_name" class="form-control" required ng-model="form.first_name"/>
       </div>
       <div class="form-group mb-10">
         <label class="pt-xs-10 pb-xs-10">Last Name</label>
-        <input type="text" name="last_name" class="form-control" required  ng-model="form.lname"/>
+        <input type="text" name="last_name" class="form-control" required  ng-model="form.last_name"/>
       </div>
       <div class="form-group mb-10">
         <label class="pt-xs-10 pb-xs-10">User Name</label>
@@ -20,13 +20,13 @@
       </div>
       <div class="form-group mb-10">
         <label class="pt-xs-10 pb-xs-10">Password</label>
-        <input type="password" name="password" class="form-control" pattern="(?=.*\d).{6,}" required ng-model="form.password"/>
+        <input type="password" name="password" class="form-control" pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$" required ng-model="form.password"/>
         <div class="form-ok"></div>
-        <div class="reminder">At least 6 characters with at least one number</div>
+        <div class="reminder">At least one character and integer, at least 8 characters</div>
       </div>
       <div class="form-group mb-10">
         <label class="pt-xs-10 pb-xs-10">Confirm Password</label>
-        <input type="password" name="confirm_password" class="form-control" pattern="(?=.*\d).{6,}" required ng-model="form.passwordConfirm"/>
+        <input type="password" name="confirm_password" class="form-control" required ng-model="form.passwordConfirm"/>
         <div class="form-ok"></div>
       </div>
       <div class="form-group mb-10">
@@ -34,7 +34,7 @@
         <div class="row">
           <div class="col-xs-4">
             <div class="relative">
-              <select name="birthday_month" class="form-control short" required ng-model="form.bMonth"
+              <select name="birthday_month" class="form-control short" required ng-model="form.bMonth">
                 <option value="">Month</option>
                 <option value="01">01</option>
                 <option value="02">02</option>
@@ -50,13 +50,30 @@
                 <option value="12">12</option>
               </select>
               <div class="select-f"><span>Month</span></div>
+              <div class="select-f-list">
+                <optiont value="">Month</optiont>
+                <optiont value="01">01</optiont>
+                <optiont value="02">02</optiont>
+                <optiont value="03">03</optiont>
+                <optiont value="04">04</optiont>
+                <optiont value="05">05</optiont>
+                <optiont value="06">06</optiont>
+                <optiont value="07">07</optiont>
+                <optiont value="08">08</optiont>
+                <optiont value="09">09</optiont>
+                <optiont value="10">10</optiont>
+                <optiont value="11">11</optiont>
+                <optiont value="12">12</optiont>
+              </div>
+              <script>
+              </script>
             </div>
           </div>
           <div class="col-xs-4">
             <input type="number" name="birthday_day" class="form-control text-center" placeholder="Day" min="1" max="31" required ng-model="form.bDay"/>
           </div>
           <div class="col-xs-4">
-            <input type="text" name="birthday_year" class="form-control text-center" placeholder="Year" pattern=".{4,}" required ng-model="form.bYear"/>
+            <input type="text" name="birthday_year" class="form-control text-center" placeholder="Year" pattern="[0-9]{4}" required ng-model="form.bYear"/>
           </div>
         </div>
       </div>
@@ -65,21 +82,37 @@
       </div>
       <div class="btn-submit mb-40 mb-xs-30">
         <button id="submit" class="btn-themed">Sign Up</button>
+        <p class="text-center mt-15 not-above-18" style="display: none; color: red;">Sorry, account registration is only available for 18 years-old or above.</p>
       </div>
       <div class="have-account text-center">
-        <span>Already have an account? <a href="#/login">Login</a></span>
+        <span><a href="#/login">Already have an account? Login</a></span>
       </div>
     </form>
     <script>
 			$("[name='password']").change(function(){
-				password();
+        $("[name='password']")[0].setCustomValidity('');
+        $("[name='confirm_password").removeClass("ok");
+        if($("[name='password']")[0].checkValidity() == false){
+          $("[name='password']")[0].setCustomValidity("At least 6 characters with at least one number");
+          $("[name='password").removeClass("ok");
+        }else{
+          $("[name='confirm_password']").attr("pattern", $(this).val());
+					$("[name='password']").addClass("ok");
+        }
 			});
 			
 			$("[name='confirm_password']").change(function(){
-				confirm_password();
+        $("[name='confirm_password']")[0].setCustomValidity('');
+        if($("[name='confirm_password']")[0].checkValidity() == false){
+          $("[name='confirm_password']")[0].setCustomValidity("Passwords don't match.");
+					$("[name='confirm_password']").removeClass("ok");
+        }else{
+          $("[name='confirm_password']")[0].setCustomValidity('');
+					$("[name='confirm_password']").addClass("ok");
+        }
 			});
 			
-			function password(){
+			/*function password(){
 				if($("[name='password']").val() != "" && $("[name='password']")[0].checkValidity() == true){
 					$("[name='password']").addClass("ok");
 					$("[name='confirm_password").removeClass("ok");
@@ -100,9 +133,15 @@
           $("[name='confirm_password']")[0].setCustomValidity("Passwords don't match.");
 				}
 			}
-			confirm_password();
+			confirm_password();*/
       
-      $("form").submit(function(){
+      $("#submit").click(function(){
+				if($("[name='birthday_year']").val() != "" && $("[name='birthday_year']").val() > (new Date).getFullYear() - 18){
+          $(".not-above-18").show();
+          return false;
+				}else{
+          $(".not-above-18").hide();
+        }
 		
 
         //alert("You are successfully registered. Welcome to RootStock222.");

@@ -1,15 +1,16 @@
 <section class="pages pt-50 pb-50 pt-xs-30 pb-xs-30 mb-80 mb-xs-30 account login">
 	<div class="container width-990 pl-xs-20 pr-xs-20">
-    <h2 class="text-center">Log into Rootstock</h2>
+    <h2 class="text-center">Login to Rootstock</h2>
     <form method="post" ng-submit="login()" name="form" id="form" role="form">
       <div class="form-group mb-10">
-        <label class="pt-xs-10 pb-xs-10">Email or Username</label>
-        <input type="text" name="email" class="form-control" required ng-model="data.email" />
+        <label class="pt-xs-10 pb-xs-10"  style="color:{{textcolor}}">Email or Username</label>
+        <input type="text" name="email" class="form-control" required ng-model="data.email" style="border-color:{{textcolor}}" />
       </div>
       <div class="form-group mb-10">
-        <label class="pt-xs-10 pb-xs-10">Password</label>
-        <input type="password" name="password" class="form-control" required ng-model="data.password"/>
+        <label class="pt-xs-10 pb-xs-10" style="color:{{textcolor}}">Password</label>
+        <input type="password" name="password" class="form-control" required ng-model="data.password" style="border-color:{{textcolor}}"/>
       </div>
+      <div class="forget-pw text-center mb-40 red" ng-bind-html="errorMsg" style="color:red"></div>
       <div class="forget-pw text-center mb-40">
         <a ng-href="#/forgetPassword">Forget password?</a>  
       </div>
@@ -20,7 +21,7 @@
       <!-- site key: 6Ld0CUIUAAAAAJ5ieh2pqXy_VfyL5ni_sZN5EsCv
       Secret key: 6Ld0CUIUAAAAAAeekMnL_kVkyi9HVD44Ih1BljKB -->
       <div class="btn-submit mb-40 mb-xs-30">
-        <button id="submit" class="btn-themed">Login</button>
+        <input type="submit" value="Login" id="submit" class="btn-themed"/>
       </div>
       <div class="have-account text-center">
         <span>Don't have an account? <a href="#/register">Sign up</a></span>

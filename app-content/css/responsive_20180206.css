@@ -268,7 +268,7 @@
 		width: 195px;
 	}
 
-	.note-item, .latest-notes.profile .note-item {
+	.note-item {
 		padding: 25px 180px 60px 30px;
 	}
 
@@ -280,12 +280,6 @@
   .profile .note-item .ability-chart-wrapper {
     right: 20px;
     bottom: 50px;
-  }
-  
-  .note-item .product-img {
-    position: static;
-    transform: none;
-    margin: 15px 0;
   }
 	
 	.form-dot {
@@ -304,7 +298,7 @@
     top: -5px;
   }
   
-  .add-note .color-wp {
+  .add-note .color-a:first-of-type {
     margin-left: 50px;
   }
 	
@@ -392,7 +386,7 @@
 	}
 
 	.product-list .form-group {
-		width: 127px;
+		width: 100px;
 	}
 	
 	.product-list select.form-control {
@@ -413,15 +407,6 @@
 		width: 10px;
 		height: 10px;
 	}
-  
-  .form-group .select-f-list {
-    max-height: 200px;
-  }
-  
-  .form-group .select-f-list optiont {
-    font-size: 9px;
-    padding: 5px;
-  }
 	
 	.filter {
 		padding: 0 8.5px !important;
@@ -473,7 +458,7 @@
 	}
 	
 	.product-list .select-f {
-		padding: 0 3px;
+		padding: 2px 5px;
 	}
 	
 	.product-list .form-group .select-f-list {
@@ -531,8 +516,7 @@
 		position: static;
 		width: 30%;
 		height: auto;
-		padding: 30px 0 0;
-    text-align: center;
+		padding: 12px 0 0;
 	}
 	
 	.product-item.long .img:after {
@@ -547,10 +531,9 @@
 	}
 	
 	.product-item.long .img img {
-		position: static;
-		max-width: 100%;
-		max-height: 110px;
-    transform: none;
+		position: relative;
+		width: 100%;
+		height: auto;
 	}
 	
 	.product-item.long .name {
@@ -621,8 +604,8 @@
 	}
 	
 	.product-item.long .icons li > i {
-    width: 24px;
-		height: 24px;
+    width: 15px;
+		height: 15px;
 	}
 	
 	.product-item.long .icons li > div {
@@ -633,11 +616,6 @@
 		font-size: 5px;
 		height: 10px;
 	}
-  
-  .row.cen {
-    max-width: 320px;
-    margin: auto;
-  }
 
 	.merchant .search .col-xs-9 {
 		width: 60%;
@@ -735,10 +713,6 @@
 	.merchant.search .col-xs-3 {
 		width: 40%;
 	}
-  
-  .latest-notes.profile .note-item {
-		padding: 25px 30px 10px;
-	}
 	
 	.pages-banner > div {
 		padding-bottom: 75%;
@@ -802,16 +776,8 @@
 	}
 
 	.note-item {
-		padding: 25px 20px 10px;
-    /*max-width: 320px;
-    margin: auto;*/
+		padding: 25px 20px 30px;
 	}
-  
-  /*.product-item {
-    max-width: 320px;
-    margin: auto;
-    position: relative;
-  }*/
 	
 	.note-item .ability-chart-wrapper {
 		position: relative;
@@ -833,10 +799,6 @@
 	.note-item .smell span {
 		font-size: 11px;
 		width: 55px;
-	}
-	
-	.note-item .details {
-		margin-bottom: 30px;
 	}
 	
 	.note-item .details > .item {
@@ -868,7 +830,7 @@
     margin-right: -10%;
 	}
   
-  .add-note .color-wp {
+  .add-note .color-a:first-of-type {
     margin-left: 0;
   }
 	
@@ -958,24 +920,20 @@
   
   .note-item .user .name,
   .profile .note-item .name {
-    display: block;
     font-size: 12px;
-    margin: 5px 0 25px;
-    width: 50%;
+    margin: 0 10px 0 0;
   }
   
   .profile .note-item .name {
     width: 50%;
     margin: 0;
-    margin-bottom: 25px;
-    padding-right: 0;
   }
   
   .note-item .smell,
   .profile .note-item .smell {
-    width: 70%;
+    width: 50%;
     min-height: 45px;
-    margin: 10px 0 !important;
+    margin-bottom: 25px;
   }
   
   .note-item .smell span,
@@ -990,26 +948,22 @@
   
   .note-item .smell i,
   .profile .note-item .smell i {
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
   }
   
   .note-item .ability-chart-wrapper,
-  .profile .note-item .ability-chart-wrapper,
-  .profile .note-item .details + .ability-chart-wrapper {
+  .profile .note-item .ability-chart-wrapper {
     position: absolute;
-    top: 25px;
+    top: 60px;
     right: 15px;
     bottom: auto;
   }
   
-  .profile .note-item .ability-chart-wrapper,
-  .profile .note-item .details + .ability-chart-wrapper {
-    top: 22px;
-  }
-  
   .note-item .like {
+    position: static;
+    margin-top: 20px;
   }
   
   .profile-detail .user .user-img {
@@ -1082,12 +1036,6 @@
   .login .g-recaptcha {
     transform: scale(0.93);
     transform-origin: top left;
-  }
-  
-  .row.cen {
-    max-width: 320px;
-    margin-left: -15px;
-    margin-right: -15px;
   }
 
 }

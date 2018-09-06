@@ -1098,7 +1098,6 @@ input:focus + .form-suggest,
 	padding: 30px;
 	margin-bottom: 0;
   text-align: center;
-  position: relative;
 }
 
 .product-item.long .img a {
@@ -1106,7 +1105,7 @@ input:focus + .form-suggest,
 }
 
 .product-item.long .img img {
-	/*position: relative;*/
+	position: relative;
 }
 
 .product-item.long > .content {
@@ -1240,11 +1239,8 @@ input:focus + .form-suggest,
 	position: absolute;
 	width: auto;
   height: auto;
-  max-width: 90%;
-	max-height: 90%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  max-width: 100%;
+	max-height: 100%;
 }
 
 .product-item .icons {
@@ -2567,7 +2563,6 @@ input:focus + .form-suggest,
   font-weight: 600;
   line-height: 1.2;
   margin: 5px 0 0;
-  padding-right: 20px;
 }
 
 .profile .show-more a {
@@ -2738,8 +2733,4 @@ input:focus + .form-suggest,
 
 .account.login.forget-pw.change-pw .form-group label {
   width: 180px;
-}
-
-.color-wp {
-  max-width: 420px;
 }

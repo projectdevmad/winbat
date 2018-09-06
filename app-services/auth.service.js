@@ -39,25 +39,26 @@
 					
                 })
 				.error(function(data, status) {
-				 	alert(data.message);
+					 callback(data);
+				 	//alert(data.message);
 				});
 
         }
 
-        function SetCredentials(user, username, password) {
-            var authdata = Base64.encode(username + ':' + password);
+        function SetCredentials(user) {
+           // var authdata = Base64.encode(username + ':' + password);
 
             $rootScope.globals = {
                 currentUser: {
 					user : user,
-                    username: username,
-                    authdata: authdata
+                    username: user.username,
+					email: user.email
                 }
             };
 			
 			console.log($rootScope.globals);
             // set default auth header for http requests
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+         //   $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
 
             // store user details in globals cookie that keeps user logged in for 1 week (or until they logout)
             var cookieExp = new Date();

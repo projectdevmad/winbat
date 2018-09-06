@@ -11,7 +11,7 @@
 						<div class="year mb-5" ng-bind-html="product.vintage"></div>
 						<div class="clearfix">
 							<div class="pull-left">
-								<div class="score mb-15 mb-xs-20" ng-show='(product.overall_tasting_note.total && product.overall_tasting_note.overall )'>
+								<div class="score mb-15 mb-xs-20" >
 									<i class="icon-happy"></i> <span  ng-bind-html="$root.getHappy(product.overall_tasting_note)"></span>
 									<i class="icon-sad"></i> <span  ng-bind-html="$root.getSad(product.overall_tasting_note)"></span>
 								</div>
@@ -26,10 +26,10 @@
                                         <li tabindex="-1"><i class="icon-lemon"></i><div>991</div><span>Lemon</span></li>
                                         <li tabindex="-1"><i class="icon-apple"></i><div>546</div><span>Apple</span></li>-->
                                     </ul>
-                                    <a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="add-to-note">Add My Tasting Note</a>
+                                    <a ng-if="$root.globals.currentUser" href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="add-to-note">Add My Tasting Note</a>
                                 </div>
                                 <div  ng-if=" product.overall_tasting_note.smells.length==null">
-                                 	<a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="add-to-note">Be the first to review this wine</a>
+                                 	<a  ng-if="$root.globals.currentUser" href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="add-to-note">Be the first to review this wine</a>
                                 </div>
 							</div>
 							<div class="pull-right pt-xs-30 visible-xs">

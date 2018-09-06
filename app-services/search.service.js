@@ -16,20 +16,12 @@
         return service;
 
         function search(url, params) {
-<<<<<<< HEAD
-            var method = 'POST';
-            return $http({
-                method: method,
-                url: url,
-                data: params
-=======
             var method = 'GET';
             return $http({
                 method: method,
                 url: url,
                 data: params,
 				withCredentials: true
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 
             }).
             then(function(response) {

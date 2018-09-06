@@ -239,14 +239,9 @@ h1.big-title {
 .icon-happy {
 	content: "";
 	display: inline-block;
-	background-image: url(../images/happy.svg);
-	background-size: auto 100%;
+	background-image: url(../images/happy.png);
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	width: 25px;
-	height: 25px;
-}
-
-.icon-happy[class^=icon-] {
 	width: 25px;
 	height: 25px;
 }
@@ -254,14 +249,9 @@ h1.big-title {
 .icon-sad {
 	content: "";
 	display: inline-block;
-	background-image: url(../images/sad.svg);
-	background-size: auto 100%;
+	background-image: url(../images/sad.png);
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	width: 25px;
-	height: 25px;
-}
-
-.icon-sad[class^=icon-] {
 	width: 25px;
 	height: 25px;
 }
@@ -818,13 +808,13 @@ h1.big-title {
 	border-left: 4px solid transparent;	
 }
 
-.form-group .select-f.open {
+.form-group .select-f:focus {
 	outline: none;
 	background-color: #C8CCCC;
 	color: #fff;
 }
 
-.form-group .select-f.open:after {
+.form-group .select-f:focus:after {
 	transform: rotate(180deg);
 }
 
@@ -838,20 +828,19 @@ h1.big-title {
 	box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 	padding: 10px 0;
 	margin-top: 5px;
-	z-index: 2;
-  max-height: 350px;
-  overflow-y: auto;
+	z-index: 1;
 }
 
-.form-group .select-f.open + .select-f-list {
+.form-group .select-f:focus + .select-f-list,
+.form-group .select-f-list:hover {
 	display: block;
 }
 
-/*.form-group .select-f-list option:first-child {
+.form-group .select-f-list option:first-child {
 	display: none;
-}*/
+}
 
-.form-group .select-f-list optiont {
+.form-group .select-f-list option {
 	display: block;
 	padding: 6px 14px;
 	cursor: pointer;
@@ -859,7 +848,7 @@ h1.big-title {
 	white-space: normal;
 }
 
-.form-group .select-f-list optiont:hover {
+.form-group .select-f-list option:hover {
 	background-color: #F2F4F4;
 }
 
@@ -962,8 +951,8 @@ input.invisible {
 }
 
 .form-tag > input {
-	line-height: 45px;
-	padding: 0 15px;
+	line-height: 30px;
+	padding: 0 10px;
 	border: 0;
 	outline: none !important;
 	width: 100px;
@@ -972,13 +961,13 @@ input.invisible {
 
 .form-tag > .tag {
 	background-color: #F2F4F4;
-	border-radius: 5px;
-	height: 37px;
+	border-radius: 3px;
+	height: 22px;
 	margin: 4px 2px;
 	text-align: center;
-	line-height: 37px;
+	line-height: 22px;
 	color: #444444;
-	font-size: 12px;
+	font-size: 11px;
 	position: relative;
 }
 
@@ -1016,7 +1005,7 @@ input:focus + .form-suggest,
 }
 
 .form-suggest .item {
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .radio-a {
@@ -1061,12 +1050,6 @@ input:focus + .form-suggest,
 	height: 40px;
 }
 
-.home-search .form-search .form-control::placeholder { color: #C8CCCC; }
-.home-search .form-search .form-control:-webkit-input-placeholder { color: #C8CCCC; }
-.home-search .form-search .form-control:-moz-placeholder { color: #C8CCCC; } /* FF 4-18 */
-.home-search .form-search .form-control::-moz-placeholder { color: #C8CCCC; } /* FF 19+ */
-.home-search .form-search .form-control:-ms-input-placeholder { color: #C8CCCC; } /* IE 10+ */
-
 .home-search .form-search .icon-search:before {
 	width: 12.4px;
 	height: 12.4px;
@@ -1094,11 +1077,10 @@ input:focus + .form-suggest,
 
 .product-item.long .img {
 	width: 280px;
-	height: 345px;
-	padding: 30px;
+	height: 290px;
+	padding: 15px 30px;
 	margin-bottom: 0;
   text-align: center;
-  position: relative;
 }
 
 .product-item.long .img a {
@@ -1106,18 +1088,14 @@ input:focus + .form-suggest,
 }
 
 .product-item.long .img img {
-	/*position: relative;*/
+	position: relative;
 }
 
 .product-item.long > .content {
 	width: 470px;
-	height: 345px;
+	height: 290px;
 	padding: 25px 25px 20px;
 	border-left: 1px #C8CCCC solid;
-}
-
-.product-item.long > .content > .clearfix > .pull-left {
-	width: 60%;
 }
 
 .product-item .name {
@@ -1175,11 +1153,6 @@ input:focus + .form-suggest,
 	vertical-align: middle;
 	position: relative;
 	top: -1px;
-  margin-right: 5px;
-}
-
-.product-detail .product-item.long .color span {
-  margin-right: 1px;
 }
 
 .product-item.long .add-to-note {
@@ -1190,7 +1163,7 @@ input:focus + .form-suggest,
 
 .product-item.long .right {
 	width: 200px;
-	height: 345px;
+	height: 290px;
 	border-left: 1px #C8CCCC solid;
 }
 
@@ -1214,7 +1187,6 @@ input:focus + .form-suggest,
 .product-item.long .right .merchant {
 	font-size: 11px;
 	color: #1E1E1E;
-  margin-bottom: 20px;
 }
 
 .product-item.long .right .merchant-more {
@@ -1240,11 +1212,8 @@ input:focus + .form-suggest,
 	position: absolute;
 	width: auto;
   height: auto;
-  max-width: 90%;
-	max-height: 90%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  max-width: 100%;
+	max-height: 100%;
 }
 
 .product-item .icons {
@@ -1302,7 +1271,6 @@ input:focus + .form-suggest,
 	height: 130px;
 	padding: 10px;
 	position: relative;
-  z-index: 1;
 }
 
 .ability-bg {
@@ -2240,10 +2208,10 @@ input:focus + .form-suggest,
 
 .add-note .form-tag .tag i {
 	position: absolute;
-	left: 5px;
+	left: 8px;
 	top: 50%;
 	transform-origin: left;
-	transform: translateY(-50%) scale(0.8);
+	transform: translateY(-50%) scale(0.4);
 }
 
 .add-note .form-suggest .item {
@@ -2259,10 +2227,10 @@ input:focus + .form-suggest,
 
 .add-note .form-suggest .item [class^=icon-] {
 	position: absolute;
-	left: -5px;
+	left: 0;
 	top: 50%;
 	transform-origin: left;
-	transform: translateY(-50%) scale(0.8);
+	transform: translateY(-50%) scale(0.4);
 }
 
 .add-note .pro,
@@ -2386,6 +2354,7 @@ input:focus + .form-suggest,
 
 .account .form-group .form-control {
   height: 40px;
+  border: 0;
   font-size: 13px;
 }
 
@@ -2404,7 +2373,7 @@ input:focus + .form-suggest,
 
 .account .form-group .reminder {
   position: absolute;
-  top: 6px;
+  top: 10px;
   left: 100%;
   width: 140px;
   padding-left: 10px;
@@ -2458,6 +2427,7 @@ input:focus + .form-suggest,
 }
 
 .account .form-group .select-f {
+  border: 0;
 }
 
 .account .form-group .select-f-list {
@@ -2567,7 +2537,6 @@ input:focus + .form-suggest,
   font-weight: 600;
   line-height: 1.2;
   margin: 5px 0 0;
-  padding-right: 20px;
 }
 
 .profile .show-more a {
@@ -2734,12 +2703,4 @@ input:focus + .form-suggest,
 
 .account.login.forget-pw .form-group label {
   width: 60px;
-}
-
-.account.login.forget-pw.change-pw .form-group label {
-  width: 180px;
-}
-
-.color-wp {
-  max-width: 420px;
 }

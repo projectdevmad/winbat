@@ -1,0 +1,540 @@
+<section class="add-note pt-10 pt-xs-20 pb-170 pb-xs-60">
+	<form method="post" autocomplete="off" name="notesForm" id="notesForm" ng-submit="submit()">
+	<div class="container width-990">
+		<h1 class="title">{{'AddMyTastingNote' | translate}}</h1>
+	</div>
+    {{formData}}
+	<div class="bg-grey pt-30 pb-30 pt-xs-10 pb-xs-10">
+		<div class="container width-990 product-item">
+			<div class="clearfix">
+				<div class="pull-left xs-pull-none mb-xs-10">
+					<a href="#productDetails/1"><h2 class="name m-0" ng-bind-html="product.display"></h2></a>
+				</div>
+				<div class="pull-right xs-pull-none">
+					<div class="details font-11">
+						<span class="text-grey">{{'Year' | translate}}:</span> {{product.vintage}}<br />
+						<span class="text-grey">{{'Category' | translate}}:</span> {{product.grape}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container width-990">
+		<hr class="mt-30 mb-15 mt-xs-15" />
+		<h3 class="s-title">{{'Look' | translate}}</h3>
+		<div class="form-item clearfix pro">
+			<div class="form-name pull-left">{{'Clarity' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="clarity-1"><span>clear</span><input type="radio" name="clarity" class="invisible" id="clarity-1" value="1" checked  ng-model="formData.appearance.clarity"/><dot></dot></label>
+					<label class="dot-a" for="clarity-2"><span></span><input type="radio" name="clarity" class="invisible" id="clarity-2" value="2" ng-model="formData.appearance.clarity" /></label>
+					<label class="dot-a" for="clarity-3"><span>off dry</span><input type="radio" name="clarity" class="invisible" id="clarity-3" value="3" ng-model="formData.appearance.clarity" /></label>
+					<label class="dot-a" for="clarity-4"><span></span><input type="radio" name="clarity" class="invisible" id="clarity-4" value="4" ng-model="formData.appearance.clarity" /></label>
+					<label class="dot-a" for="clarity-5"><span>hazy</span><input type="radio" name="clarity" class="invisible" id="clarity-5" value="5" ng-model="formData.appearance.clarity" /></label>
+				</div>
+			</div>
+		</div>
+		<div class="form-item clearfix pro">
+			<div class="form-name pull-left">{{'Intensity' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="intensity-1"><span>pale</span><input type="radio" name="intensity" class="invisible" id="intensity-1" value="1" checked   ng-model="formData.appearance.intensity" /><dot></dot></label>
+					<label class="dot-a" for="intensity-2"><span></span><input type="radio" name="intensity" class="invisible" id="intensity-2" value="2" ng-model="formData.appearance.intensity"  /></label>
+					<label class="dot-a" for="intensity-3"><span>medium</span><input type="radio" name="intensity" class="invisible" id="intensity-3" value="3" ng-model="formData.appearance.intensity"  /></label>
+					<label class="dot-a" for="intensity-4"><span></span><input type="radio" name="intensity" class="invisible" id="intensity-4" value="4" ng-model="formData.appearance.intensity"  /></label>
+					<label class="dot-a" for="intensity-5"><span>deep</span><input type="radio" name="intensity" class="invisible" id="intensity-5" value="5" ng-model="formData.appearance.intensity"  /></label>
+				</div>
+			</div>
+		</div>
+		<div class="form-item clearfix color short">
+			<div class="form-name pull-left">{{'Color' | translate}}</div>
+			<div class="form-content pull-right">
+				<!-- For White Color Wine
+				<div class="short-item color-item">
+					<div class="short-name">White</div>
+					<label class="color-a" for="color-1"><span>straw</span><bar style="background-color: #EBE3B2;"></bar><input type="radio" name="white" class="invisible" id="color-1" value="straw" /></label>
+					<label class="color-a" for="color-2"><span>yellow</span><bar style="background-color: #F5ED7E;"></bar><input type="radio" name="white" class="invisible" id="color-2" value="yellow" /></label>
+					<label class="color-a" for="color-3"><span>gold</span><bar style="background-color: #F3DE75;"></bar><input type="radio" name="white" class="invisible" id="color-3" value="gold" /></label>
+					<label class="color-a" for="color-4"><span>amber</span><bar style="background-color: #F8A837;"></bar><input type="radio" name="white" class="invisible" id="color-4" value="amber" /></label>
+					<label class="color-a" for="color-5"><span>brown</span><bar style="background-color: #CE982C;"></bar><input type="radio" name="white" class="invisible" id="color-5" value="brown" /></label>
+					<div class="cross"></div>
+				</div>
+				-->
+				<div class="short-item color-item">
+					<div class="short-name">{{'Red' | translate}}</div>
+					<label class="color-a" for="color-1"><span>purple</span><bar style="background-color: #C42053;"></bar><input type="radio" name="red" class="invisible" id="color-1" value="purple"  ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-2"><span>ruby</span><bar style="background-color: #921A36;"></bar><input type="radio" name="red" class="invisible" id="color-2" value="ruby" ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-3"><span>garnet</span><bar style="background-color: #6F0F11;"></bar><input type="radio" name="red" class="invisible" id="color-3" value="garnet" ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-4"><span>tawny</span><bar style="background-color: #491812;"></bar><input type="radio" name="red" class="invisible" id="color-4" value="tawny" ng-model="formData.appearance.color.base"  /></label>
+					<label class="color-a" for="color-5"><span>brown</span><bar style="background-color: #332211;"></bar><input type="radio" name="red" class="invisible" id="color-5" value="brown" ng-model="formData.appearance.color.base"  /></label>
+					<div class="cross"></div>
+				</div>
+				<!-- For Rose Color Wine
+				<div class="short-item color-item">
+					<div class="short-name">Rose</div>
+					<label class="color-a" for="color-1"><span>pink</span><bar style="background-color: #F5C7C7;"></bar><input type="radio" name="rose" class="invisible" id="color-1" value="pink" /></label>
+					<label class="color-a" for="color-2"><span>deep pink</span><bar style="background-color: #F16E76;"></bar><input type="radio" name="rose" class="invisible" id="color-2" value="deep pink" /></label>
+					<label class="color-a" for="color-3"><span>salmon</span><bar style="background-color: #F2876F;"></bar><input type="radio" name="rose" class="invisible" id="color-3" value="salmon" /></label>
+					<label class="color-a" for="color-4"><span>deep salmon</span><bar style="background-color: #EC6240;"></bar><input type="radio" name="rose" class="invisible" id="color-4" value="deep salmon" /></label>
+					<label class="color-a" for="color-5"><span>copper</span><bar style="background-color: #D0492B;"></bar><input type="radio" name="rose" class="invisible" id="color-5" value="copper" /></label>
+					<div class="cross"></div>
+				</div>
+				-->
+			</div>
+		</div>
+		<div class="form-item clearfix short pro mt-10">
+			<div class="form-name pull-left">{{'Other' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="short-item">
+					<div class="short-name">{{'Legs' | translate}}</div>
+					<div class="form-dot">
+						<label class="dot-a active" for="legs-1"><span>none</span><input type="radio" name="legs" class="invisible" id="legs-1" value="1" checked ng-model="formData.appearance.legs"  /><dot></dot></label>
+						<label class="dot-a" for="legs-2"><span></span><input type="radio" name="legs" class="invisible" id="legs-2" value="2" ng-model="formData.appearance.legs" /></label>
+						<label class="dot-a" for="legs-3"><span>few</span><input type="radio" name="legs" class="invisible" id="legs-3" value="3" ng-model="formData.appearance.legs" /></label>
+						<label class="dot-a" for="legs-4"><span></span><input type="radio" name="legs" class="invisible" id="legs-4" value="4" ng-model="formData.appearance.legs" /></label>
+						<label class="dot-a" for="legs-5"><span>plenty</span><input type="radio" name="legs" class="invisible" id="legs-5" value="5" ng-model="formData.appearance.legs" /></label>
+					</div>
+				</div>
+				<div class="short-item">
+					<div class="short-name">{{'Deposit' | translate}}</div>
+					<div class="form-dot">
+						<label class="dot-a active" for="deposit-1"><span>none</span><input type="radio" name="deposit" class="invisible" id="deposit-1" value="1" checked ng-model="formData.appearance.deposit" /><dot></dot></label>
+						<label class="dot-a" for="deposit-2"><span></span><input type="radio" name="deposit" class="invisible" id="deposit-2" value="2" ng-model="formData.appearance.deposit" /></label>
+						<label class="dot-a" for="deposit-3"><span>few</span><input type="radio" name="deposit" class="invisible" id="deposit-3" value="3" ng-model="formData.appearance.deposit" /></label>
+						<label class="dot-a" for="deposit-4"><span></span><input type="radio" name="deposit" class="invisible" id="deposit-4" value="4" ng-model="formData.appearance.deposit" /></label>
+						<label class="dot-a" for="deposit-5"><span>plenty</span><input type="radio" name="deposit" class="invisible" id="deposit-5" value="5" ng-model="formData.appearance.deposit" /></label>
+					</div>
+				</div>
+				<div class="short-item">
+					<div class="short-name">{{'Bubbles' | translate}}</div>
+					<div class="form-dot">
+						<label class="dot-a active" for="bubbles-1"><span>small</span><input type="radio" name="bubbles" class="invisible" id="bubbles-1" value="1" checked ng-model="formData.appearance.bubbles"/><dot></dot></label>
+						<label class="dot-a" for="bubbles-2"><span></span><input type="radio" name="bubbles" class="invisible" id="bubbles-2" value="2" ng-model="formData.appearance.bubbles" /></label>
+						<label class="dot-a" for="bubbles-3"><span>medium</span><input type="radio" name="bubbles" class="invisible" id="bubbles-3" value="3" ng-model="formData.appearance.bubbles" /></label>
+						<label class="dot-a" for="bubbles-4"><span></span><input type="radio" name="bubbles" class="invisible" id="bubbles-4" value="4"  ng-model="formData.appearance.bubbles" /></label>
+						<label class="dot-a" for="bubbles-5"><span>big</span><input type="radio" name="bubbles" class="invisible" id="bubbles-5" value="5" ng-model="formData.appearance.bubbles" /></label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="mt-10 mb-15 mt-xs-5" />
+		<h3 class="s-title">{{'Smell' | translate}}</h3>
+		<div class="form-item clearfix mt-10 smell">
+			<div class="form-name pull-left"></div>
+			<div class="form-content pull-right">
+				<div class="form-tag">
+					<div class="tag" style="display: none;"></div>
+					<input id="inputtags" type="text" placeholder="Search" data-placeholder="Search" ng-model="formData.smell" />
+					<div class="form-suggest"></div>
+					
+					<script>
+            $(".smell .smell-more .radio-a").each(function(){
+              $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
+              suggest();
+            });
+            $("#inputtags").keydown(function(){
+              $(".form-suggest").html("");
+              $(".smell .smell-more .radio-a").each(function(){
+                if($(this).find("g").html().toLowerCase().includes($("#inputtags").val().toLowerCase())){
+                  if($(".form-tag .tag ." + $(this).find("i").attr("class")).length){
+                    return false;
+                  }
+                  
+                  $(".form-suggest").append("<div class='item'>" + $(this).html() + "</div>");
+                }
+              });
+              suggest();
+              if($(".form-suggest .item").length < 1){
+                $(".form-suggest").html("<m>No results matched</m>");
+              }
+            });
+            
+            function suggest(){
+              $(".form-tag .form-suggest > .item").click(function(){
+                
+                $("#inputtags").val("");
+                
+                var ol_content = $(this).html();
+			    var content = ol_content + '<div class="cross"></div><input class="smellsInput" type="hidden" name="smells[]" value="'+$(this).find("g").html()+'">';
+                var icon_name = $(this).children("[class*='icon-']").attr("class");
+
+                if($(".form-tag .tag ." + icon_name).length){
+                  return false;
+                }
+                
+                $(".form-tag .form-suggest ." + icon_name).parent().remove();
+
+                $(".form-tag .tag:first-child").clone().insertBefore($(".form-tag > input")).html(content).show();
+                $(".smell .radio-a").each(function(){
+                  if($(this).html()==ol_content){
+                    $(this).addClass("active");
+                  }
+                });
+
+                $(".form-tag input").removeAttr("placeholder");
+
+                $(".form-tag .tag > .cross").click(function(){
+                  $(this).parent().remove();
+                  $(".smell .radio-a").each(function(){
+                    if($(this).html()==ol_content){
+                      $(this).removeClass("active");
+                    }
+                  });
+                  if($(".form-tag .tag").length <= 1){
+                    $(".form-tag input").attr("placeholder", $(".form-tag input").data("placeholder"));
+                  }
+                });
+              });
+            }
+        
+            $(".smell .radio-a").click(function(){
+              var ol_content = $(this).html();
+							//var content = ol_content + '<div class="cross"></div><input type="hidden" name="small of ' + $(this).find("g").html() + '" value="1">';
+			  var content = ol_content + '<div class="cross"></div><input class="smellsInput" type="hidden" name="smells[]" value="'+$(this).find("g").html()+'">';
+
+              if(!$(this).hasClass("active")){
+                $(".form-tag .tag:first-child").clone().insertBefore($(".form-tag > input")).html(content).show();
+				angular.element(jQuery('.smellsHidden')).triggerHandler('input')
+                $(".form-tag input").removeAttr("placeholder");
+
+                $(".form-tag .tag > .cross").click(function(){
+                  $(this).parent().remove();
+                  $(".smell .radio-a").each(function(){
+                    if($(this).html()==ol_content){
+                      $(this).removeClass("active");
+                    }
+                  });
+                  if($(".form-tag .tag").length <= 1){
+                    $(".form-tag input").attr("placeholder", $(".form-tag input").data("placeholder"));
+                  }
+                });
+                $(".smell .radio-a").each(function(){
+                  if($(this).html()==ol_content){
+                    $(this).addClass("active");
+                  }
+                });
+              }else{
+                $(this).removeClass("active");
+                $(".form-tag .tag").each(function(){
+                  if($(this).html()==content){
+                    $(this).remove();
+                  }
+                });
+                $(".smell .radio-a").each(function(){
+                  if($(this).html()==ol_content){
+                    $(this).removeClass("active");
+                  }
+                });
+              }
+            });
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="smell relative mt-xs-5">
+			<div class="form-item clearfix mt-30 mt-xs-0">
+				<div class="form-name pull-left"></div>
+				<div class="form-content pull-right">
+				  <!-- please use API: https://winebatapi.docs.apiary.io/#reference/0/smell/tasting-input -->
+				  
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/strawberry.svg)"></i><g>strawberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cherry.svg)"></i><g>cherry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lemon.svg)"></i><g>lemon</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/apple.svg)"></i><g>apple</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/coffee.svg)"></i><g>coffee</g></label>
+					<label class="radio-a"><i class="icon-flower"></i><g>flower</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Flower' | translate}}</div>
+				<div class="form-content pull-right flower">
+				  <!-- please use API: https://winebatapi.docs.apiary.io/#reference/0/smell/tasting-input -->
+				
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/iris.svg)"></i><g>iris</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/peony.svg)"></i><g>peony</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/elderflower.svg)"></i><g>elderflower</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/acacia.svg)"></i><g>acacia</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lilac.svg)"></i><g>lilac</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/jasmine.svg)"></i><g>jasmine</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/honeysuckle.svg)"></i><g>honeysuckle</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/violet.svg)"></i><g>violet</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lavender.svg)"></i><g>lavender</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Citrus' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lime.svg)"></i><g>lime</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lemon.svg)"></i><g>lemon</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/grapefruit.svg)"></i><g>grapefruit</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/orange.svg)"></i><g>orange</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/orange_peal.svg)"></i><g>orange peal</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/marmalade.svg)"></i><g>marmalade</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'TreeFruit' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/apple.svg)"></i><g>apple</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/pear.svg)"></i><g>pear</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/nectarine.svg)"></i><g>nectarine</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/peach.svg)"></i><g>peach</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/apricot.svg)"></i><g>apricot</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/persimmon.svg)"></i><g>persimmon</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'TropicalFruit' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/banana.svg)"></i><g>banana</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/pineapple.svg)"></i><g>pineapple</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/mango.svg)"></i><g>mango</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/guava.svg)"></i><g>guava</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/kiwi.svg)"></i><g>kiwi</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lychee.svg)"></i><g>lychee</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/bubblegum.svg)"></i><g>bubblegum</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'RedFruit' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/redcurrant.svg)"></i><g>redcurrant</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cranberry.svg)"></i><g>cranberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/raspberry.svg)"></i><g>raspberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/red_plum.svg)"></i><g>red plum</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/strawberry.svg)"></i><g>strawberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cherry.svg)"></i><g>cherry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/pomegranate.svg)"></i><g>pomegranate</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'BlackFruit' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/blackcurrant.svg)"></i><g>blackcurrant</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/plum.svg)"></i><g>plum</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/blackberry.svg)"></i><g>blackberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/blueberry.svg)"></i><g>blueberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/olive.svg)"></i><g>olive</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'DriedFruit' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/raisin.svg)"></i><g>raisin</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/prune.svg)"></i><g>prune</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/fig.svg)"></i><g>fig</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/date.svg)"></i><g>date</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/fruitcake.svg)"></i><g>fruitcake</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'NobleRot' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/honeycomb.svg)"></i><g>honeycomb</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/ginger.svg)"></i><g>ginger</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/saffron.svg)"></i><g>saffron</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Herbal/Spice' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/green_bell_pepper.svg)"></i><g>green bell pepper</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/thyme.svg)"></i><g>thyme</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/mint.svg)"></i><g>mint</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/white_pepper.svg)"></i><g>white pepper</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/red_pepper.svg)"></i><g>red pepper</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/black_pepper.svg)"></i><g>black pepper</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cinnamon.svg)"></i><g>cinnamon</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/fennel.svg)"></i><g>fennel</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/anise.svg)"></i><g>anise</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/liquorice.svg)"></i><g>liquorice</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/tomato_leaf.svg)"></i><g>tomato leaf</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/blackcurrant_leaf.svg)"></i><g>blackcurrant leaf</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Vegetable' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/tomato.svg)"></i><g>tomato</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/green_almond.svg)"></i><g>green almond</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/jalapeno.svg)"></i><g>jalapeno</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/bell_pepper.svg)"></i><g>bell pepper</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/gooseberry.svg)"></i><g>gooseberry</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/grass.svg)"></i><g>grass</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Earth' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/petroleum.svg)"></i><g>petroleum</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/volcanic_rocks.svg)"></i><g>volcanic rocks</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/red_beet.svg)"></i><g>red beet</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/potting_soil.svg)"></i><g>potting soil</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/wet_gravel.svg)"></i><g>wet gravel</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/slate.svg)"></i><g>slate</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Yeast' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/lager.svg)"></i><g>lager</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/sourdough.svg)"></i><g>sourdough</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cheese.svg)"></i><g>cheese</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cream.svg)"></i><g>cream</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/butter.svg)"></i><g>butter</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/biscuit.svg)"></i><g>biscuit</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/bread.svg)"></i><g>bread</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/toast.svg)"></i><g>toast</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Oak' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/dill.svg)"></i><g>dill</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/smoke.svg)"></i><g>smoke</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cigar_box.svg)"></i><g>cigar box</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/baking_spices.svg)"></i><g>baking spices</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/coconut.svg)"></i><g>coconut</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/vanilla.svg)"></i><g>vanilla</g></label>
+				</div>
+			</div>
+			<div class="form-item clearfix mt-20 smell-more">
+				<div class="form-name pull-left">{{'Aging' | translate}}</div>
+				<div class="form-content pull-right">
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/leather.svg)"></i><g>leather</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/caramel.svg)"></i><g>caramel</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/cocoa.svg)"></i><g>cocoa</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/coffee.svg)"></i><g>coffee</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/tobacco.svg)"></i><g>tobacco</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/nuts.svg)"></i><g>nuts</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/dried_fruit.svg)"></i><g>dried fruit</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/mushroom.svg)"></i><g>mushroom</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/truffle.svg)"></i><g>truffle</g></label>
+					<label class="radio-a"><i class="icon-" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/alcoholics-beverages/tasting-icons/meaty.svg)"></i><g>meaty</g></label>
+				</div>
+			</div>
+			<button type="button" class="btn-a more-opener">{{'More' | translate}}...</button>
+			<button type="button" class="btn-a more-closer" style="display: none;">{{'Fewer' | translate}}...</button>
+					
+			<script>
+				$(".smell .more-opener").click(function(){
+					$(".smell-more").addClass("open");
+					$(".smell .more-opener").hide();
+					$(".smell .more-closer").show();
+				});
+				
+				$(".smell .more-closer").click(function(){
+					$(".smell-more").removeClass("open");
+					$(".smell .more-opener").show();
+					$(".smell .more-closer").hide();
+				});
+			</script>
+		</div>
+		<hr class="mt-15 mb-15" />
+		<h3 class="s-title">{{'Taste' | translate}}</h3>
+		<div class="form-item clearfix">
+			<div class="form-name pull-left">{{'Sweetness' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="sweetness-1"><span>very dry</span><input type="radio" name="sweetness" class="invisible" id="sweetness-1" value="1" checked ng-model="formData.taste.sweetness" /><dot></dot></label>
+					<label class="dot-a" for="sweetness-2"><span></span><input type="radio" name="sweetness" class="invisible" id="sweetness-2" value="2" ng-model="formData.taste.sweetness" /></label>
+					<label class="dot-a" for="sweetness-3"><span>off dry</span><input type="radio" name="sweetness" class="invisible" id="sweetness-3" value="3" ng-model="formData.taste.sweetness" /></label>
+					<label class="dot-a" for="sweetness-4"><span></span><input type="radio" name="sweetness" class="invisible" id="sweetness-4" value="4" ng-model="formData.taste.sweetness" /></label>
+					<label class="dot-a" for="sweetness-5"><span>very sweet</span><input type="radio" name="sweetness" class="invisible" id="sweetness-5" value="5" ng-model="formData.taste.sweetness" /></label>
+				</div>
+			</div>
+		</div>
+		<div class="form-item clearfix">
+			<div class="form-name pull-left">{{'Acidity' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="acidity-1"><span>low</span><input type="radio" name="acidity" class="invisible" id="acidity-1" value="1" checked ng-model="formData.taste.acidity" /><dot></dot></label>
+					<label class="dot-a" for="acidity-2"><span></span><input type="radio" name="acidity" class="invisible" id="acidity-2" value="2" ng-model="formData.taste.acidity" /></label>
+					<label class="dot-a" for="acidity-3"><span>medium</span><input type="radio" name="acidity" class="invisible" id="acidity-3" value="3" ng-model="formData.taste.acidity" /></label>
+					<label class="dot-a" for="acidity-4"><span></span><input type="radio" name="acidity" class="invisible" id="acidity-4" value="4" ng-model="formData.taste.acidity" /></label>
+					<label class="dot-a" for="acidity-5"><span>high</span><input type="radio" name="acidity" class="invisible" id="acidity-5" value="5" ng-model="formData.taste.acidity" /></label>
+				</div>
+			</div>
+		</div>
+		<div class="form-item clearfix">
+			<div class="form-name pull-left">{{'Tannin' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="tannin-1"><span>low</span><input type="radio" name="tannin" class="invisible" id="tannin-1" value="1" checked  ng-model="formData.taste.tannin" /><dot></dot></label>
+					<label class="dot-a" for="tannin-2"><span></span><input type="radio" name="tannin" class="invisible" id="tannin-2" value="2" ng-model="formData.taste.tannin"  /></label>
+					<label class="dot-a" for="tannin-3"><span>medium</span><input type="radio" name="tannin" class="invisible" id="tannin-3" value="3" ng-model="formData.taste.tannin" /></label>
+					<label class="dot-a" for="tannin-4"><span></span><input type="radio" name="tannin" class="invisible" id="tannin-4" value="4" ng-model="formData.taste.tannin" /></label>
+					<label class="dot-a" for="tannin-5"><span>high</span><input type="radio" name="tannin" class="invisible" id="tannin-5" value="5" ng-model="formData.taste.tannin" /></label>
+				</div>
+			</div>
+		</div>
+		<div class="form-item clearfix">
+			<div class="form-name pull-left">{{'Body' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="body-1"><span>light</span><input type="radio" name="body" class="invisible" id="body-1" value="1" checked ng-model="formData.taste.body" /><dot></dot></label>
+					<label class="dot-a" for="body-2"><span></span><input type="radio" name="body" class="invisible" id="body-2" value="2" ng-model="formData.taste.body" /></label>
+					<label class="dot-a" for="body-3"><span>med</span><input type="radio" name="body" class="invisible" id="body-3" value="3" ng-model="formData.taste.body" /></label>
+					<label class="dot-a" for="body-4"><span></span><input type="radio" name="body" class="invisible" id="body-4" value="4" ng-model="formData.taste.body" /></label>
+					<label class="dot-a" for="body-5"><span>hazyfull</span><input type="radio" name="body" class="invisible" id="body-5" value="5" ng-model="formData.taste.body" /></label>
+				</div>
+			</div>
+		</div>
+		<div class="form-item clearfix pro">
+			<div class="form-name pull-left">{{'Alcohol' | translate}}</div>
+			<div class="form-content pull-right">
+				<div class="form-dot">
+					<label class="dot-a active" for="alcohol-1"><span>&lt; 10%</span><input type="radio" name="alcohol" class="invisible" id="alcohol-1" value="1" checked ng-model="formData.taste.alcohol" /><dot></dot></label>
+					<label class="dot-a" for="alcohol-2"><span></span><input type="radio" name="alcohol" class="invisible" id="alcohol-2" value="2" ng-model="formData.taste.alcohol" /></label>
+					<label class="dot-a" for="alcohol-3"><span>~13.5</span><input type="radio" name="alcohol" class="invisible" id="alcohol-3" value="3" ng-model="formData.taste.alcohol" /></label>
+					<label class="dot-a" for="alcohol-4"><span></span><input type="radio" name="alcohol" class="invisible" id="alcohol-4" value="4" ng-model="formData.taste.alcohol" /></label>
+					<label class="dot-a" for="alcohol-5"><span>&gt; 15.5%</span><input type="radio" name="alcohol" class="invisible" id="alcohol-5" value="5" ng-model="formData.taste.alcohol" /></label>
+				</div>
+			</div>
+		</div>
+		<hr class="mt-30 mb-15" />
+		<h3 class="s-title">{{'Overall' | translate}}</h3>
+		<div class="form-item">
+			<label class="radio-a" for="overall-1"><input type="radio" name="overall" value="5" id="overall-1" class="invisible" checked  ng-model="formData.overall" /><span></span><i class="icon-happy"></i></label>
+			<label class="radio-a" for="overall-2"><input type="radio" name="overall" value="1" id="overall-2" class="invisible"  ng-model="formData.overall" /><span></span><i class="icon-sad"></i></label>
+		</div>
+		<div class="btn-group text-right mt-30">
+			<script>
+				function pro(){
+					$(".pro").addClass("open");
+					$(".simple").removeClass("open");
+					$(".simple-opener").show();
+					$(".pro-opener").hide();
+				}
+				
+				function simple(){
+					$(".pro").removeClass("open");
+					$(".simple").addClass("open");
+					$(".simple-opener").hide();
+					$(".pro-opener").show();
+				}
+			</script>
+			<button type="button" class="btn-themed btn-cancel">{{'Cancel' | translate}}</button>
+			<button type="button" class="btn-themed simple-opener ml-20 ml-xs-0" onClick="simple();" style="display: none;">{{'Fewer' | translate}}</button>
+			<button type="button" class="btn-themed pro-opener ml-20 ml-xs-0" onClick="pro();">{{'More' | translate}}</button>
+			<button type="submit" class="btn-themed ml-20 ml-xs-0">{{'Submit' | translate}}</button>
+			<script>
+				$("form").submit(function(){
+					
+				});
+			</script>
+		</div>
+	</div>
+	</form>
+</section>
+
+<script src="./app-content/js/bootstrap.min.js"></script>
+<script src="./app-content/js/custom.js"></script>
+<script>
+	$('html, body').animate({
+		scrollTop: 0
+	}, 0);
+  $('.btn-cancel').click(function(){
+    window.history.back();
+  });
+</script>

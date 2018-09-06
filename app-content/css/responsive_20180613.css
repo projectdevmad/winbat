@@ -304,7 +304,7 @@
     top: -5px;
   }
   
-  .add-note .color-wp {
+  .add-note .color-a:first-of-type {
     margin-left: 50px;
   }
 	
@@ -392,7 +392,7 @@
 	}
 
 	.product-list .form-group {
-		width: 127px;
+		width: 100px;
 	}
 	
 	.product-list select.form-control {
@@ -413,15 +413,6 @@
 		width: 10px;
 		height: 10px;
 	}
-  
-  .form-group .select-f-list {
-    max-height: 200px;
-  }
-  
-  .form-group .select-f-list optiont {
-    font-size: 9px;
-    padding: 5px;
-  }
 	
 	.filter {
 		padding: 0 8.5px !important;
@@ -473,7 +464,7 @@
 	}
 	
 	.product-list .select-f {
-		padding: 0 3px;
+		padding: 2px 5px;
 	}
 	
 	.product-list .form-group .select-f-list {
@@ -531,7 +522,7 @@
 		position: static;
 		width: 30%;
 		height: auto;
-		padding: 30px 0 0;
+		padding: 12px 0 0;
     text-align: center;
 	}
 	
@@ -547,10 +538,9 @@
 	}
 	
 	.product-item.long .img img {
-		position: static;
+		position: relative;
 		max-width: 100%;
-		max-height: 110px;
-    transform: none;
+		max-height: 110px;;
 	}
 	
 	.product-item.long .name {
@@ -621,8 +611,8 @@
 	}
 	
 	.product-item.long .icons li > i {
-    width: 24px;
-		height: 24px;
+    width: 15px;
+		height: 15px;
 	}
 	
 	.product-item.long .icons li > div {
@@ -868,7 +858,7 @@
     margin-right: -10%;
 	}
   
-  .add-note .color-wp {
+  .add-note .color-a:first-of-type {
     margin-left: 0;
   }
 	
@@ -961,14 +951,11 @@
     display: block;
     font-size: 12px;
     margin: 5px 0 25px;
-    width: 50%;
   }
   
   .profile .note-item .name {
     width: 50%;
     margin: 0;
-    margin-bottom: 25px;
-    padding-right: 0;
   }
   
   .note-item .smell,
@@ -1006,7 +993,7 @@
   
   .profile .note-item .ability-chart-wrapper,
   .profile .note-item .details + .ability-chart-wrapper {
-    top: 22px;
+    top: 30px;
   }
   
   .note-item .like {

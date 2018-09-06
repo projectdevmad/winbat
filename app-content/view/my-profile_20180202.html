@@ -1,0 +1,507 @@
+<section class="top-title-bar pt-10 pb-30 pb-xs-20">
+	<div class="container width-990">
+    <h2>Profile</h2>
+  </div>
+</section>
+
+<section class="profile-detail">
+  <form method="post">
+	<div class="container width-990">
+    <div class="content pt-60 pt-xs-20 pb-60 pb-xs-40">
+      <div class="row">
+        <div class="col-sm-3 col-xs-12">
+          <div class="user">
+            <div class="user-img" style="background-image: url(./app-content/images/user-01.jpg);" data-ol-img="./app-content/images/user-01.jpg">
+              <div class="upload-img hide">
+                <input type="file" name="profile_img" id="profile_img" accept="image/*" />
+                <label for="profile_img">Upload</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 profile-content pt-10 pt-xs-20 pl-0 pl-xs-15">
+          <div class="item">
+            <span>First Name</span>Paul
+          </div>
+          <div class="item">
+            <span>Last Name</span>Wong
+          </div>
+          <div class="item">
+            <span>Birthday</span>1990/01/27
+          </div>
+          <div class="item">
+            <span>User Name</span>Paul Wong 0127
+          </div>
+          <div class="item">
+            <span>Email</span>paulwong@gmail.com
+          </div>
+          <div class="item preview">
+            <span>Password</span>********
+          </div>
+          <div class="item edit hide">
+            <span>New Password</span>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" pattern="(?=.*\d).{6,}" required />
+              <div class="reminder">At least 6 characters with at least one number</div>
+            </div>
+          </div>
+          <div class="item edit hide">
+            <span>Confirm New Password</span>
+            <div class="form-group">
+              <input type="password" class="form-control" name="confirm_password" pattern="(?=.*\d).{6,}" required />
+            </div>
+          </div>
+          <script>
+            $("form").submit(function(e){
+              e.preventDefault();
+              $(".profile-detail .updated-msg").removeClass("hide");
+              $(".profile-detail .btn-edit").removeClass("hide");
+              $(".profile-detail .btn-save").addClass("hide");
+              $(".profile-detail .btn-cancel").addClass("hide");
+              $(".profile-detail .item.preview").removeClass("hide");
+              $(".profile-detail .item.edit").addClass("hide");
+              $(".profile-detail .upload-img").addClass("hide");
+            });
+            
+            $(".profile-detail .btn-edit").click(function(e){
+              e.preventDefault();
+              $(this).addClass("hide");
+              $(".profile-detail .updated-msg").addClass("hide");
+              $(".profile-detail .btn-save").removeClass("hide");
+              $(".profile-detail .btn-cancel").removeClass("hide");
+              $(".profile-detail .item.preview").addClass("hide");
+              $(".profile-detail .item.edit").removeClass("hide");
+              $(".profile-detail .upload-img").removeClass("hide");
+              $("form")[0].reset();
+            });
+            
+            $(".profile-detail .btn-cancel").click(function(e){
+              e.preventDefault();
+              $(this).addClass("hide");
+              $(".profile-detail .btn-edit").removeClass("hide");
+              $(".profile-detail .btn-save").addClass("hide");
+              $(".profile-detail .item.preview").removeClass("hide");
+              $(".profile-detail .item.edit").addClass("hide");
+              $(".profile-detail .upload-img").addClass("hide");
+            });
+
+            $("[name='confirm_password']").change(function(){
+              confirm_password();
+            });
+
+            function confirm_password(){
+              $("[name='confirm_password']")[0].setCustomValidity('');
+              if($("[name='confirm_password']").val() != "" && $("[name='confirm_password']")[0].checkValidity() == true && $("[name='confirm_password']").val() == $("[name='password']").val()){
+                $("[name='confirm_password']")[0].setCustomValidity('');
+              }else{
+                $("[name='confirm_password']")[0].setCustomValidity("Passwords don't match.");
+              }
+            }
+            confirm_password();
+          </script>
+        </div>
+        <div class="col-sm-3 col-xs-12 clearfix btns">
+          <a href="#" class="btn-themed btn-edit">Edit</a>
+          <button class="btn-themed btn-save hide">Save</button>
+          <a href="#" class="btn-themed btn-cancel hide">Cancel</a>
+          <div class="updated-msg hide">Your profile is updated.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</section>
+
+<section class="latest-notes pt-60 pt-xs-30 profile">
+	<div class="container width-990">
+		<h2 class="title m-0 mb-20">Tasting Input Record</h2>
+	</div>
+	<div class="product-list pt-30 pt-xs-15 pb-30 pb-xs-10 mb-60 mb-xs-20">
+		<div class="container width-990">
+			<div class="row pl-sm-5">
+          <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
+            <div class="note-item shadow bg-white">
+              <div class="no">2017-12-04  13:55</div>
+              <a href="#/productDetails"><h4 class="name">Chateau Bordeneuve, Bordeaux, France</h4></a>
+              <div class="user mt-20 mt-xs-15">
+                <i class="icon-happy"></i>
+              </div>
+              <div class="smell mt-20 clearfix">
+                <span class="pull-left">Smell:</span>
+                <div class="pull-left">
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+                </div>
+              </div>
+      <div class="ability-chart-wrapper">
+        <div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+        <div class="ability-chart">
+          <div data-title="sweetness">
+            <span></span>
+            <span></span>
+          </div>
+          <div data-title="acidity">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div data-title="Body">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div data-title="Tannin">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="ability-text">
+          <svg viewBox="0 0 200 200">
+            <path id="curve1" fill="rgba(0,0,0,0)" d="M0 100 C 0 44.77, 44.77 0, 100 0" />
+            <text>
+            <textPath xlink:href="#curve1" startOffset="50%" text-anchor="middle">
+              sweetness
+            </textPath>
+            </text>
+            <path id="curve2" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100" />
+            <text>
+            <textPath xlink:href="#curve2" startOffset="50%" text-anchor="middle">
+              acidity
+            </textPath>
+            </text>
+            <path id="curve3" fill="rgba(0,0,0,0)" d="M200 100 C 200 155.23, 155.23 200, 100 200" />
+            <text>
+            <textPath xlink:href="#curve3" startOffset="50%" text-anchor="middle">
+              Tannin
+            </textPath>
+            </text>
+            <path id="curve4" fill="rgba(0,0,0,0)" d="M100 200 C 44.77 200, 0 155.23, 0 100" />
+            <text>
+            <textPath xlink:href="#curve4" startOffset="50%" text-anchor="middle">
+              Body
+            </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+              <div class="like">
+                <div class="item">
+                  <a href="#"><i class="icon-like"></i></a> 321
+                </div>
+                <div class="item">
+                  <a href="#"><i class="icon-dislike"></i></a> 4
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
+            <div class="note-item shadow bg-white">
+              <div class="no">2017-12-03  13:55</div>
+              <a href="#/productDetails"><h4 class="name">Chateau Bordeneuve, Bordeaux, France</h4></a>
+              <div class="user mt-20 mt-xs-15">
+                <i class="icon-happy"></i>
+              </div>
+              <div class="smell mt-20 clearfix">
+                <span class="pull-left">Smell:</span>
+                <div class="pull-left">
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+                </div>
+              </div>
+              <div class="details row mt-10">
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Color:</span>
+                  <div class="pull-left color"><span style="background-color: #560F33;"></span> Garnet</div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Legs:</span>
+                  <div class="pull-left"><span class="bar-0"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Clarity:</span>
+                  <div class="pull-left"><span class="bar-1"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Deposit:</span>
+                  <div class="pull-left"><span class="bar-2"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Intensit:</span>
+                  <div class="pull-left"><span class="bar-3"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Bubbles:</span>
+                  <div class="pull-left"><span class="bar-4"></span></div>
+                </div>
+              </div>
+      <div class="ability-chart-wrapper pie-5">
+        <div class="pie-chart" style="background-color: #F2F4F4;">
+          <div data-p="20" data-s="3"><div style="background-color: #EA3223;"></div></div>
+          <div data-p="20" data-s="1"><div style="background-color: #A16AF7;"></div></div>
+          <div data-p="20" data-s="4"><div style="background-color: #377E22;"></div></div>
+          <div data-p="20" data-s="5"><div style="background-color: #F8D849;"></div></div>
+          <div data-p="20" data-s="2"><div style="background-color: #0013F5;"></div></div>
+        </div>
+        <div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+        <div class="ability-bg"><div></div></div>
+        <div class="ability-text">
+          <svg viewBox="0 0 200 200">
+            <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
+            <text>
+            <textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
+              acidity
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
+              Alcohol
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
+              Tannin
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
+              Body
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
+              sweetness
+            </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+              <div class="like">
+                <div class="item">
+                  <a href="#"><i class="icon-like"></i></a> 321
+                </div>
+                <div class="item">
+                  <a href="#"><i class="icon-dislike"></i></a> 4
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
+            <div class="note-item shadow bg-white">
+              <div class="no">2017-12-02  13:55</div>
+              <a href="#/productDetails"><h4 class="name">Chateau Bordeneuve, Bordeaux, France</h4></a>
+              <div class="user mt-20 mt-xs-15">
+                <i class="icon-happy"></i>
+              </div>
+              <div class="smell mt-20 clearfix">
+                <span class="pull-left">Smell:</span>
+                <div class="pull-left">
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+                </div>
+              </div>
+              <div class="details row mt-10">
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Color:</span>
+                  <div class="pull-left color"><span style="background-color: #560F33;"></span> Garnet</div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Legs:</span>
+                  <div class="pull-left"><span class="bar-0"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Clarity:</span>
+                  <div class="pull-left"><span class="bar-1"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Deposit:</span>
+                  <div class="pull-left"><span class="bar-2"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Intensit:</span>
+                  <div class="pull-left"><span class="bar-3"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Bubbles:</span>
+                  <div class="pull-left"><span class="bar-4"></span></div>
+                </div>
+              </div>
+      <div class="ability-chart-wrapper pie-5">
+        <div class="pie-chart" style="background-color: #F2F4F4;">
+          <div data-p="20" data-s="3"><div style="background-color: #EA3223;"></div></div>
+          <div data-p="20" data-s="1"><div style="background-color: #A16AF7;"></div></div>
+          <div data-p="20" data-s="4"><div style="background-color: #377E22;"></div></div>
+          <div data-p="20" data-s="5"><div style="background-color: #F8D849;"></div></div>
+          <div data-p="20" data-s="2"><div style="background-color: #0013F5;"></div></div>
+        </div>
+        <div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+        <div class="ability-bg"><div></div></div>
+        <div class="ability-text">
+          <svg viewBox="0 0 200 200">
+            <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
+            <text>
+            <textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
+              acidity
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
+              Alcohol
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
+              Tannin
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
+              Body
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
+              sweetness
+            </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+              <div class="like">
+                <div class="item">
+                  <a href="#"><i class="icon-like"></i></a> 321
+                </div>
+                <div class="item">
+                  <a href="#"><i class="icon-dislike"></i></a> 4
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
+            <div class="note-item shadow bg-white">
+              <div class="no">2017-12-01  13:55</div>
+              <a href="#/productDetails"><h4 class="name">Chateau Bordeneuve, Bordeaux, France</h4></a>
+              <div class="user mt-20 mt-xs-15">
+                <i class="icon-happy"></i>
+              </div>
+              <div class="smell mt-20 clearfix">
+                <span class="pull-left">Smell:</span>
+                <div class="pull-left">
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+          <i class="icon-strawberry"></i>
+          <i class="icon-cherry"></i>
+          <i class="icon-lemon"></i>
+          <i class="icon-apple"></i>
+                </div>
+              </div>
+              <div class="details row mt-10">
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Color:</span>
+                  <div class="pull-left color"><span style="background-color: #560F33;"></span> Garnet</div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Legs:</span>
+                  <div class="pull-left"><span class="bar-0"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Clarity:</span>
+                  <div class="pull-left"><span class="bar-1"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Deposit:</span>
+                  <div class="pull-left"><span class="bar-2"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Intensit:</span>
+                  <div class="pull-left"><span class="bar-3"></span></div>
+                </div>
+                <div class="col-sm-6 col-xs-12 item clearfix">
+                  <span class="pull-left">Bubbles:</span>
+                  <div class="pull-left"><span class="bar-4"></span></div>
+                </div>
+              </div>
+      <div class="ability-chart-wrapper pie-5">
+        <div class="pie-chart" style="background-color: #F2F4F4;">
+          <div data-p="20" data-s="3"><div style="background-color: #EA3223;"></div></div>
+          <div data-p="20" data-s="1"><div style="background-color: #A16AF7;"></div></div>
+          <div data-p="20" data-s="4"><div style="background-color: #377E22;"></div></div>
+          <div data-p="20" data-s="5"><div style="background-color: #F8D849;"></div></div>
+          <div data-p="20" data-s="2"><div style="background-color: #0013F5;"></div></div>
+        </div>
+        <div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+        <div class="ability-bg"><div></div></div>
+        <div class="ability-text">
+          <svg viewBox="0 0 200 200">
+            <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
+            <text>
+            <textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
+              acidity
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
+              Alcohol
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
+              Tannin
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
+              Body
+            </textPath>
+            </text>
+            <text>
+            <textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
+              sweetness
+            </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+              <div class="like">
+                <div class="item">
+                  <a href="#"><i class="icon-like"></i></a> 321
+                </div>
+                <div class="item">
+                  <a href="#"><i class="icon-dislike"></i></a> 4
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="col-xs-12 text-center pt-50 pb-30 pt-xs-20 pb-xs-10 show-more">
+            <a href="#">Show More</a>
+          </div>
+      </div>
+		</div>
+	</div>
+</section>
+
+<script src="./app-content/js/bootstrap.min.js"></script>
+<script src="./app-content/js/custom.js"></script>

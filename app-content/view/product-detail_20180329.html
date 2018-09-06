@@ -28,7 +28,7 @@
 				</ul>
 			</div>
 			<div class="col-sm-3 col-xs-12 clearfix pt-20">
-				<div class="color mb-15 mb-xs-10 visible-xs"><span style="background-color: {{product.overall_tasting_note.color.base}};"></span> {{product.overall_tasting_note.color.base}}</div>
+				<div class="color mb-15 mb-xs-10 visible-xs"><span style="background-color: {{product.overall_tasting_note.color.base}};"></span> {{product.taste}}</div>
                 <ul class="icons mb-20 mb-xs-10 mr-xs-140 visible-xs" >
 					<li tabindex="-1"  ng-repeat="smell in product.overall_tasting_note.smells">
                     <i class="icon-{{smell.name}}" style="background-image: url('{{smell.img_url}}');"></i>
@@ -40,9 +40,9 @@
 					<li tabindex="-1"><i class="icon-apple"></i><div>546</div><span>Apple</span></li>
                     -->
 				</ul>
-				<div class="score mb-90 mb-xs-20 text-right xs-text-left">
-					<i class="icon-happy"></i> <span ng-bind-html="$root.getHappy(product.overall_tasting_note)" ></span>
-					<i class="icon-sad"></i> <span ng-bind-html="$root.getSad(product.overall_tasting_note)" ></span>
+				<div class="score mb-90 mb-xs-20 text-right xs-text-left" ng-show='(overall_tasting_note.total && product.overall_tasting_note.overall )'>
+					<i class="icon-happy"></i> <span  ng-bind-html="product.overall_tasting_note.overall/(5*product.overall_tasting_note.total)">133</span>
+					<i class="icon-sad"></i> <span   ng-bind-html="product.overall_tasting_note.total*(1-(product.overall_tasting_note.overall/5))">2</span>
 				</div>
 				<div class="ability-chart-wrapper pull-right xs-pull-none">
 					<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
@@ -101,46 +101,33 @@
 				</div>
 			</div>
 			<div class="col-xs-12 text-right pt-50 pt-xs-30 btn-group">
-				<a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="btn-themed ml-20 ml-xs-0">Add My Tasting Note</a>
-				<span ng-if="false">
-				<a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="btn-themed ml-20 ml-xs-0"  ng-if="myNote" >Edit My Tasting Note</a>
-				</span>
+				<a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="btn-themed ml-20 ml-xs-0" ng-if="!$root.globals.currentUser.username">Add My Tasting Note</a>
+				<a href="#/addMyTastingNote/{{product.catalog.name}}/{{product.catalog.vintage}}" class="btn-themed ml-20 ml-xs-0" ng-if="myNote">Edit My Tasting Note</a>
 			</div>
 		</div>
 	</div>
 </section>
 
 <section class="latest-notes" ng-if="myNote">
-	<div class="container width-990">
-		<h2 class="title m-0 mt-30">Your Own Tasting Note(s)</h2>
-	</div>
 	<div class="product-list pt-30 pt-xs-15">
 		<div class="container width-990">
 			<div class="row pl-sm-5">
-        <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn" ng-repeat="note in myNote">
-                	<div class="note-item shadow bg-white">
-                		<div class="no">#{{note.id}}</div>
-                		<div class="user">
-                			<div class="user-img" style="background-image: url({{note.img_url}});"></div>
-                			<div class="name"><a href="#/profile">{{note.author}}</a></div>
-                			<i class="icon-happy" ng-if="note.overall==5"></i><i class="icon-sad" ng-if="note.overall==1"></i>
-                		</div>
-                		<div class="smell mt-30 clearfix">
-                			<span class="pull-left">Smell:</span>
-                			<div class="pull-left">
-								<i class="icon-{{smell.name}}"style="background-image: url('{{smell.img_url}}');"  ng-repeat=" smell in note.smells"></i>
-								<!--<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-								<i class="icon-strawberry"></i>
-								<i class="icon-cherry"></i>
-								<i class="icon-lemon"></i>
-								<i class="icon-apple"></i>
-                                -->
-                			</div>
-                		</div>
-                        <div class="details row mt-10" ng-if="note.appearance.bubbles != null">
-                			<div class="col-sm-6 col-xs-12 item clearfix">
+        <div class="col-xs-12 mb-10 mb-sm-5 wow fadeIn">
+          <div class="note-item shadow bg-white">
+              <div class="user">
+                <div class="user-img" style="background-image: url({{myNote.img_url}});"></div>
+                <div class="name"><a href="#/profile" class="ng-binding"> {{myNote.author}} </a></div>
+                <i class="icon-happy" ng-if="myNote.overall==5"></i><i class="icon-sad" ng-if="myNote.overall==1"></i>
+              </div>
+              <div class="smell mt-30 clearfix">
+                <span class="pull-left">Smell:</span>
+                <div class="pull-left">
+                  <i class="icon-{{smell.name}}" ng-repeat=" smell in myNote.smells"></i>
+                        </div>
+              </div>
+                  <!-- ngIf: note.details != null -->
+                  <div class="details row mt-10 ng-scope">
+                       <div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Color:</span>
                 				<div class="pull-left color"><span style="background-color: {{note.appearance.colorBase}};"></span> {{note.appearance.colorBase}}</div>
                 			</div>
@@ -164,103 +151,59 @@
                 				<span class="pull-left">Bubbles:</span>
                 				<div class="pull-left"><span class="bar-{{note.appearance.bubbles}}"></span></div>
                 			</div>
-                		</div>
-                        <div class="ability-chart-wrapper pie-5" ng-if="note.taste.alcohol != null">
-							<div class="pie-chart" style="background-color: #F2F4F4;">
-								<div data-p="20" data-s="{{note.taste.acidity}}"><div style="background-color: #EA3223;"></div></div>
-								<div data-p="20" data-s="{{note.taste.alcohol}}"><div style="background-color: #A16AF7;"></div></div>
-								<div data-p="20" data-s="{{note.taste.tannin}}"><div style="background-color: #377E22;"></div></div>
-								<div data-p="20" data-s="{{note.taste.body}}"><div style="background-color: #F8D849;"></div></div>
-								<div data-p="20" data-s="{{note.taste.sweetness}}"><div style="background-color: #0013F5;"></div></div>
-							</div>
-							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
-							<div class="ability-bg"><div></div></div>
-							<div class="ability-text">
-								<svg viewBox="0 0 200 200">
-								  <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0" />
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="10%" text-anchor="middle">
-									  acidity
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="30%" text-anchor="middle">
-									  Alcohol
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="50%" text-anchor="middle">
-									  Tannin
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="70%" text-anchor="middle">
-									  Body
-									</textPath>
-								  </text>
-								  <text>
-									<textPath xlink:href="#curve5" startOffset="90%" text-anchor="middle">
-									  sweetness
-									</textPath>
-								  </text>
-								</svg>
-							</div>
-						</div>
-						<div class="ability-chart-wrapper"  ng-if="note.taste.alcohol == null">
-							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
-							<div class="ability-chart">
-								<div data-title="sweetness">
-                           			<span ng-repeat="n in [].constructor(note.taste.sweetness) track by $index"></span>
-                                </div>
-                                <div data-title="acidity">
-                                    <span ng-repeat="n in [].constructor(note.taste.acidity) track by $index"></span>
-                                </div>
-                                <div data-title="Body">
-                                    <span ng-repeat="n in [].constructor(note.taste.body) track by $index"></span>
-                                </div>
-                                <div data-title="Tannin">
-                                    <span ng-repeat="n in [].constructor(note.taste.tannin) track by $index"></span>
-                                </div>
-							</div>
-							<div class="ability-text">
-								<svg viewBox="0 0 200 200">
-								  <path id="curve1" fill="rgba(0,0,0,0)" d="M0 100 C 0 44.77, 44.77 0, 100 0" />
-								  <text>
-									<textPath xlink:href="#curve1" startOffset="50%" text-anchor="middle">
-									  sweetness
-									</textPath>
-								  </text>
-								  <path id="curve2" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100" />
-								  <text>
-									<textPath xlink:href="#curve2" startOffset="50%" text-anchor="middle">
-									  acidity
-									</textPath>
-								  </text>
-								  <path id="curve3" fill="rgba(0,0,0,0)" d="M200 100 C 200 155.23, 155.23 200, 100 200" />
-								  <text>
-									<textPath xlink:href="#curve3" startOffset="50%" text-anchor="middle">
-									  Tannin
-									</textPath>
-								  </text>
-								  <path id="curve4" fill="rgba(0,0,0,0)" d="M100 200 C 44.77 200, 0 155.23, 0 100" />
-								  <text>
-									<textPath xlink:href="#curve4" startOffset="50%" text-anchor="middle">
-									  Body
-									</textPath>
-								  </text>
-								</svg>
-							</div>
-						</div>
-              <div class="like" >
-                <div class="item" ng-if="$root.globals.currentUser.username">
-                  <a href="" ng-click="vote(note,'up')" ><i class="icon-like{{note.voted_for}}"></i></a> {{note.vote_up}}
+                      </div><!-- end ngIf: note.details != null -->
+                  <!-- ngIf: note.details != null --><div class="ability-chart-wrapper pie-5 ng-scope">
+                <div class="pie-chart" style="background-color: rgb(242, 244, 244); opacity: 1;">
+                  <div data-p="20" data-s="3" style="transform: scale(0.6);"><div style="background-color: rgb(234, 50, 35); transform: rotate(72deg);"></div></div>
+                  <div data-p="20" data-s="2" style="transform: rotate(72deg) scale(0.4);"><div style="background-color: rgb(161, 106, 247); transform: rotate(72deg);"></div></div>
+                  <div data-p="20" data-s="3" style="transform: rotate(144deg) scale(0.6);"><div style="background-color: rgb(55, 126, 34); transform: rotate(72deg);"></div></div>
+                  <div data-p="20" data-s="5" style="transform: rotate(216deg) scale(1);"><div style="background-color: rgb(248, 216, 73); transform: rotate(72deg);"></div></div>
+                  <div data-p="20" data-s="4" style="transform: rotate(288deg) scale(0.8);"><div style="background-color: rgb(0, 19, 245); transform: rotate(72deg);"></div></div>
                 </div>
-               <!-- <div class="item">
-                  <a href="" ng-click="vote(note,'down')"><i class="icon-dislike"></i></a> {{note.vote_down}}
-                </div>-->
-              </div>
-                	</div>   
+                <div class="ability-bg"><span></span><span></span><span></span><span></span></div>
+                <div class="ability-bg"><div></div></div>
+                <div class="ability-text">
+                  <svg viewBox="0 0 200 200">
+                    <path id="curve5" fill="rgba(0,0,0,0)" d="M100 0 C 155.23 0, 200 44.77, 200 100 C 200 155.23, 155.23 200, 100 200 C 44.77 200, 0 155.23, 0 100 C 0 44.77, 44.77 0, 100 0"></path>
+                    <text>
+                    <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curve5" startOffset="10%" text-anchor="middle">
+                      acidity
+                    </textPath>
+                    </text>
+                    <text>
+                    <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curve5" startOffset="30%" text-anchor="middle">
+                      Alcohol
+                    </textPath>
+                    </text>
+                    <text>
+                    <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curve5" startOffset="50%" text-anchor="middle">
+                      Tannin
+                    </textPath>
+                    </text>
+                    <text>
+                    <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curve5" startOffset="70%" text-anchor="middle">
+                      Body
+                    </textPath>
+                    </text>
+                    <text>
+                    <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curve5" startOffset="90%" text-anchor="middle">
+                      sweetness
+                    </textPath>
+                    </text>
+                  </svg>
                 </div>
+              </div><!-- end ngIf: note.details != null -->
+      <!-- ngIf: note.details == null -->
+        <div class="like">
+          <div class="item ng-binding">
+            <a href=""><i class="icon-like"></i></a> {{note.vote_up}}
+          </div>
+          <div class="item">
+            <a href="" ><i class="icon-dislike"></i></a> {{note.vote_down}}
+          </div>
+        </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -286,7 +229,7 @@
                 		<div class="smell mt-30 clearfix">
                 			<span class="pull-left">Smell:</span>
                 			<div class="pull-left">
-								<i class="icon-{{smell.name}}"style="background-image: url('{{smell.img_url}}');"  ng-repeat=" smell in note.smells"></i>
+								<i class="icon-{{smell.name}}" ng-repeat=" smell in note.smells"></i>
 								<!--<i class="icon-cherry"></i>
 								<i class="icon-lemon"></i>
 								<i class="icon-apple"></i>
@@ -297,7 +240,7 @@
                                 -->
                 			</div>
                 		</div>
-                        <div class="details row mt-10" ng-if="note.appearance.bubbles != null">
+                        <div class="details row mt-10" ng-if="note.appearance != null">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Color:</span>
                 				<div class="pull-left color"><span style="background-color: {{note.appearance.colorBase}};"></span> {{note.appearance.colorBase}}</div>
@@ -323,7 +266,7 @@
                 				<div class="pull-left"><span class="bar-{{note.appearance.bubbles}}"></span></div>
                 			</div>
                 		</div>
-                        <div class="ability-chart-wrapper pie-5" ng-if="note.taste.alcohol != null">
+                        <div class="ability-chart-wrapper pie-5" ng-if="note.appearance != null">
 							<div class="pie-chart" style="background-color: #F2F4F4;">
 								<div data-p="20" data-s="{{note.taste.acidity}}"><div style="background-color: #EA3223;"></div></div>
 								<div data-p="20" data-s="{{note.taste.alcohol}}"><div style="background-color: #A16AF7;"></div></div>
@@ -364,7 +307,7 @@
 								</svg>
 							</div>
 						</div>
-						<div class="ability-chart-wrapper"  ng-if="note.taste.alcohol == null">
+						<div class="ability-chart-wrapper"  ng-if="note.appearance == null">
 							<div class="ability-bg"><span></span><span></span><span></span><span></span></div>
 							<div class="ability-chart">
 								<div data-title="sweetness">
@@ -409,8 +352,8 @@
 								</svg>
 							</div>
 						</div>
-              <div class="like" >
-                <div class="item" ng-if="$root.globals.currentUser.username">
+              <div class="like">
+                <div class="item">
                   <a href="" ng-click="vote(note,'up')" ><i class="icon-like{{note.voted_for}}"></i></a> {{note.vote_up}}
                 </div>
                <!-- <div class="item">

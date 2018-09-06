@@ -24,8 +24,6 @@ $(document).ready(function(){
 		for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 		return o;
 	}
-<<<<<<< HEAD
-=======
   
   $("header .navbar-toggle").click(function(e){
     e.preventDefault();
@@ -41,24 +39,24 @@ $(document).ready(function(){
       type: 'image'
     });
   },100);
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 	
 	// Form
 	$(".select-f").each(function(){
-		$(this).attr("tabindex", "-1");
-<<<<<<< HEAD
-		$(this).attr("ol-title", $(this).find("span").html());
-		$(this).after("<div class='select-f-list'></div>");
-		$(this).siblings(".select-f-list").html($(this).siblings("select").html());
-		$(this).siblings(".select-f-list").find("option").click(function(){
-			$(this).closest(".select-f-list").siblings(".select-f").find("span").html($(this).html());
-			$(this).closest(".select-f-list").siblings("select").find("option[value='" + $(this).attr("value") + "']").attr("selected", "true");
-=======
+		$(this).parent().prop("tabindex", "-1");
+
+    $(this).click(function(){
+      $(this).addClass("open");
+    });
+
+    $(this).parent().focusout(function(){
+      $(this).find(".select-f").removeClass("open");
+    });
+    
 		if($(this).attr("ol-title")===""){
 			  $(this).attr("ol-title", $(this).find("span").html());
 		}
-		$(this).after("<div class='select-f-list'></div>");
-		$(this).siblings(".select-f-list").html($(this).siblings("select").html());
+		//$(this).after("<div class='select-f-list'></div>");
+		//$(this).siblings(".select-f-list").html($(this).siblings("select").html());
     
 		if($(this).siblings("select").find("option[selected]").length){
 		  $(this).siblings("select").find("option[selected]").attr("selected", "true");
@@ -66,10 +64,11 @@ $(document).ready(function(){
 		}
     
     
-		$(this).siblings(".select-f-list").find("option").click(function(){
+		$(this).siblings(".select-f-list").find("optiont").click(function(){
 			$(this).closest(".select-f-list").siblings(".select-f").find("span").html($(this).html());
-			$(this).closest(".select-f-list").siblings("select").find("option").removeAttr("selected");
-			$(this).closest(".select-f-list").siblings("select").find("option[value='" + $(this).attr("value") + "']").attr("selected", "true");
+			$(this).closest(".select-f-list").siblings("select").find("option").prop("selected", false);
+			$(this).closest(".select-f-list").siblings("select").find("option[value='" + $(this).attr("value") + "']").prop("selected", true);
+      $(this).closest(".select-f-list").siblings(".select-f").removeClass("open");
 			var $comp  = $(this).closest(".select-f-list").siblings("select");
 			var $value = $(this).attr("value");
 			var $scope = $comp.scope(); 
@@ -77,7 +76,6 @@ $(document).ready(function(){
 			$comp.trigger('input'); // Use for Chrome/Firefox/Edge
    			$comp.trigger('change');
 
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 		});
 	});
 	
@@ -122,10 +120,6 @@ $(document).ready(function(){
 	});
 	
 	$(".pie-chart > div[data-p]").each(function(){
-<<<<<<< HEAD
-		
-=======
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 		var scale;
 		if($(this).data("s") != null){
 			scale = $(this).data("s") / 5;
@@ -157,13 +151,13 @@ $(document).ready(function(){
 	$(".color-a > input").change(function(){
 		if($(this).is(':checked')){
 			$(this).parent().siblings(".color-a").hide();
-			$(this).parent().siblings(".cross").addClass("open");
+			$(this).closest(".color-item").find(".cross").addClass("open");
 		}
 	});
 	
 	$(".color-item > .cross").click(function(){
-		$(this).siblings(".color-a").show();
-		$(this).siblings(".color-a").children("input").attr("checked", false);
+		$(this).closest(".color-item").find(".color-a").show();
+		$(this).closest(".color-item").find(".color-a").children("input").attr("checked", false);
 		$(this).removeClass("open");
 	});
 	
@@ -171,12 +165,6 @@ $(document).ready(function(){
 		if($(this).is(':checked')){
 			$(this).parent().siblings(".dot-a").children("input").removeAttr("checked");
 			$(this).parent().siblings(".dot-a").removeClass("active");
-<<<<<<< HEAD
-			$(this).parent().addClass("active");
-			$(this).parent().children("input").attr("checked", "checked");
-		}
-	});
-=======
       $(this).parent().siblings(".dot-a").find("dot").removeAttr("style").removeClass(".ui-draggable .ui-draggable-handle").insertAfter(this);
 			$(this).parent().addClass("active");
 			$(this).attr("checked", "checked");
@@ -209,7 +197,6 @@ $(document).ready(function(){
       $(this).removeAttr("style").removeClass(".ui-draggable .ui-draggable-handle");
     }
   });
->>>>>>> 3684e81b585623973728aba3410f66033c8f9359
 	
 	$(".form-tag").click(function(){
 		$(this).children("input").focus();
