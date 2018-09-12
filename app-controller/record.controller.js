@@ -30,7 +30,7 @@
 
         }
         $scope.viewLicense = function viewLicense() {
-            let params = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no, width=800,height=600,left=100,top=100";
+            var params = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no, width=800,height=600,left=100,top=100";
             open('/demo/#/viewLicense/' + $scope.licenseType +  $scope.licenseNo, 'test', params);
 
             //$location.path('/viewLicense/' + $scope.licenseNo);
