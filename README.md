@@ -20,15 +20,11 @@ line:22     <base href="/madcradle/winebat/">
 
 ## File Structure
 
-folder                  | Descrition
+folder                  | Description
 ----------------------- | -----------
 app-content             | Contain the dependence js , css and template file
 app-controller          | Contain the angularjs controller which control the website modules.
-app-services            | Which is angularjs service to support the contoller.
+app-services            | Which is angularjs service to support the controller.
 app.js             		| Initial the Application.
-config.js               | Store the option of region,pirce,styles...etc
+config.js               | Store the option of region,price,styles...etc
 index.html              | Main page which include html, css, js
-
-
-
-
