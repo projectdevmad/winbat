@@ -194,7 +194,7 @@
         $rootScope.promise = null;
 		
 		var colorUrl = "./json/colorBase.json";
-			return $http({
+			$http({
                 method: "Get",
                 url: colorUrl,
                 withCredentials: true
