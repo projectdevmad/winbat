@@ -14,7 +14,7 @@
 					<div ng-show="product.catalog.grape"><span class="text-grey">Grape:</span>  {{product.catalog.grape}}</div>
 					<div ng-show="product.catalog.style"><span class="text-grey">Style:</span>  {{product.catalog.style}}</div>
 				</div>
-				<div class="color mb-15 mb-xs-10 hidden-xs"><span style="background-color: {{product.overall_tasting_note.color.base}};"></span> {{product.overall_tasting_note.color.base}}</div>
+				<div class="color mb-15 mb-xs-10 hidden-xs"><span style="background-color: {{$root.colorBase[product.overall_tasting_note.color.base]}};"></span> {{product.overall_tasting_note.color.base}}</div>
                 <ul class="icons mb-20 mb-xs-10 hidden-xs" >
 					<li tabindex="-1"  ng-repeat="smell in product.overall_tasting_note.smells">
                     <i class="icon-{{smell.name}}" style="background-image: url('{{smell.img_url}}');"></i>
@@ -28,7 +28,7 @@
 				</ul>
 			</div>
 			<div class="col-sm-3 col-xs-12 clearfix pt-20">
-				<div class="color mb-15 mb-xs-10 visible-xs"><span style="background-color: {{product.overall_tasting_note.color.base}};"></span> {{product.overall_tasting_note.color.base}}</div>
+				<div class="color mb-15 mb-xs-10 visible-xs"><span style="background-color: {{$root.colorBase[product.overall_tasting_note.color.base]}};"></span> {{product.overall_tasting_note.color.base}}</div>
                 <ul class="icons mb-20 mb-xs-10 mr-xs-140 visible-xs" >
 					<li tabindex="-1"  ng-repeat="smell in product.overall_tasting_note.smells">
                     <i class="icon-{{smell.name}}" style="background-image: url('{{smell.img_url}}');"></i>
@@ -139,11 +139,13 @@
                                 -->
                 			</div>
                 		</div>
-                        <div class="details row mt-10" ng-if="note.appearance.bubbles != null">
+                        <div class="details row mt-10 mb-0">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Color:</span>
-                				<div class="pull-left color"><span style="background-color: {{note.appearance.colorBase}};"></span> {{note.appearance.colorBase}}</div>
+                				<div class="pull-left color"><span style="background-color: {{$root.colorBase[note.appearance.colorBase]}};"></span> {{note.appearance.colorBase}}</div>
                 			</div>
+                			</div>
+                        <div class="details row" ng-if="note.appearance.bubbles != null">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Legs:</span>
                 				<div class="pull-left"><span class="bar-{{note.appearance.legs}}"></span></div>
@@ -297,11 +299,13 @@
                                 -->
                 			</div>
                 		</div>
-                        <div class="details row mt-10" ng-if="note.appearance.bubbles != null">
+                        <div class="details row mt-10 mb-0">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Color:</span>
-                				<div class="pull-left color"><span style="background-color: {{note.appearance.colorBase}};"></span> {{note.appearance.colorBase}}</div>
+                				<div class="pull-left color"><span style="background-color: {{$root.colorBase[note.appearance.colorBase]}};"></span> {{note.appearance.colorBase}}</div>
                 			</div>
+                			</div>
+                        <div class="details row" ng-if="note.appearance.bubbles != null">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Legs:</span>
                 				<div class="pull-left"><span class="bar-{{note.appearance.legs}}"></span></div>
@@ -429,3 +433,6 @@
 
 <script src="./app-content/js/bootstrap.min.js"></script>
 <script src="./app-content/js/custom.js"></script>
+<script>
+	$('html, body').scrollTop(0);
+</script>
