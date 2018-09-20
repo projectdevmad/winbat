@@ -192,6 +192,24 @@
         $rootScope.message = 'Please Wait...';
         $rootScope.backdrop = false;
         $rootScope.promise = null;
+		
+		var colorUrl = "./json/colorBase.json";
+			return $http({
+                method: "Get",
+                url: colorUrl,
+                withCredentials: true
+
+            }).then(function(response) {
+				$rootScope.colorBase = {}
+				angular.forEach(response.data.colorBase, function(value, key) {
+					var name = value.name;
+					var hex = value.hex
+					
+					$rootScope.colorBase[name] = hex;
+				});
+			})
+			
+			
            $rootScope.globals = $cookies.getObject('globals') || {};
            if ($rootScope.globals.currentUser) {
                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;

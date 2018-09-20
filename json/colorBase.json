@@ -1,0 +1,107 @@
+{"colorBase":[{"id": "1",
+			"cat": "1",
+			"name": "straw",
+			"hex": "#EBE3B2"
+		},
+		{
+			"id": "2",
+			"cat": "1",
+			"name": "yellow",
+			"hex": "#F5ED7E"
+		},
+		{
+			"id": "3",
+			"cat": "1",
+			"name": "gold",
+			"hex": "#F3DE75"
+		},
+		{
+			"id": "4",
+			"cat": "1",
+			"name": "amber",
+			"hex": "#F8A837"
+		},
+		{
+			"id": "5",
+			"cat": "1",
+			"name": "brown",
+			"hex": "#CE982C"
+		},
+		{
+			"id": "6",
+			"cat": "2",
+			"name": "purple",
+			"hex": "#C42053"
+		},
+		{
+			"id": "7",
+			"cat": "2",
+			"name": "ruby",
+			"hex": "#921A36"
+		},
+		{
+			"id": "8",
+			"cat": "2",
+			"name": "garnet",
+			"hex": "#6F0F11"
+		},
+		{
+			"id": "9",
+			"cat": "2",
+			"name": "tawny",
+			"hex": "#491812"
+		},
+		{
+			"id": "10",
+			"cat": "2",
+			"name": "brown",
+			"hex": "#332211"
+		},
+		{
+			"id": "11",
+			"cat": "3",
+			"name": "pink",
+			"hex": "#F5C7C7"
+		},
+		{
+			"id": "12",
+			"cat": "3",
+			"name": "deep pink",
+			"hex": "#F16E76"
+		},
+		{
+			"id": "13",
+			"cat": "3",
+			"name": "salmon",
+			"hex": "#F2876F"
+		},
+		{
+			"id": "14",
+			"cat": "3",
+			"name": "deep salmon",
+			"hex": "#EC6240"
+		},
+		{
+			"id": "15",
+			"cat": "3",
+			"name": "copper",
+			"hex": "#D0492B"
+		},
+		{
+			
+      "name":"white",
+	  "hex": "#FFFFFF"
+		},
+		{
+			
+      "name":"red",
+	  "hex": "red"
+		},
+		{
+			
+      "name":"rose",
+	  "hex": "rosybrown"
+		}
+		
+	]
+}

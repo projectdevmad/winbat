@@ -1,0 +1,16 @@
+{
+	"colorBaseCat": [
+		{
+			"id":"1",
+      "name":"White",
+		},
+		{
+			"id":"2",
+      "name":"Red",
+		},
+		{
+			"id":"3",
+      "name":"Rose",
+		},
+	]
+}
