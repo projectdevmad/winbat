@@ -12,7 +12,7 @@
 	  	
 		//alert("Get Product ID :" + $routeParams.id );
 		//$scope.url = "./json/product.json";
-		$scope.myNote = [];
+		$scope.myNote = null;
 		var name = $routeParams.name;
 		var vintage = $routeParams.year;
 		$scope.url = "http://ec2-13-229-238-73.ap-southeast-1.compute.amazonaws.com:8080/api/product/detail?name="+name+"&vintage="+vintage;
@@ -31,10 +31,9 @@
 		 
 		  $scope.promise = searchService.search($scope.notesVoteUrl).then(function(data) {
 			  console.log(data);
-			  if (data != null){
+			  if (data != null && data.length>0){
+				   $scope.myNote = [];
                 $scope.myNote[0] =  data[0];
-			  }else{
-			  	$scope.myNote = null;
 			  }
                
                 console.log($scope.myNote);

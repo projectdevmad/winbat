@@ -16,7 +16,7 @@
 									<i class="icon-sad"></i> <span  ng-bind-html="$root.getSad(product.overall_tasting_note)"></span>
 								</div>
                                 <div  ng-if=" product.overall_tasting_note.smells.length>0">
-                                    <div class="color mb-15"><span style="background-color: {{$root.colorBase[product.overall_tasting_note.color.base]}};"></span>{{product.overall_tasting_note.color.base}}</div>
+                                    <div class="color mb-15"><span style="background-color: {{product.overall_tasting_note.color.base}};"></span>{{product.overall_tasting_note.color.base}}</div>
                                     <ul class="icons mb-20 mb-xs-10">
                                         <li tabindex="-1" ng-repeat="smell in product.overall_tasting_note.smells">
                                             <i class="icon-{{smell.name}}" style="background-image: url('{{smell.img_url}}');"></i>

@@ -46,11 +46,13 @@
                                 -->
                 			</div>
                 		</div>
-                        <div class="details row mt-10" ng-if="note.appearance.bubbles != null">
+                        <div class="details row mt-10 mb-0">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Color:</span>
-                				<div class="pull-left color"><span style="background-color: {{note.appearance.colorBase}};"></span> {{note.appearance.colorBase}}</div>
+                				<div class="pull-left color"><span style="background-color: {{$root.colorBase[note.appearance.colorBase]['hex']}};"></span> {{$root.colorBase[note.appearance.colorBase]['name']}}</div>
                 			</div>
+                			</div>
+                        <div class="details row" ng-if="note.appearance.bubbles != null">
                 			<div class="col-sm-6 col-xs-12 item clearfix">
                 				<span class="pull-left">Legs:</span>
                 				<div class="pull-left"><span class="bar-{{note.appearance.legs}}"></span></div>

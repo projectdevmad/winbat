@@ -202,11 +202,16 @@
             }).then(function(response) {
 				$rootScope.colorBase = {}
 				angular.forEach(response.data.colorBase, function(value, key) {
+					var cat = value.cat;
 					var name = value.name;
 					var hex = value.hex
+					//if ($rootScope.colorBase[cat] == null) $rootScope.colorBase[cat] = {};
+					//$rootScope.colorBase[cat][name] = hex;
+					var id = value.id;
+					$rootScope.colorBase[id] = value;
 					
-					$rootScope.colorBase[name] = hex;
 				});
+				//console.log($rootScope.colorBase['rose']['deep salmon']);
 			})
 			
 			
